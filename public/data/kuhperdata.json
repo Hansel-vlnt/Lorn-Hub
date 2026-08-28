@@ -1,0 +1,72 @@
+{
+  "metadata": {
+    "id": "kuhperdata",
+    "kode": "KUHPERDATA",
+    "judulLengkap": "Kitab Undang-Undang Hukum Perdata (Burgerlijk Wetboek)",
+    "nomorRegulasi": "Staatsblad 1847:23",
+    "singkatan": "KUHPerdata (BW)",
+    "kategori": "perdata",
+    "tahun": 1847,
+    "status": "sebagian-dicabut",
+    "deskripsi": "Pokok-pokok hukum perdata privat: Orang, Benda, Perikatan (Perjanjian & PMH), serta Pembuktian dan Daluwarsa.",
+    "totalPasal": 1993,
+    "fileData": "kuhperdata.json"
+  },
+  "pasalList": [
+    {
+      "id": "kuhper-pasal-1233",
+      "lawId": "kuhperdata",
+      "nomor": "1233",
+      "judul": "Sumber-Sumber Perikatan",
+      "bab": "BUKU III - PERIKATAN | BAB I - PERIKATAN PADA UMUMNYA",
+      "isi": "Tiap-tiap perikatan dilahirkan baik karena persetujuan, baik karena undang-undang.",
+      "penjelasan": "Dua sumber utama perikatan dalam hukum perdata Indonesia: Kontrak/Persetujuan (Overeenkomst) dan Undang-Undang (Wet).",
+      "kategori": "perdata",
+      "kataKunci": ["sumber perikatan", "persetujuan", "undang-undang", "overeenkomst", "wet"]
+    },
+    {
+      "id": "kuhper-pasal-1243",
+      "lawId": "kuhperdata",
+      "nomor": "1243",
+      "judul": "Ganti Rugi Akibat Wanprestasi (Ingkar Janji)",
+      "bab": "BUKU III - PERIKATAN | BAB I - PERIKATAN PADA UMUMNYA",
+      "isi": "Penggantian biaya, kerugian dan bunga karena tak dipenuhinya suatu perikatan mulai diwajibkan, bila debitur, walaupun telah dinyatakan lalai, tetap lalai untuk memenuhi perikatan itu, atau jika sesuatu yang harus diberikan atau dilakukannya hanya dapat diberikan atau dilakukannya dalam tenggang waktu yang telah dilampauinya.",
+      "penjelasan": "Dasar hukum gugatan wanprestasi dan tuntutan ganti rugi (biaya, rugi, dan bunga / kosten, schaden en interessen) setelah adanya somasi/teguran.",
+      "kategori": "perdata",
+      "kataKunci": ["wanprestasi", "ingkar janji", "ganti rugi", "biaya rugi bunga", "somasi", "lalai", "debitur"]
+    },
+    {
+      "id": "kuhper-pasal-1320",
+      "lawId": "kuhperdata",
+      "nomor": "1320",
+      "judul": "Syarat Sahnya Perjanjian / Kontrak",
+      "bab": "BUKU III - PERIKATAN | BAB II - PERIKATAN YANG LAHIR DARI KONTRAK ATAU PERSETUJUAN",
+      "isi": "Supaya terjadi persetujuan yang sah, perlu dipenuhi empat syarat:\n1. kesepakatan mereka yang mengikatkan dirinya;\n2. kecakapan untuk membuat suatu perikatan;\n3. suatu pokok persoalan tertentu;\n4. suatu sebab yang tidak terlarang.",
+      "penjelasan": "Syarat Subjektif (1 & 2): Kesepakatan & Kecakapan (jika dilanggar: dapat dibatalkan / vernietigbaar). Syarat Objektif (3 & 4): Objek tertentu & Kausa yang halal (jika dilanggar: batal demi hukum / nietig van rechtswege).",
+      "kategori": "perdata",
+      "kataKunci": ["syarat sah perjanjian", "1320", "kesepakatan", "kecakapan", "objek tertentu", "kausa halal", "batal demi hukum", "dapat dibatalkan"]
+    },
+    {
+      "id": "kuhper-pasal-1338",
+      "lawId": "kuhperdata",
+      "nomor": "1338",
+      "judul": "Asas Kebebasan Berkontrak dan Asas Pacta Sunt Servanda",
+      "bab": "BUKU III - PERIKATAN | BAB II - PERIKATAN YANG LAHIR DARI KONTRAK ATAU PERSETUJUAN",
+      "isi": "(1) Semua persetujuan yang dibuat sesuai dengan undang-undang berlaku sebagai undang-undang bagi mereka yang membuatnya.\n(2) Persetujuan itu tidak dapat ditarik kembali selain dengan kesepakatan kedua belah pihak, atau karena alasan-alasan yang ditentukan oleh undang-undang.\n(3) Persetujuan harus dilaksanakan dengan itikad baik.",
+      "penjelasan": "Ayat 1: Asas Pacta Sunt Servanda (mengikat seperti UU) & Kebebasan Berkontrak. Ayat 3: Asas Itikad Baik (Good Faith / Te Goeder Trouw).",
+      "kategori": "perdata",
+      "kataKunci": ["pacta sunt servanda", "kebebasan berkontrak", "itikad baik", "good faith", "mengikat sebagai undang-undang"]
+    },
+    {
+      "id": "kuhper-pasal-1365",
+      "lawId": "kuhperdata",
+      "nomor": "1365",
+      "judul": "Perbuatan Melawan Hukum (Onrechtmatige Daad / PMH)",
+      "bab": "BUKU III - PERIKATAN | BAB III - PERIKATAN YANG LAHIR KARENA UNDANG-UNDANG",
+      "isi": "Tiap perbuatan yang melanggar hukum dan membawa kerugian kepada orang lain, mewajibkan orang yang menimbulkan kerugian itu karena kesalahannya untuk menggantikan kerugian tersebut.",
+      "penjelasan": "Unsur-unsur PMH: 1. Adanya perbuatan; 2. Perbuatan melawan hukum (melanggar UU, hak orang lain, kewajiban hukum, atau kepatutan); 3. Adanya kerugian; 4. Adanya kesalahan (schuld); 5. Hubungan kausalitas antara perbuatan dan kerugian.",
+      "kategori": "perdata",
+      "kataKunci": ["perbuatan melawan hukum", "pmh", "onrechtmatige daad", "1365", "ganti rugi perdata", "kesalahan", "hubungan kausal"]
+    }
+  ]
+}

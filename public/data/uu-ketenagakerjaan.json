@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "id": "uu-ketenagakerjaan",
+    "kode": "UU-NAKER",
+    "judulLengkap": "Ketenagakerjaan (Kompilasi Pasca UU Cipta Kerja)",
+    "nomorRegulasi": "UU No. 13/2003 jo UU No. 6/2023",
+    "singkatan": "UU Ketenagakerjaan",
+    "kategori": "ketenagakerjaan",
+    "tahun": 2023,
+    "status": "berlaku",
+    "deskripsi": "Pengaturan hubungan kerja, PKWT/PKWTT, upah, pesangon, pemutusan hubungan kerja (PHK), dan perselisihan kerja.",
+    "totalPasal": 193,
+    "fileData": "uu-ketenagakerjaan.json"
+  },
+  "pasalList": [
+    {
+      "id": "uu-naker-pasal-56",
+      "lawId": "uu-ketenagakerjaan",
+      "nomor": "56",
+      "judul": "Perjanjian Kerja Waktu Tertentu (PKWT) dan Tidak Tertentu (PKWTT)",
+      "bab": "BAB IX - HUBUNGAN KERJA",
+      "isi": "(1) Perjanjian kerja dibuat untuk waktu tertentu atau untuk waktu tidak tertentu.\n(2) Perjanjian kerja untuk waktu tertentu sebagaimana dimaksud pada ayat (1) didasarkan atas:\na. jangka waktu; atau\nb. selesainya suatu pekerjaan tertentu.\n(3) Jangka waktu atau selesainya suatu pekerjaan tertentu sebagaimana dimaksud pada ayat (2) ditentukan berdasarkan perjanjian kerja.",
+      "penjelasan": "Perbedaan mendasar antara pekerja kontrak (PKWT) dan pekerja tetap (PKWTT).",
+      "kategori": "ketenagakerjaan",
+      "kataKunci": ["pkwt", "pkwtt", "perjanjian kerja", "kontrak kerja", "pekerja tetap"]
+    },
+    {
+      "id": "uu-naker-pasal-156",
+      "lawId": "uu-ketenagakerjaan",
+      "nomor": "156",
+      "judul": "Uang Pesangon, Penghargaan Masa Kerja, dan Penggantian Hak (Pasca Cipta Kerja)",
+      "bab": "BAB XII - PEMUTUSAN HUBUNGAN KERJA",
+      "isi": "(1) Dalam hal terjadi pemutusan hubungan kerja, pengusaha wajib membayar uang pesangon dan/atau uang penghargaan masa kerja dan uang penggantian hak yang seharusnya diterima.\n(2) Perhitungan uang pesangon sebagaimana dimaksud pada ayat (1) paling sedikit ditetapkan sesuai masa kerja...",
+      "penjelasan": "Formula perhitungan uang pesangon, UPMK, dan UPH pasca penyesuaian Perppu Cipta Kerja / UU No. 6 Tahun 2023 dan PP 35/2021.",
+      "kategori": "ketenagakerjaan",
+      "kataKunci": ["pesangon", "phk", "pemutusan hubungan kerja", "upmk", "uph", "masa kerja", "cipta kerja"]
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "metadata": {
+    "id": "kuhp-lama-wvs",
+    "kode": "KUHP-WVS",
+    "judulLengkap": "Kitab Undang-Undang Hukum Pidana (Wetboek van Strafrecht voor Nederlandsch-Indie)",
+    "nomorRegulasi": "Staatsblad 1915:732 jo UU No. 1/1946",
+    "singkatan": "KUHP Lama (WvS)",
+    "kategori": "pidana",
+    "tahun": 1915,
+    "status": "berlaku",
+    "deskripsi": "Himpunan hukum pidana materiil peninggalan Belanda yang berlaku di Indonesia hingga masa transisi KUHP Nasional.",
+    "totalPasal": 569,
+    "fileData": "kuhp-lama-wvs.json"
+  },
+  "pasalList": [
+    {
+      "id": "kuhp-lama-pasal-1",
+      "lawId": "kuhp-lama-wvs",
+      "nomor": "1",
+      "judul": "Asas Legalitas dan Perubahan Perundang-undangan",
+      "bab": "BUKU I - ATURAN UMUM | BAB I - BATAS-BATAS BERLAKUNYA ATURAN PIDANA DALAM PERUNDANG-UNDANGAN",
+      "isi": "(1) Tiada suatu perbuatan dapat dipidana kecuali atas kekuatan aturan pidana dalam perundang-undangan yang telah ada, sebelum perbuatan dilakukan.\n(2) Jikalau ada perubahan dalam perundang-undangan sesudah perbuatan dilakukan, maka terhadap terdakwa diterapkan ketentuan yang paling menguntungkannya.",
+      "penjelasan": "Ayat (1) memuat asas legalitas (Nullum delictum). Ayat (2) memuat asas lex favor reo (ketentuan yang meringankan terdakwa).",
+      "kategori": "pidana",
+      "kataKunci": ["asas legalitas", "nullum delictum", "lex favor reo", "perubahan undang-undang", "aturan peralihan"]
+    },
+    {
+      "id": "kuhp-lama-pasal-55",
+      "lawId": "kuhp-lama-wvs",
+      "nomor": "55",
+      "judul": "Penyertaan dalam Tindak Pidana (Deelneming)",
+      "bab": "BUKU I - ATURAN UMUM | BAB V - PENYERTAAN DALAM TINDAK PIDANA",
+      "isi": "(1) Dipidana sebagai pelaku tindak pidana:\n1. mereka yang melakukan, yang menyuruh melakukan, dan yang turut serta melakukan perbuatan;\n2. mereka yang dengan memberi atau menjanjikan sesuatu, dengan menyalahgunakan kekuasaan atau martabat, dengan kekerasan, ancaman atau penyesatan, atau dengan memberi kesempatan, sarana atau keterangan, sengaja menganjurkan orang lain supaya melakukan perbuatan.\n(2) Terhadap penganjur, hanya perbuatan yang sengaja dianjurkan sajalah yang diperhitungkan, beserta akibat-akibatnya.",
+      "penjelasan": "Bentuk-bentuk pelaku penyertaan: Pleger (pelaku), Doen pleger (menyuruh lakukan), Medepleger (turut serta), dan Uitlokker (penganjur).",
+      "kategori": "pidana",
+      "kataKunci": ["penyertaan", "deelneming", "medepleger", "turut serta", "menyuruh lakukan", "penganjur", "uitlokker"]
+    },
+    {
+      "id": "kuhp-lama-pasal-338",
+      "lawId": "kuhp-lama-wvs",
+      "nomor": "338",
+      "judul": "Pembunuhan Biasa (Doodslag)",
+      "bab": "BUKU II - KEJAHATAN | BAB XIX - KEJAHATAN TERHADAP NYAWA",
+      "isi": "Barang siapa dengan sengaja merampas nyawa orang lain, diancam karena pembunuhan dengan pidana penjara paling lama lima belas tahun.",
+      "penjelasan": "Delik materiil kejahatan terhadap nyawa. Mensyaratkan adanya akibat kematian korban akibat perbuatan yang disengaja.",
+      "kategori": "pidana",
+      "kataKunci": ["pembunuhan", "doodslag", "dengan sengaja", "merampas nyawa", "15 tahun"]
+    },
+    {
+      "id": "kuhp-lama-pasal-340",
+      "lawId": "kuhp-lama-wvs",
+      "nomor": "340",
+      "judul": "Pembunuhan Berencana (Moord)",
+      "bab": "BUKU II - KEJAHATAN | BAB XIX - KEJAHATAN TERHADAP NYAWA",
+      "isi": "Barang siapa dengan sengaja dan dengan rencana lebih dahulu merampas nyawa orang lain, diancam karena pembunuhan dengan rencana, dengan pidana mati atau pidana penjara seumur hidup atau selama waktu tertentu, paling lama dua puluh tahun.",
+      "penjelasan": "Kejahatan pembunuhan yang diperberat karena adanya unsur rencana terlebih dahulu (voorbedachte raad).",
+      "kategori": "pidana",
+      "kataKunci": ["pembunuhan berencana", "moord", "pidana mati", "seumur hidup", "20 tahun", "rencana terlebih dahulu"]
+    },
+    {
+      "id": "kuhp-lama-pasal-351",
+      "lawId": "kuhp-lama-wvs",
+      "nomor": "351",
+      "judul": "Penganiayaan Biasa (Mishandeling)",
+      "bab": "BUKU II - KEJAHATAN | BAB XX - PENGANIAYAAN",
+      "isi": "(1) Penganiayaan diancam dengan pidana penjara paling lama dua tahun delapan bulan atau pidana denda paling banyak empat ribu lima ratus rupiah.\n(2) Jika perbuatan mengakibatkan luka-luka berat, yang bersalah diancam dengan pidana penjara paling lama lima tahun.\n(3) Jika mengakibatkan mati, diancam dengan pidana penjara paling lama tujuh tahun.\n(4) Dengan penganiayaan disamakan sengaja merusak kesehatan.\n(5) Percobaan untuk melakukan kejahatan ini tidak dipidana.",
+      "penjelasan": "Penganiayaan ditafsirkan sebagai perbuatan menimbulkan rasa sakit atau luka pada tubuh orang lain secara sengaja tanpa pembenaran.",
+      "kategori": "pidana",
+      "kataKunci": ["penganiayaan", "mishandeling", "luka berat", "merusak kesehatan", "kekerasan"]
+    },
+    {
+      "id": "kuhp-lama-pasal-362",
+      "lawId": "kuhp-lama-wvs",
+      "nomor": "362",
+      "judul": "Pencurian Biasa (Diefstal)",
+      "bab": "BUKU II - KEJAHATAN | BAB XXII - PENCURIAN",
+      "isi": "Barang siapa mengambil barang sesuatu, yang seluruhnya atau sebagian kepunyaan orang lain, dengan maksud untuk dimiliki secara melawan hukum, diancam karena pencurian, dengan pidana penjara paling lama lima tahun atau pidana denda paling banyak sembilan ratus rupiah.",
+      "penjelasan": "Unsur-unsur pencurian: 1. Barang siapa; 2. Mengambil; 3. Suatu barang; 4. Sebagian/seluruhnya milik orang lain; 5. Maksud memiliki; 6. Secara melawan hukum.",
+      "kategori": "pidana",
+      "kataKunci": ["pencurian", "diefstal", "mengambil barang", "milik orang lain", "melawan hukum", "5 tahun"]
+    },
+    {
+      "id": "kuhp-lama-pasal-372",
+      "lawId": "kuhp-lama-wvs",
+      "nomor": "372",
+      "judul": "Penggelapan Biasa (Verduistering)",
+      "bab": "BUKU II - KEJAHATAN | BAB XXIV - PENGGELAPAN",
+      "isi": "Barang siapa dengan sengaja dan melawan hukum memiliki barang sesuatu yang seluruhnya atau sebagian adalah kepunyaan orang lain, tetapi yang ada dalam kekuasaannya bukan karena kejahatan, diancam karena penggelapan, dengan pidana penjara paling lama empat tahun atau pidana denda paling banyak sembilan ratus rupiah.",
+      "penjelasan": "Objek barang sudah berada dalam kekuasaan pelaku secara sah (misal: titipan, sewa, pinjaman), namun kemudian dialihkan/dikuasai secara melawan hukum.",
+      "kategori": "pidana",
+      "kataKunci": ["penggelapan", "verduistering", "dalam kekuasaannya", "bukan karena kejahatan", "milik orang lain"]
+    },
+    {
+      "id": "kuhp-lama-pasal-378",
+      "lawId": "kuhp-lama-wvs",
+      "nomor": "378",
+      "judul": "Penipuan (Oplichting)",
+      "bab": "BUKU II - KEJAHATAN | BAB XXV - PERBUATAN CURANG",
+      "isi": "Barang siapa dengan maksud untuk menguntungkan diri sendiri atau orang lain secara melawan hukum, dengan memakai nama palsu atau martabat palsu, dengan tipu muslihat, ataupun rangkaian kebohongan, menggerakkan orang lain untuk menyerahkan barang sesuatu kepadanya, atau supaya memberi hutang maupun menghapuskan piutang, diancam karena penipuan dengan pidana penjara paling lama empat tahun.",
+      "penjelasan": "Alat penipu (oude middelen van oplichting): nama palsu, martabat palsu, tipu muslihat, dan susunan rangkaian kebohongan.",
+      "kategori": "pidana",
+      "kataKunci": ["penipuan", "oplichting", "nama palsu", "martabat palsu", "tipu muslihat", "rangkaian kebohongan", "memberi hutang"]
+    }
+  ]
+}

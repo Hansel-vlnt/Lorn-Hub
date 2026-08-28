@@ -1,0 +1,105 @@
+{
+  "metadata": {
+    "id": "kuhp-baru-uu-1-2023",
+    "kode": "KUHP-2023",
+    "judulLengkap": "Kitab Undang-Undang Hukum Pidana (Nasional)",
+    "nomorRegulasi": "Undang-Undang Nomor 1 Tahun 2023",
+    "singkatan": "KUHP Baru",
+    "kategori": "pidana",
+    "tahun": 2023,
+    "status": "transisi",
+    "deskripsi": "Kodifikasi hukum pidana nasional modern pengganti WvS, memuat sistem pemidanaan kontemporer dan pidana kerja sosial.",
+    "totalPasal": 624,
+    "fileData": "kuhp-baru-uu-1-2023.json"
+  },
+  "pasalList": [
+    {
+      "id": "kuhp-baru-pasal-1",
+      "lawId": "kuhp-baru-uu-1-2023",
+      "nomor": "1",
+      "judul": "Asas Legalitas",
+      "bab": "BUKU KESATU - ATURAN UMUM | BAB I - RUANG LINGKUP BERLAKUNYA HUKUM PIDANA",
+      "isi": "(1) Tidak ada satu perbuatan pun yang dapat dikenai sanksi pidana dan/atau tindakan, kecuali atas kekuatan peraturan perundang-undangan pidana yang telah ada sebelum perbuatan dilakukan.\n(2) Dalam menetapkan adanya Tindak Pidana dilarang menggunakan analogi.",
+      "penjelasan": "Menerapkan asas legalitas formal (Nullum delictum nulla poena sine praevia lege poenali) dan larangan mutlak penggunaan analogi dalam hukum pidana materiil.",
+      "kategori": "pidana",
+      "kataKunci": ["asas legalitas", "nullum delictum", "larangan analogi", "berlakunya hukum pidana"]
+    },
+    {
+      "id": "kuhp-baru-pasal-2",
+      "lawId": "kuhp-baru-uu-1-2023",
+      "nomor": "2",
+      "judul": "Hukum yang Hidup dalam Masyarakat (Living Law)",
+      "bab": "BUKU KESATU - ATURAN UMUM | BAB I - RUANG LINGKUP BERLAKUNYA HUKUM PIDANA",
+      "isi": "(1) Ketentuan sebagaimana dimaksud dalam Pasal 1 ayat (1) tidak mengurangi berlakunya hukum yang hidup dalam masyarakat yang menentukan bahwa seseorang patut dipidana walaupun perbuatan tersebut tidak diatur dalam Undang-Undang ini.\n(2) Hukum yang hidup dalam masyarakat sebagaimana dimaksud pada ayat (1) berlaku dalam tempat hukum itu hidup dan sepanjang tidak diatur dalam Undang-Undang ini dan sesuai dengan nilai-nilai yang terkandung dalam Pancasila, Undang-Undang Dasar Negara Republik Indonesia Tahun 1945, hak asasi manusia, dan asas hukum umum yang diakui oleh masyarakat bangsa-bangsa.",
+      "penjelasan": "Pengakuan terhadap hukum adat/tindak pidana adat dengan batasan ketat sesuai Pancasila, UUD 1945, dan HAM.",
+      "kategori": "pidana",
+      "kataKunci": ["living law", "hukum adat", "hukum yang hidup dalam masyarakat", "pidana adat"]
+    },
+    {
+      "id": "kuhp-baru-pasal-458",
+      "lawId": "kuhp-baru-uu-1-2023",
+      "nomor": "458",
+      "judul": "Tindak Pidana Pembunuhan",
+      "bab": "BUKU KEDUA - TINDAK PIDANA | BAB XX - TINDAK PIDANA TERHADAP NYAWA",
+      "isi": "(1) Setiap Orang yang merampas nyawa orang lain, dipidana karena pembunuhan, dengan pidana penjara paling lama 15 (lima belas) tahun.\n(2) Pembunuhan yang dilakukan oleh seorang ibu terhadap anaknya pada saat atau tidak lama setelah melahirkan, karena takut ketahuan bahwa ia melahirkan anak, dipidana karena pembunuhan anak sendiri, dengan pidana penjara paling lama 7 (tujuh) tahun.\n(3) Pembunuhan yang dilakukan oleh seorang ibu terhadap anaknya pada saat atau tidak lama setelah melahirkan dengan rencana, dipidana karena pembunuhan anak sendiri dengan rencana, dengan pidana penjara paling lama 9 (sembilan) tahun.",
+      "penjelasan": "Padanan Pasal 338 KUHP lama. Merumuskan delik materiil pembunuhan biasa.",
+      "kategori": "pidana",
+      "kataKunci": ["pembunuhan", "merampas nyawa", "doodslag", "pembunuhan anak", "infanticide"]
+    },
+    {
+      "id": "kuhp-baru-pasal-459",
+      "lawId": "kuhp-baru-uu-1-2023",
+      "nomor": "459",
+      "judul": "Pembunuhan Berencana",
+      "bab": "BUKU KEDUA - TINDAK PIDANA | BAB XX - TINDAK PIDANA TERHADAP NYAWA",
+      "isi": "Setiap Orang yang dengan rencana terlebih dahulu merampas nyawa orang lain, dipidana karena pembunuhan berencana, dengan pidana mati atau pidana penjara seumur hidup atau pidana penjara paling lama 20 (dua puluh) tahun.",
+      "penjelasan": "Padanan Pasal 340 KUHP lama (Moord). Unsur dengan rencana terlebih dahulu (voorbedachte raad) mensyaratkan adanya jeda waktu tenang bagi pelaku untuk mempertimbangkan perbuatannya.",
+      "kategori": "pidana",
+      "kataKunci": ["pembunuhan berencana", "moord", "pidana mati", "seumur hidup", "voorbedachte raad"]
+    },
+    {
+      "id": "kuhp-baru-pasal-466",
+      "lawId": "kuhp-baru-uu-1-2023",
+      "nomor": "466",
+      "judul": "Penganiayaan Biasa",
+      "bab": "BUKU KEDUA - TINDAK PIDANA | BAB XXI - PENGANIAYAAN",
+      "isi": "(1) Setiap Orang yang melakukan Penganiayaan, dipidana dengan pidana penjara paling lama 2 (dua) tahun 6 (enam) bulan atau pidana denda paling banyak kategori III.\n(2) Jika perbuatan sebagaimana dimaksud pada ayat (1) mengakibatkan Luka Berat, dipidana dengan pidana penjara paling lama 5 (lima) tahun.\n(3) Jika perbuatan sebagaimana dimaksud pada ayat (1) mengakibatkan matinya orang, dipidana dengan pidana penjara paling lama 7 (tujuh) tahun.",
+      "penjelasan": "Padanan Pasal 351 KUHP lama. Penganiayaan diartikan menimbulkan rasa sakit atau luka pada tubuh orang lain.",
+      "kategori": "pidana",
+      "kataKunci": ["penganiayaan", "mishandeling", "luka berat", "kekerasan fisik", "denda kategori 3"]
+    },
+    {
+      "id": "kuhp-baru-pasal-476",
+      "lawId": "kuhp-baru-uu-1-2023",
+      "nomor": "476",
+      "judul": "Tindak Pidana Pencurian",
+      "bab": "BUKU KEDUA - TINDAK PIDANA | BAB XXII - TINDAK PIDANA TERHADAP HAK MILIK",
+      "isi": "Setiap Orang yang mengambil suatu Barang yang sebagian atau seluruhnya milik orang lain, dengan maksud untuk dimiliki secara melawan hukum, dipidana karena pencurian, dengan pidana penjara paling lama 5 (lima) tahun atau pidana denda paling banyak kategori IV.",
+      "penjelasan": "Padanan Pasal 362 KUHP lama. Sanksi denda kategori IV adalah maksimal Rp200.000.000.",
+      "kategori": "pidana",
+      "kataKunci": ["pencurian", "diefstal", "mengambil barang", "melawan hukum", "hak milik"]
+    },
+    {
+      "id": "kuhp-baru-pasal-486",
+      "lawId": "kuhp-baru-uu-1-2023",
+      "nomor": "486",
+      "judul": "Penggelapan Biasa",
+      "bab": "BUKU KEDUA - TINDAK PIDANA | BAB XXII - TINDAK PIDANA TERHADAP HAK MILIK",
+      "isi": "Setiap Orang yang secara melawan hukum memiliki suatu Barang yang sebagian atau seluruhnya milik orang lain, yang ada dalam kekuasaannya bukan karena Tindak Pidana, dipidana karena penggelapan, dengan pidana penjara paling lama 4 (empat) tahun atau pidana denda paling banyak kategori IV.",
+      "penjelasan": "Padanan Pasal 372 KUHP lama (Verduistering). Perbedaannya dengan pencurian adalah barang sudah ada dalam penguasaan pelaku secara sah sebelumnya.",
+      "kategori": "pidana",
+      "kataKunci": ["penggelapan", "verduistering", "penguasaan sah", "melawan hukum", "hak milik"]
+    },
+    {
+      "id": "kuhp-baru-pasal-492",
+      "lawId": "kuhp-baru-uu-1-2023",
+      "nomor": "492",
+      "judul": "Tindak Pidana Penipuan",
+      "bab": "BUKU KEDUA - TINDAK PIDANA | BAB XXIII - TINDAK PIDANA PENIPUAN",
+      "isi": "Setiap Orang yang dengan maksud menguntungkan diri sendiri atau orang lain secara melawan hukum dengan memakai nama palsu atau kedudukan palsu, menggunakan tipu muslihat atau rangkaian kata bohong, menggerakkan orang untuk menyerahkan suatu Barang, memberi Utang, membuat Pengakuan Utang, atau menghapus Piutang, dipidana karena penipuan, dengan pidana penjara paling lama 4 (empat) tahun atau pidana denda paling banyak kategori V.",
+      "penjelasan": "Padanan Pasal 378 KUHP lama (Oplichting). Memuat rincian objek utang/piutang secara eksplisit.",
+      "kategori": "pidana",
+      "kataKunci": ["penipuan", "oplichting", "nama palsu", "tipu muslihat", "rangkaian kebohongan", "utang piutang"]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "id": "uu-ite",
+    "kode": "UU-ITE",
+    "judulLengkap": "Informasi dan Transaksi Elektronik",
+    "nomorRegulasi": "UU No. 11/2008 jo UU No. 19/2016 jo UU No. 1/2024",
+    "singkatan": "UU ITE",
+    "kategori": "khusus",
+    "tahun": 2024,
+    "status": "berlaku",
+    "deskripsi": "Ketentuan hukum siber, transaksi elektronik, perbuatan terlarang (pencemaran nama baik, asusila, hoaks, judol).",
+    "totalPasal": 54,
+    "fileData": "uu-ite.json"
+  },
+  "pasalList": [
+    {
+      "id": "uu-ite-pasal-27-ayat-1",
+      "lawId": "uu-ite",
+      "nomor": "27 ayat (1)",
+      "judul": "Penyebaran Konten Asusila Elektronik",
+      "bab": "BAB VII - PERBUATAN YANG DILARANG",
+      "isi": "Setiap Orang dengan sengaja dan tanpa hak menyiarkan, mempertunjukkan, mendistribusikan, mentransmisikan, dan/atau membuat dapat diaksesnya Informasi Elektronik dan/atau Dokumen Elektronik yang memiliki muatan yang melanggar kesusilaan untuk diketahui umum.",
+      "penjelasan": "Revisi UU ITE Kedua (UU 1/2024) menegaskan unsur 'untuk diketahui umum', sehingga komunikasi privat tidak termasuk.",
+      "kategori": "khusus",
+      "kataKunci": ["ite", "asusila", "pornografi elektronik", "diketahui umum", "distribusi elektronik"]
+    },
+    {
+      "id": "uu-ite-pasal-27a",
+      "lawId": "uu-ite",
+      "nomor": "27A",
+      "judul": "Menyerang Kehormatan / Nama Baik di Ruang Siber",
+      "bab": "BAB VII - PERBUATAN YANG DILARANG",
+      "isi": "Setiap Orang dengan sengaja menyerang kehormatan atau nama baik orang lain dengan cara menuduhkan suatu hal, dengan maksud supaya hal tersebut diketahui umum dalam bentuk Informasi Elektronik dan/atau Dokumen Elektronik yang dilakukan melalui Sistem Elektronik.",
+      "penjelasan": "Pasal baru hasil revisi UU 1/2024 (memindahkan delik pencemaran dari pasal 27 ayat 3 ke 27A). Merupakan delik aduan absolut dan ancaman pidana maksimal 2 tahun.",
+      "kategori": "khusus",
+      "kataKunci": ["pencemaran nama baik ite", "27a", "menyerang kehormatan", "delik aduan", "ruang digital"]
+    },
+    {
+      "id": "uu-ite-pasal-28-ayat-2",
+      "lawId": "uu-ite",
+      "nomor": "28 ayat (2)",
+      "judul": "Ujaran Kebencian Berbasis SARA",
+      "bab": "BAB VII - PERBUATAN YANG DILARANG",
+      "isi": "Setiap Orang dengan sengaja menyebarkan Informasi Elektronik dan/atau Dokumen Elektronik yang sifatnya menghasut, mengajak, atau memengaruhi orang lain sehingga menimbulkan rasa kebencian atau permusuhan terhadap individu dan/atau kelompok masyarakat tertentu berdasarkan suku, agama, ras, dan antargolongan (SARA).",
+      "penjelasan": "Unsur 'menghasut dan mengajak' dipertegas pada UU No. 1 Tahun 2024.",
+      "kategori": "khusus",
+      "kataKunci": ["ujaran kebencian", "hate speech", "sara", "hasutan online", "permusuhan"]
+    }
+  ]
+}
