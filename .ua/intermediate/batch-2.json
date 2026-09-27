@@ -1,0 +1,114 @@
+{
+  "nodes": [
+    {
+      "id": "config:public/data/kuhap.json",
+      "type": "config",
+      "name": "kuhap.json",
+      "filePath": "public/data/kuhap.json",
+      "summary": "Dataset JSON yang memuat metadata dan kompilasi pasal-pasal penting Kitab Undang-Undang Hukum Acara Pidana (UU No. 8/1981), mencakup aturan penangkapan, praperadilan, dan alat bukti sah.",
+      "tags": ["dataset", "hukum-acara", "kuhap", "pidana", "praperadilan"],
+      "complexity": "moderate",
+      "languageNotes": "Struktur data JSON statis yang dioptimalkan untuk pembacaan offline dan pencarian pasal berbasis kata kunci."
+    },
+    {
+      "id": "config:public/data/kuhp-baru-uu-1-2023.json",
+      "type": "config",
+      "name": "kuhp-baru-uu-1-2023.json",
+      "filePath": "public/data/kuhp-baru-uu-1-2023.json",
+      "summary": "Dataset JSON berisi metadata dan daftar pasal utama KUHP Nasional Baru (UU No. 1 Tahun 2023), termasuk asas legalitas, living law, serta tindak pidana terhadap nyawa dan hak milik.",
+      "tags": ["dataset", "kuhp-baru", "hukum-pidana", "uu-1-2023", "kodifikasi"],
+      "complexity": "moderate",
+      "languageNotes": "Menyediakan data pasal pidana materiil modern dengan penjelasan padanan pasal lama untuk matriks komparasi."
+    },
+    {
+      "id": "config:public/data/kuhp-lama-wvs.json",
+      "type": "config",
+      "name": "kuhp-lama-wvs.json",
+      "filePath": "public/data/kuhp-lama-wvs.json",
+      "summary": "Dataset JSON yang memuat kodifikasi KUHP Lama (Wetboek van Strafrecht voor Nederlandsch-Indie / WvS), mencakup delik pembunuhan, pencurian, penggelapan, dan penyertaan.",
+      "tags": ["dataset", "kuhp-lama", "wvs", "hukum-pidana", "komparasi"],
+      "complexity": "moderate",
+      "languageNotes": "Menyimpan data pasal WvS peninggalan Belanda untuk referensi historis dan komparasi terhadap KUHP Baru."
+    },
+    {
+      "id": "config:public/data/kuhperdata.json",
+      "type": "config",
+      "name": "kuhperdata.json",
+      "filePath": "public/data/kuhperdata.json",
+      "summary": "Dataset JSON yang menyajikan pokok-pokok Kitab Undang-Undang Hukum Perdata (Burgerlijk Wetboek), mencakup ketentuan perikatan, syarat sah perjanjian (Pasal 1320), dan perbuatan melawan hukum (Pasal 1365).",
+      "tags": ["dataset", "kuhperdata", "hukum-perdata", "perikatan", "pmh"],
+      "complexity": "moderate",
+      "languageNotes": "Struktur data JSON untuk referensi perdata umum yang mencakup prinsip hukum perikatan dan ganti rugi."
+    },
+    {
+      "id": "config:public/data/uu-ite.json",
+      "type": "config",
+      "name": "uu-ite.json",
+      "filePath": "public/data/uu-ite.json",
+      "summary": "Dataset JSON yang memuat aturan perbuatan terlarang dalam ruang siber berdasarkan UU ITE pasca revisi kedua (UU No. 1/2024), seperti pencemaran nama baik dan ujaran kebencian.",
+      "tags": ["dataset", "uu-ite", "cyber-law", "hukum-khusus", "transaksi-elektronik"],
+      "complexity": "simple",
+      "languageNotes": "Format JSON dengan pembagian pasal dan kata kunci pencarian untuk delik siber kontemporer."
+    },
+    {
+      "id": "config:public/data/uu-ketenagakerjaan.json",
+      "type": "config",
+      "name": "uu-ketenagakerjaan.json",
+      "filePath": "public/data/uu-ketenagakerjaan.json",
+      "summary": "Dataset JSON yang merangkum pasal-pasal kunci UU Ketenagakerjaan pasca penyesuaian UU Cipta Kerja (UU No. 6/2023), terkait status kerja PKWT/PKWTT dan formula pesangon PHK.",
+      "tags": ["dataset", "uu-ketenagakerjaan", "cipta-kerja", "pkwt", "pesangon"],
+      "complexity": "simple",
+      "languageNotes": "Dataset ringkas berisi ketentuan hubungan kerja dan kompensasi PHK pasca regulasi sapu jagat (Omnibus Law)."
+    },
+    {
+      "id": "config:public/data/uu-tipikor.json",
+      "type": "config",
+      "name": "uu-tipikor.json",
+      "filePath": "public/data/uu-tipikor.json",
+      "summary": "Dataset JSON yang memuat delik tindak pidana korupsi dari UU No. 31/1999 jo UU No. 20/2001, mencakup pasal kerugian keuangan negara, penyalahgunaan wewenang, dan gratifikasi.",
+      "tags": ["dataset", "uu-tipikor", "korupsi", "gratifikasi", "hukum-khusus"],
+      "complexity": "simple",
+      "languageNotes": "Menyediakan data pasal tindak pidana korupsi dengan catatan interpretasi putusan Mahkamah Konstitusi."
+    },
+    {
+      "id": "config:public/data/uud-1945.json",
+      "type": "config",
+      "name": "uud-1945.json",
+      "filePath": "public/data/uud-1945.json",
+      "summary": "Dataset JSON yang menyajikan teks Pembukaan dan pasal-pasal fundamental Undang-Undang Dasar Negara Republik Indonesia Tahun 1945 pasca amandemen, mencakup bentuk negara, HAM, dan kekuasaan kehakiman.",
+      "tags": ["dataset", "uud-1945", "konstitusi", "tata-negara", "hak-asasi-manusia"],
+      "complexity": "moderate",
+      "languageNotes": "Menyimpan struktur pasal konstitusi tertinggi dengan pemisahan hierarki ayat dan kata kunci tematik."
+    }
+  ],
+  "edges": [
+    {
+      "source": "config:public/data/kuhp-baru-uu-1-2023.json",
+      "target": "config:public/data/kuhp-lama-wvs.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:public/data/kuhap.json",
+      "target": "config:public/data/kuhp-lama-wvs.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:public/data/kuhap.json",
+      "target": "config:public/data/kuhp-baru-uu-1-2023.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:public/data/uu-tipikor.json",
+      "target": "config:public/data/kuhp-lama-wvs.json",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

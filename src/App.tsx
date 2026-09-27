@@ -7,6 +7,7 @@ import { SearchView } from './components/search/SearchView';
 import { KuhpComparisonMatrix } from './components/comparison/KuhpComparisonMatrix';
 import { StudyDesk } from './components/study/StudyDesk';
 import { CitationModal, NotesDrawer, BookmarkDrawer } from './components/study';
+import { PdfHub } from './components/pdf/PdfHub';
 import { Toast, ToastMessage } from './components/ui/Toast';
 import { Article } from './types';
 
@@ -88,6 +89,8 @@ export const App: React.FC = () => {
           {activeTab === 'study' && (
             <StudyDesk onSelectArticle={handleOpenArticleFromSearchOrStudy} />
           )}
+
+          {activeTab === 'pdf' && <PdfHub />}
         </main>
       </div>
 

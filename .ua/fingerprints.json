@@ -1,0 +1,1985 @@
+{
+  "version": "1.0.0",
+  "gitCommitHash": "d23f823c991f24fbd27fb7541b1f0974e67b5d2c",
+  "generatedAt": "2026-09-09T11:43:17.701Z",
+  "files": {
+    "README.md": {
+      "filePath": "README.md",
+      "contentHash": "7ddbfb4bc0e15c659bca06368d5a10ccfd47007ca7e127d129410b2e9b82cf99",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 127,
+      "hasStructuralAnalysis": false
+    },
+    "index.html": {
+      "filePath": "index.html",
+      "contentHash": "14bab054c41a18a7a803e1328623ccc196b5746f990f6e260406e0d912508596",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 19,
+      "hasStructuralAnalysis": false
+    },
+    "package.json": {
+      "filePath": "package.json",
+      "contentHash": "fd5ab12fab6c942c360e6eba7e75a9b8362bec181e0791635eff7a76ab932c8a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 32,
+      "hasStructuralAnalysis": false
+    },
+    "postcss.config.js": {
+      "filePath": "postcss.config.js",
+      "contentHash": "190c877db466995bf1482f4a16abd06e04a89ede3119341e2a86ff96e1737b27",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 7,
+      "hasStructuralAnalysis": true
+    },
+    "public/data/kuhap.json": {
+      "filePath": "public/data/kuhap.json",
+      "contentHash": "fa9cdc886022c7e20dacd921a846f8dd44a77d96b116738bbd87288cd62ae23d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 62,
+      "hasStructuralAnalysis": false
+    },
+    "public/data/kuhp-baru-uu-1-2023.json": {
+      "filePath": "public/data/kuhp-baru-uu-1-2023.json",
+      "contentHash": "91d117157e784fb2feca5c82f13ea70f82228f32fb4fc2540b1b17319004b8a7",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 106,
+      "hasStructuralAnalysis": false
+    },
+    "public/data/kuhp-lama-wvs.json": {
+      "filePath": "public/data/kuhp-lama-wvs.json",
+      "contentHash": "e1d4c34ed4d9554dede5990ac8f10964941e06842e80fe94c5a84dbd8648063b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 106,
+      "hasStructuralAnalysis": false
+    },
+    "public/data/kuhperdata.json": {
+      "filePath": "public/data/kuhperdata.json",
+      "contentHash": "a57e59eac150ec139e2d56c3309694397a4eb597da09a3ac23eac6e458f01a71",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 73,
+      "hasStructuralAnalysis": false
+    },
+    "public/data/uu-ite.json": {
+      "filePath": "public/data/uu-ite.json",
+      "contentHash": "398a6a15978066994589a9cadceafd8d4e5265f49676868b582fe797dba0c5ab",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 51,
+      "hasStructuralAnalysis": false
+    },
+    "public/data/uu-ketenagakerjaan.json": {
+      "filePath": "public/data/uu-ketenagakerjaan.json",
+      "contentHash": "f7fe17a60c0b6411a3a673063a4a7b3cdc48fae1ffd77be0be01b025cde51986",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 40,
+      "hasStructuralAnalysis": false
+    },
+    "public/data/uu-tipikor.json": {
+      "filePath": "public/data/uu-tipikor.json",
+      "contentHash": "95d18334bd946556c430b8453385f0b3a31b60938051fdc43f7637b19c3bc3d6",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 51,
+      "hasStructuralAnalysis": false
+    },
+    "public/data/uud-1945.json": {
+      "filePath": "public/data/uud-1945.json",
+      "contentHash": "206bb9c2980494e1b30cec92cc53758a34d115bbc69c776b825b2d3867965e73",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 108,
+      "hasStructuralAnalysis": false
+    },
+    "src/App.tsx": {
+      "filePath": "src/App.tsx",
+      "contentHash": "e419076acb43113e6c23c9616db4ad29b4bfef7466f9bb5bc52c6bffb9cc49c6",
+      "functions": [
+        {
+          "name": "App",
+          "params": [],
+          "exported": true,
+          "lineCount": 119
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "useState"
+          ]
+        },
+        {
+          "source": "./context/LawContext",
+          "specifiers": [
+            "useLaw"
+          ]
+        },
+        {
+          "source": "./context/UserDataContext",
+          "specifiers": [
+            "useUserData"
+          ]
+        },
+        {
+          "source": "./components/layout",
+          "specifiers": [
+            "Header",
+            "MobileNav",
+            "Sidebar",
+            "OfflineBanner",
+            "PwaInstallPrompt",
+            "MainNavTab"
+          ]
+        },
+        {
+          "source": "./components/law/LawReader",
+          "specifiers": [
+            "LawReader"
+          ]
+        },
+        {
+          "source": "./components/search/SearchView",
+          "specifiers": [
+            "SearchView"
+          ]
+        },
+        {
+          "source": "./components/comparison/KuhpComparisonMatrix",
+          "specifiers": [
+            "KuhpComparisonMatrix"
+          ]
+        },
+        {
+          "source": "./components/study/StudyDesk",
+          "specifiers": [
+            "StudyDesk"
+          ]
+        },
+        {
+          "source": "./components/study",
+          "specifiers": [
+            "CitationModal",
+            "NotesDrawer",
+            "BookmarkDrawer"
+          ]
+        },
+        {
+          "source": "./components/ui/Toast",
+          "specifiers": [
+            "Toast",
+            "ToastMessage"
+          ]
+        },
+        {
+          "source": "./types",
+          "specifiers": [
+            "Article"
+          ]
+        }
+      ],
+      "exports": [
+        "App"
+      ],
+      "totalLines": 133,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/comparison/KuhpComparisonMatrix.tsx": {
+      "filePath": "src/components/comparison/KuhpComparisonMatrix.tsx",
+      "contentHash": "034b3e04d8ec20535c15211b0fe0e4cfbca429ac02d10f676da954f71ddb76a1",
+      "functions": [
+        {
+          "name": "KuhpComparisonMatrix",
+          "params": [],
+          "exported": true,
+          "lineCount": 138
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "useState"
+          ]
+        },
+        {
+          "source": "../../data/comparisons",
+          "specifiers": [
+            "KUHP_COMPARISONS"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "GitCompare",
+            "CheckCircle",
+            "Info",
+            "Sparkles"
+          ]
+        },
+        {
+          "source": "../ui/Badge",
+          "specifiers": [
+            "Badge"
+          ]
+        }
+      ],
+      "exports": [
+        "KuhpComparisonMatrix"
+      ],
+      "totalLines": 144,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/comparison/index.ts": {
+      "filePath": "src/components/comparison/index.ts",
+      "contentHash": "1155ea10631cc75c91a5ace416a4b7053aaa26e3ccd69b94aaae87f4a8e4a5b6",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/law/ArticleCard.tsx": {
+      "filePath": "src/components/law/ArticleCard.tsx",
+      "contentHash": "3998fc472da312091e7b567f57a00dc4f616b69f13fc6f1877a7956035a0b749",
+      "functions": [
+        {
+          "name": "ArticleCard",
+          "params": [
+            "{\n  article,\n  onOpenCitation,\n  onOpenNote,\n  onOpenBookmark,\n  onShowToast,\n}"
+          ],
+          "exported": true,
+          "lineCount": 253
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "useState"
+          ]
+        },
+        {
+          "source": "../../types",
+          "specifiers": [
+            "Article",
+            "HighlightColor"
+          ]
+        },
+        {
+          "source": "../../context/UserDataContext",
+          "specifiers": [
+            "useUserData"
+          ]
+        },
+        {
+          "source": "../../context/LawContext",
+          "specifiers": [
+            "useLaw"
+          ]
+        },
+        {
+          "source": "../../context/ThemeContext",
+          "specifiers": [
+            "useTheme"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Bookmark",
+            "Edit3",
+            "Highlighter",
+            "Quote",
+            "Shield",
+            "Copy",
+            "Check",
+            "Tag"
+          ]
+        },
+        {
+          "source": "../ui/Badge",
+          "specifiers": [
+            "Badge"
+          ]
+        }
+      ],
+      "exports": [
+        "ArticleCard"
+      ],
+      "totalLines": 279,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/law/LawReader.tsx": {
+      "filePath": "src/components/law/LawReader.tsx",
+      "contentHash": "455a9b5336958b70644bb554a907a53fe8ac45260a4061daf841e4e68f6e0435",
+      "functions": [
+        {
+          "name": "LawReader",
+          "params": [
+            "{\n  onOpenCitation,\n  onOpenNote,\n  onOpenBookmark,\n  onShowToast,\n}"
+          ],
+          "exported": true,
+          "lineCount": 155
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "useState",
+            "useMemo"
+          ]
+        },
+        {
+          "source": "../../context/LawContext",
+          "specifiers": [
+            "useLaw"
+          ]
+        },
+        {
+          "source": "./ArticleCard",
+          "specifiers": [
+            "ArticleCard"
+          ]
+        },
+        {
+          "source": "./TableOfContents",
+          "specifiers": [
+            "TableOfContents"
+          ]
+        },
+        {
+          "source": "../../types",
+          "specifiers": [
+            "Article"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Search",
+            "Book",
+            "Sparkles",
+            "AlertCircle"
+          ]
+        },
+        {
+          "source": "../ui/Badge",
+          "specifiers": [
+            "Badge"
+          ]
+        }
+      ],
+      "exports": [
+        "LawReader"
+      ],
+      "totalLines": 171,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/law/TableOfContents.tsx": {
+      "filePath": "src/components/law/TableOfContents.tsx",
+      "contentHash": "6d0b9ef451a99ea12516135ae669363e19330d7f905ebbda047890615ecd887c",
+      "functions": [
+        {
+          "name": "TableOfContents",
+          "params": [
+            "{\n  articles,\n  selectedBab,\n  onSelectBab,\n}"
+          ],
+          "exported": true,
+          "lineCount": 48
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React"
+          ]
+        },
+        {
+          "source": "../../types",
+          "specifiers": [
+            "Article"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "ListFilter"
+          ]
+        }
+      ],
+      "exports": [
+        "TableOfContents"
+      ],
+      "totalLines": 59,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/law/index.ts": {
+      "filePath": "src/components/law/index.ts",
+      "contentHash": "f54128ebaf426f325122d3a72cd9514dc76052c3abd2cdf3c9dd001c333bdfe1",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 4,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/layout/Header.tsx": {
+      "filePath": "src/components/layout/Header.tsx",
+      "contentHash": "ba9529c7478d98f64983d231f9f1e2681443d2b737e69faa5a1d7ef894a46b6f",
+      "functions": [
+        {
+          "name": "Header",
+          "params": [],
+          "exported": true,
+          "lineCount": 103
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Scale",
+            "Moon",
+            "Sun",
+            "Download",
+            "Type",
+            "WifiOff"
+          ]
+        },
+        {
+          "source": "../../context/ThemeContext",
+          "specifiers": [
+            "useTheme"
+          ]
+        },
+        {
+          "source": "../../hooks/usePWAInstall",
+          "specifiers": [
+            "usePWAInstall"
+          ]
+        },
+        {
+          "source": "../../hooks/useOfflineStatus",
+          "specifiers": [
+            "useOfflineStatus"
+          ]
+        }
+      ],
+      "exports": [
+        "Header"
+      ],
+      "totalLines": 114,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/layout/MobileNav.tsx": {
+      "filePath": "src/components/layout/MobileNav.tsx",
+      "contentHash": "0f7f063057d1e60b5f95a3d7c691d7a3af5b8e4118bd3781fd696a29ba8aed85",
+      "functions": [
+        {
+          "name": "MobileNav",
+          "params": [
+            "{\n  activeTab,\n  onChangeTab,\n  bookmarkCount = 0,\n}"
+          ],
+          "exported": true,
+          "lineCount": 51
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "BookOpen",
+            "Search",
+            "GitCompare",
+            "BookmarkCheck"
+          ]
+        }
+      ],
+      "exports": [
+        "MobileNav"
+      ],
+      "totalLines": 63,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/layout/OfflineBanner.tsx": {
+      "filePath": "src/components/layout/OfflineBanner.tsx",
+      "contentHash": "75eeb75ac8dcdf4c224c54f60be2feb3c3cf4e85c9c23d40b374430d92c298f7",
+      "functions": [
+        {
+          "name": "OfflineBanner",
+          "params": [],
+          "exported": true,
+          "lineCount": 21
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "WifiOff",
+            "Wifi"
+          ]
+        },
+        {
+          "source": "../../hooks/useOfflineStatus",
+          "specifiers": [
+            "useOfflineStatus"
+          ]
+        }
+      ],
+      "exports": [
+        "OfflineBanner"
+      ],
+      "totalLines": 26,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/layout/PwaInstallPrompt.tsx": {
+      "filePath": "src/components/layout/PwaInstallPrompt.tsx",
+      "contentHash": "0e989e41eef333dceecc453a8cb9830d01382c681387fc5b79eb4f69c66c0bc7",
+      "functions": [
+        {
+          "name": "PwaInstallPrompt",
+          "params": [],
+          "exported": true,
+          "lineCount": 48
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "useState"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Smartphone",
+            "Download",
+            "X",
+            "Check"
+          ]
+        },
+        {
+          "source": "../../hooks/usePWAInstall",
+          "specifiers": [
+            "usePWAInstall"
+          ]
+        },
+        {
+          "source": "../ui/Button",
+          "specifiers": [
+            "Button"
+          ]
+        }
+      ],
+      "exports": [
+        "PwaInstallPrompt"
+      ],
+      "totalLines": 54,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/layout/Sidebar.tsx": {
+      "filePath": "src/components/layout/Sidebar.tsx",
+      "contentHash": "2a4319271738bcd969b3d6e5d84bfd2c7fb4c94ae12b11e9db1254272bcbdd3a",
+      "functions": [
+        {
+          "name": "Sidebar",
+          "params": [
+            "{\n  activeTab,\n  onChangeTab,\n  bookmarkCount = 0,\n}"
+          ],
+          "exported": true,
+          "lineCount": 102
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "BookOpen",
+            "Search",
+            "GitCompare",
+            "BookmarkCheck",
+            "ChevronRight",
+            "ShieldCheck"
+          ]
+        },
+        {
+          "source": "./MobileNav",
+          "specifiers": [
+            "MainNavTab"
+          ]
+        },
+        {
+          "source": "../../context/LawContext",
+          "specifiers": [
+            "useLaw"
+          ]
+        },
+        {
+          "source": "../../types",
+          "specifiers": [
+            "LawMetadata"
+          ]
+        }
+      ],
+      "exports": [
+        "Sidebar"
+      ],
+      "totalLines": 115,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/layout/index.ts": {
+      "filePath": "src/components/layout/index.ts",
+      "contentHash": "23c42031f9c2d313a614cc75e53957d51d4605c2a58094eae75c9f9e194f28bd",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 6,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/search/FilterChips.tsx": {
+      "filePath": "src/components/search/FilterChips.tsx",
+      "contentHash": "f6b0019998546d6466f82ba06725fac3698d1d93503807710302a204812466df",
+      "functions": [
+        {
+          "name": "FilterChips",
+          "params": [
+            "{ filters, onFilterChange }"
+          ],
+          "exported": true,
+          "lineCount": 32
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React"
+          ]
+        },
+        {
+          "source": "../../types",
+          "specifiers": [
+            "LawCategory",
+            "SearchFilters"
+          ]
+        }
+      ],
+      "exports": [
+        "FilterChips"
+      ],
+      "totalLines": 41,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/search/SearchBar.tsx": {
+      "filePath": "src/components/search/SearchBar.tsx",
+      "contentHash": "9c9f730b824c04b85acd7a04f355d54f68cb5120c11adc34d4f943fd19cd726b",
+      "functions": [
+        {
+          "name": "SearchBar",
+          "params": [
+            "{\n  value,\n  onChange,\n  onClear,\n  placeholder = 'Cari nomor pasal (misal: 362, 1365) atau kata kunci (pencurian, wanprestasi, praperadilan)...',\n  autoFocus = false,\n}"
+          ],
+          "exported": true,
+          "lineCount": 50
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "useRef",
+            "useEffect"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Search",
+            "X",
+            "Zap"
+          ]
+        }
+      ],
+      "exports": [
+        "SearchBar"
+      ],
+      "totalLines": 62,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/search/SearchResultCard.tsx": {
+      "filePath": "src/components/search/SearchResultCard.tsx",
+      "contentHash": "cca0ebf8c0c69f297dd0cdac8808ee25a9434aecfbabce362a5f71c4d7157af1",
+      "functions": [
+        {
+          "name": "SearchResultCard",
+          "params": [
+            "{\n  result,\n  query,\n  onOpenArticle,\n  onOpenCitation,\n  onOpenNote,\n  onOpenBookmark,\n}"
+          ],
+          "exported": true,
+          "lineCount": 127
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React"
+          ]
+        },
+        {
+          "source": "../../types",
+          "specifiers": [
+            "SearchResultItem"
+          ]
+        },
+        {
+          "source": "../../context/LawContext",
+          "specifiers": [
+            "useLaw"
+          ]
+        },
+        {
+          "source": "../../context/UserDataContext",
+          "specifiers": [
+            "useUserData"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Bookmark",
+            "Edit3",
+            "Quote",
+            "ArrowRight",
+            "Shield"
+          ]
+        },
+        {
+          "source": "../ui/Badge",
+          "specifiers": [
+            "Badge"
+          ]
+        }
+      ],
+      "exports": [
+        "SearchResultCard"
+      ],
+      "totalLines": 144,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/search/SearchView.tsx": {
+      "filePath": "src/components/search/SearchView.tsx",
+      "contentHash": "f8d8e7edbebfeaa087511495070576efcb1eda15c13c579aab4451d8f0f92e2f",
+      "functions": [
+        {
+          "name": "SearchView",
+          "params": [
+            "{\n  onOpenArticle,\n  onOpenCitation,\n  onOpenNote,\n  onOpenBookmark,\n}"
+          ],
+          "exported": true,
+          "lineCount": 156
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React"
+          ]
+        },
+        {
+          "source": "../../hooks/useSearch",
+          "specifiers": [
+            "useSearch"
+          ]
+        },
+        {
+          "source": "../../context/LawContext",
+          "specifiers": [
+            "useLaw"
+          ]
+        },
+        {
+          "source": "./SearchBar",
+          "specifiers": [
+            "SearchBar"
+          ]
+        },
+        {
+          "source": "./FilterChips",
+          "specifiers": [
+            "FilterChips"
+          ]
+        },
+        {
+          "source": "./SearchResultCard",
+          "specifiers": [
+            "SearchResultCard"
+          ]
+        },
+        {
+          "source": "../../types",
+          "specifiers": [
+            "Article"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "History",
+            "Zap",
+            "BookOpen",
+            "AlertCircle"
+          ]
+        },
+        {
+          "source": "../../services/storageService",
+          "specifiers": [
+            "storageService"
+          ]
+        }
+      ],
+      "exports": [
+        "SearchView"
+      ],
+      "totalLines": 174,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/search/index.ts": {
+      "filePath": "src/components/search/index.ts",
+      "contentHash": "45038fec0a652be84d9976c646e10c39b7f27303eaaa0d9b2167ad3b8d559c76",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 5,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/study/BookmarkDrawer.tsx": {
+      "filePath": "src/components/study/BookmarkDrawer.tsx",
+      "contentHash": "870b7eda5d87a68620920c8e18ce4d5cc83a4b88bb0ae0c68d3e39c426580bbe",
+      "functions": [
+        {
+          "name": "BookmarkDrawer",
+          "params": [
+            "{\n  isOpen,\n  onClose,\n  article,\n  onShowToast,\n}"
+          ],
+          "exported": true,
+          "lineCount": 133
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "useState"
+          ]
+        },
+        {
+          "source": "../../types",
+          "specifiers": [
+            "Article"
+          ]
+        },
+        {
+          "source": "../../context/UserDataContext",
+          "specifiers": [
+            "useUserData"
+          ]
+        },
+        {
+          "source": "../ui/Modal",
+          "specifiers": [
+            "Modal"
+          ]
+        },
+        {
+          "source": "../ui/Button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Bookmark",
+            "FolderPlus",
+            "Check"
+          ]
+        }
+      ],
+      "exports": [
+        "BookmarkDrawer"
+      ],
+      "totalLines": 148,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/study/CitationModal.tsx": {
+      "filePath": "src/components/study/CitationModal.tsx",
+      "contentHash": "8489d2a5fb62b6bd7c927c66058ecbebce1f71eb06b9c21780e1b15eac631776",
+      "functions": [
+        {
+          "name": "CitationModal",
+          "params": [
+            "{\n  isOpen,\n  onClose,\n  article,\n  lawMetadata,\n  onShowToast,\n}"
+          ],
+          "exported": true,
+          "lineCount": 114
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "useState"
+          ]
+        },
+        {
+          "source": "../../types",
+          "specifiers": [
+            "Article",
+            "LawMetadata"
+          ]
+        },
+        {
+          "source": "../../services/citationGenerator",
+          "specifiers": [
+            "generateLegalCitation"
+          ]
+        },
+        {
+          "source": "../ui/Modal",
+          "specifiers": [
+            "Modal"
+          ]
+        },
+        {
+          "source": "../ui/Button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Copy",
+            "Check",
+            "Quote",
+            "Share2"
+          ]
+        }
+      ],
+      "exports": [
+        "CitationModal"
+      ],
+      "totalLines": 130,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/study/NotesDrawer.tsx": {
+      "filePath": "src/components/study/NotesDrawer.tsx",
+      "contentHash": "5891730eebd71b75aab79ef51d4d290a41498660a6dd863d7e8eaa775c70202c",
+      "functions": [
+        {
+          "name": "NotesDrawer",
+          "params": [
+            "{\n  isOpen,\n  onClose,\n  article,\n  onShowToast,\n}"
+          ],
+          "exported": true,
+          "lineCount": 91
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "useState",
+            "useEffect"
+          ]
+        },
+        {
+          "source": "../../types",
+          "specifiers": [
+            "Article"
+          ]
+        },
+        {
+          "source": "../../context/UserDataContext",
+          "specifiers": [
+            "useUserData"
+          ]
+        },
+        {
+          "source": "../ui/Modal",
+          "specifiers": [
+            "Modal"
+          ]
+        },
+        {
+          "source": "../ui/Button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Save",
+            "Trash2",
+            "BookOpen"
+          ]
+        }
+      ],
+      "exports": [
+        "NotesDrawer"
+      ],
+      "totalLines": 106,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/study/StudyDesk.tsx": {
+      "filePath": "src/components/study/StudyDesk.tsx",
+      "contentHash": "78007657889170d7c63a3ec30785e58f015faddf6663b9afcf84026d7e521ca7",
+      "functions": [
+        {
+          "name": "StudyDesk",
+          "params": [
+            "{ onSelectArticle }"
+          ],
+          "exported": true,
+          "lineCount": 273
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "useState"
+          ]
+        },
+        {
+          "source": "../../context/UserDataContext",
+          "specifiers": [
+            "useUserData"
+          ]
+        },
+        {
+          "source": "../../context/LawContext",
+          "specifiers": [
+            "useLaw"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Bookmark",
+            "Edit3",
+            "Highlighter",
+            "Trash2",
+            "ExternalLink",
+            "BookOpen"
+          ]
+        },
+        {
+          "source": "../ui/Tabs",
+          "specifiers": [
+            "Tabs"
+          ]
+        },
+        {
+          "source": "../ui/Button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "../../types",
+          "specifiers": [
+            "Article"
+          ]
+        }
+      ],
+      "exports": [
+        "StudyDesk"
+      ],
+      "totalLines": 286,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/study/index.ts": {
+      "filePath": "src/components/study/index.ts",
+      "contentHash": "1e8744dce07dc9608d83b2d235e46bb09b5cab41751d19a9726ce789a8b5f763",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 5,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/ui/Badge.tsx": {
+      "filePath": "src/components/ui/Badge.tsx",
+      "contentHash": "fab1562f7b692adaf4b105f9d555229379d1293a7fe457742d98b1c3c4379b28",
+      "functions": [
+        {
+          "name": "Badge",
+          "params": [
+            "{\n  children,\n  variant = 'primary',\n  size = 'sm',\n  className = '',\n}"
+          ],
+          "exported": true,
+          "lineCount": 28
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React"
+          ]
+        }
+      ],
+      "exports": [
+        "Badge"
+      ],
+      "totalLines": 38,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/ui/Button.tsx": {
+      "filePath": "src/components/ui/Button.tsx",
+      "contentHash": "6ded4c1c7a44c38b4ee1240e43667fda6b35a878894094249da165eb3e2d4979",
+      "functions": [
+        {
+          "name": "Button",
+          "params": [
+            "{\n  children,\n  variant = 'primary',\n  size = 'md',\n  isLoading = false,\n  icon,\n  className = '',\n  disabled,\n  ...props\n}"
+          ],
+          "exported": true,
+          "lineCount": 48
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React"
+          ]
+        }
+      ],
+      "exports": [
+        "Button"
+      ],
+      "totalLines": 58,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/ui/Modal.tsx": {
+      "filePath": "src/components/ui/Modal.tsx",
+      "contentHash": "886f0fd2ccf3749bb3ca07c06889fa9a8288695bae59a819fd0bfadccfb675a2",
+      "functions": [
+        {
+          "name": "Modal",
+          "params": [
+            "{\n  isOpen,\n  onClose,\n  title,\n  subtitle,\n  children,\n  maxWidth = 'lg',\n}"
+          ],
+          "exported": true,
+          "lineCount": 74
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "useEffect"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "X"
+          ]
+        }
+      ],
+      "exports": [
+        "Modal"
+      ],
+      "totalLines": 87,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/ui/Tabs.tsx": {
+      "filePath": "src/components/ui/Tabs.tsx",
+      "contentHash": "061ffcbd18bc634bda030731ec4bac023df8695928cf20123264b8ff5dd5fbaa",
+      "functions": [
+        {
+          "name": "Tabs",
+          "params": [
+            "{\n  tabs,\n  activeTab,\n  onChange,\n  className = '',\n}"
+          ],
+          "exported": true,
+          "lineCount": 39
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React"
+          ]
+        }
+      ],
+      "exports": [
+        "Tabs"
+      ],
+      "totalLines": 56,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/ui/Toast.tsx": {
+      "filePath": "src/components/ui/Toast.tsx",
+      "contentHash": "5abb7f8076766883de7a42a113341496bb14bbcbfc64d8259780246cf1b9bf52",
+      "functions": [
+        {
+          "name": "Toast",
+          "params": [
+            "{ toast, onClose }"
+          ],
+          "exported": true,
+          "lineCount": 40
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "useEffect"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "CheckCircle2",
+            "AlertCircle",
+            "Info",
+            "X"
+          ]
+        }
+      ],
+      "exports": [
+        "Toast"
+      ],
+      "totalLines": 56,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/ui/index.ts": {
+      "filePath": "src/components/ui/index.ts",
+      "contentHash": "c3a5363d929a8b1b66697650d71ca9e1942eba4dbac1177a86626f30f572c78e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 6,
+      "hasStructuralAnalysis": true
+    },
+    "src/context/LawContext.tsx": {
+      "filePath": "src/context/LawContext.tsx",
+      "contentHash": "bafb0597528d97353663b94575b14a2e8b79e20d95ab438015aa50e3b3e3d028",
+      "functions": [
+        {
+          "name": "LawProvider",
+          "params": [
+            "{ children }"
+          ],
+          "exported": true,
+          "lineCount": 89
+        },
+        {
+          "name": "useLaw",
+          "params": [],
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "createContext",
+            "useContext",
+            "useState",
+            "useEffect",
+            "useCallback"
+          ]
+        },
+        {
+          "source": "../types/law",
+          "specifiers": [
+            "LawMetadata",
+            "Article",
+            "LawDataset"
+          ]
+        },
+        {
+          "source": "../data/lawsMetadata",
+          "specifiers": [
+            "LAWS_METADATA"
+          ]
+        },
+        {
+          "source": "../services/searchEngine",
+          "specifiers": [
+            "searchEngine"
+          ]
+        }
+      ],
+      "exports": [
+        "LawProvider",
+        "useLaw"
+      ],
+      "totalLines": 118,
+      "hasStructuralAnalysis": true
+    },
+    "src/context/ThemeContext.tsx": {
+      "filePath": "src/context/ThemeContext.tsx",
+      "contentHash": "f19ea1523a0906f982cc3755a57945dd2212deff74d53140546b6f003fce83de",
+      "functions": [
+        {
+          "name": "ThemeProvider",
+          "params": [
+            "{ children }"
+          ],
+          "exported": true,
+          "lineCount": 50
+        },
+        {
+          "name": "useTheme",
+          "params": [],
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "createContext",
+            "useContext",
+            "useState",
+            "useEffect"
+          ]
+        }
+      ],
+      "exports": [
+        "ThemeProvider",
+        "useTheme"
+      ],
+      "totalLines": 76,
+      "hasStructuralAnalysis": true
+    },
+    "src/context/UserDataContext.tsx": {
+      "filePath": "src/context/UserDataContext.tsx",
+      "contentHash": "451b6e903723c0615f4d3797edf878385832c798fd3a3ad1d4ed4528db2dc3b1",
+      "functions": [
+        {
+          "name": "UserDataProvider",
+          "params": [
+            "{ children }"
+          ],
+          "exported": true,
+          "lineCount": 97
+        },
+        {
+          "name": "useUserData",
+          "params": [],
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React",
+            "createContext",
+            "useContext",
+            "useState",
+            "useEffect",
+            "useCallback"
+          ]
+        },
+        {
+          "source": "../types",
+          "specifiers": [
+            "BookmarkItem",
+            "HighlightItem",
+            "NoteItem",
+            "UserStudyData",
+            "HighlightColor"
+          ]
+        },
+        {
+          "source": "../services/storageService",
+          "specifiers": [
+            "storageService"
+          ]
+        }
+      ],
+      "exports": [
+        "UserDataProvider",
+        "useUserData"
+      ],
+      "totalLines": 128,
+      "hasStructuralAnalysis": true
+    },
+    "src/context/index.ts": {
+      "filePath": "src/context/index.ts",
+      "contentHash": "1a8b529c05fcda4103a8692e818537855e34c0ff593d0cca306db8b864418292",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 4,
+      "hasStructuralAnalysis": true
+    },
+    "src/data/comparisons.ts": {
+      "filePath": "src/data/comparisons.ts",
+      "contentHash": "21c522ed4123f8ee715f6109555d9eca6bb2d554a56855bba0de77f0a0903d9d",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "../types/law",
+          "specifiers": [
+            "KuhpComparison"
+          ]
+        }
+      ],
+      "exports": [
+        "KUHP_COMPARISONS"
+      ],
+      "totalLines": 111,
+      "hasStructuralAnalysis": true
+    },
+    "src/data/index.ts": {
+      "filePath": "src/data/index.ts",
+      "contentHash": "9537c48ae4c08468e997bd0c22ccd798c4ba10fa15e5e44871c034eab1728890",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 3,
+      "hasStructuralAnalysis": true
+    },
+    "src/data/lawsMetadata.ts": {
+      "filePath": "src/data/lawsMetadata.ts",
+      "contentHash": "4b41f75dde8fe47045daf1adaf0c1f132244e7265df86c90a8df695c5e6cb6a1",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "../types/law",
+          "specifiers": [
+            "LawMetadata"
+          ]
+        }
+      ],
+      "exports": [
+        "LAWS_METADATA"
+      ],
+      "totalLines": 109,
+      "hasStructuralAnalysis": true
+    },
+    "src/hooks/index.ts": {
+      "filePath": "src/hooks/index.ts",
+      "contentHash": "69012a1cdd36232407302f5ca133ade23822b43c447f861b2fd2f5da31440b5e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 4,
+      "hasStructuralAnalysis": true
+    },
+    "src/hooks/useOfflineStatus.ts": {
+      "filePath": "src/hooks/useOfflineStatus.ts",
+      "contentHash": "947ab14c429671462c19348b6efae51cdee35e0c03bf69855f0b6f54af471860",
+      "functions": [
+        {
+          "name": "useOfflineStatus",
+          "params": [],
+          "exported": true,
+          "lineCount": 33
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState",
+            "useEffect"
+          ]
+        }
+      ],
+      "exports": [
+        "useOfflineStatus"
+      ],
+      "totalLines": 36,
+      "hasStructuralAnalysis": true
+    },
+    "src/hooks/usePWAInstall.ts": {
+      "filePath": "src/hooks/usePWAInstall.ts",
+      "contentHash": "1912883744be60ecb446a4984dee163878a8537fcb6ca96e1186be1fd9f484b2",
+      "functions": [
+        {
+          "name": "usePWAInstall",
+          "params": [],
+          "exported": true,
+          "lineCount": 51
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState",
+            "useEffect"
+          ]
+        }
+      ],
+      "exports": [
+        "usePWAInstall"
+      ],
+      "totalLines": 59,
+      "hasStructuralAnalysis": true
+    },
+    "src/hooks/useSearch.ts": {
+      "filePath": "src/hooks/useSearch.ts",
+      "contentHash": "c174d5b86f9e45e6ab4f26936763474f226c67ed01e119eb42cd8d3fbdfcd6ee",
+      "functions": [
+        {
+          "name": "useSearch",
+          "params": [
+            "initialQuery"
+          ],
+          "exported": true,
+          "lineCount": 53
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState",
+            "useEffect",
+            "useCallback",
+            "useTransition"
+          ]
+        },
+        {
+          "source": "../types",
+          "specifiers": [
+            "SearchResultItem",
+            "SearchFilters"
+          ]
+        },
+        {
+          "source": "../services/searchEngine",
+          "specifiers": [
+            "searchEngine"
+          ]
+        },
+        {
+          "source": "../services/storageService",
+          "specifiers": [
+            "storageService"
+          ]
+        }
+      ],
+      "exports": [
+        "useSearch"
+      ],
+      "totalLines": 59,
+      "hasStructuralAnalysis": true
+    },
+    "src/index.css": {
+      "filePath": "src/index.css",
+      "contentHash": "8e0fb09cb061cf92da9891bb536ab37ef0a31961db90586a0d705cfb05a2e067",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 39,
+      "hasStructuralAnalysis": false
+    },
+    "src/main.tsx": {
+      "filePath": "src/main.tsx",
+      "contentHash": "667ecf672cf487017e900730b3705f205d7c069a994616914e249f00ac215786",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "React"
+          ]
+        },
+        {
+          "source": "react-dom/client",
+          "specifiers": [
+            "ReactDOM"
+          ]
+        },
+        {
+          "source": "./App",
+          "specifiers": [
+            "App"
+          ]
+        },
+        {
+          "source": "./index.css",
+          "specifiers": []
+        },
+        {
+          "source": "./context/ThemeContext",
+          "specifiers": [
+            "ThemeProvider"
+          ]
+        },
+        {
+          "source": "./context/UserDataContext",
+          "specifiers": [
+            "UserDataProvider"
+          ]
+        },
+        {
+          "source": "./context/LawContext",
+          "specifiers": [
+            "LawProvider"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 20,
+      "hasStructuralAnalysis": true
+    },
+    "src/services/citationGenerator.ts": {
+      "filePath": "src/services/citationGenerator.ts",
+      "contentHash": "1251f89fb4ee3de22c0463542d5b1bf92076f277280dc49305ac4cf8f489dad3",
+      "functions": [
+        {
+          "name": "generateLegalCitation",
+          "params": [
+            "article",
+            "lawMetadata"
+          ],
+          "returnType": "CitationFormats",
+          "exported": true,
+          "lineCount": 34
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "../types/law",
+          "specifiers": [
+            "Article",
+            "LawMetadata"
+          ]
+        }
+      ],
+      "exports": [
+        "generateLegalCitation"
+      ],
+      "totalLines": 44,
+      "hasStructuralAnalysis": true
+    },
+    "src/services/index.ts": {
+      "filePath": "src/services/index.ts",
+      "contentHash": "97b51512710269453f80a18ea265e355c84f586e0080b97fa496dc966f2ec527",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 4,
+      "hasStructuralAnalysis": true
+    },
+    "src/services/searchEngine.ts": {
+      "filePath": "src/services/searchEngine.ts",
+      "contentHash": "06e79c904499214d7f853d725f03627a14dcc0ddf05940f849280a7d4aa7ad78",
+      "functions": [],
+      "classes": [
+        {
+          "name": "SearchEngineService",
+          "methods": [
+            "constructor",
+            "indexArticles",
+            "search",
+            "getArticleById",
+            "isReady"
+          ],
+          "properties": [
+            "miniSearch",
+            "isIndexed",
+            "articlesMap"
+          ],
+          "exported": false,
+          "lineCount": 111
+        }
+      ],
+      "imports": [
+        {
+          "source": "minisearch",
+          "specifiers": [
+            "MiniSearch"
+          ]
+        },
+        {
+          "source": "../types",
+          "specifiers": [
+            "Article",
+            "SearchResultItem",
+            "SearchFilters"
+          ]
+        }
+      ],
+      "exports": [
+        "searchEngine"
+      ],
+      "totalLines": 130,
+      "hasStructuralAnalysis": true
+    },
+    "src/services/storageService.ts": {
+      "filePath": "src/services/storageService.ts",
+      "contentHash": "076f09905b901df40f7621892fedfa8be2e4f6ea44a30959042bb4169a491265",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "../types",
+          "specifiers": [
+            "BookmarkItem",
+            "HighlightItem",
+            "NoteItem",
+            "UserStudyData",
+            "SearchHistoryItem"
+          ]
+        }
+      ],
+      "exports": [
+        "storageService"
+      ],
+      "totalLines": 132,
+      "hasStructuralAnalysis": true
+    },
+    "src/types/index.ts": {
+      "filePath": "src/types/index.ts",
+      "contentHash": "14e22bd7b1858f94a419048a69b84deb63fa87997c2c88be18676329356652d6",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 4,
+      "hasStructuralAnalysis": true
+    },
+    "src/types/law.ts": {
+      "filePath": "src/types/law.ts",
+      "contentHash": "1dda687e1978288c31e9cfda4a05330cb4c0751009ab955ffb871e997c154c94",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 68,
+      "hasStructuralAnalysis": true
+    },
+    "src/types/search.ts": {
+      "filePath": "src/types/search.ts",
+      "contentHash": "66d60e80cc5ce332d946dfe1ba26e036f25f06eeb0ad05a2c998f4aa1785dfa9",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "./law",
+          "specifiers": [
+            "Article",
+            "LawCategory"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 23,
+      "hasStructuralAnalysis": true
+    },
+    "src/types/user.ts": {
+      "filePath": "src/types/user.ts",
+      "contentHash": "01d74fe31a58486db9012a3c8ba6ada86fb3cd9b72e008996f0f0cf97e8fe170",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 39,
+      "hasStructuralAnalysis": true
+    },
+    "tailwind.config.js": {
+      "filePath": "tailwind.config.js",
+      "contentHash": "bae09a7631ce54974b52cb9b1e59fabcdacd2be6fe2ece850418688e5898be6d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 38,
+      "hasStructuralAnalysis": true
+    },
+    "tsconfig.json": {
+      "filePath": "tsconfig.json",
+      "contentHash": "90ad889945208b024ca67b522b6e188670effd5631f39a8dd601b6bdeeb5654b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 32,
+      "hasStructuralAnalysis": false
+    },
+    "tsconfig.node.json": {
+      "filePath": "tsconfig.node.json",
+      "contentHash": "bb9fd8592a9e364641441219f10d84daae9ba2ca5cc85db798efad6913bb8257",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 12,
+      "hasStructuralAnalysis": false
+    },
+    "vite.config.ts": {
+      "filePath": "vite.config.ts",
+      "contentHash": "2314f636bb7487a1bc8fe392452d5efa3059048362a108399ce22f1eb2e68063",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "vite",
+          "specifiers": [
+            "defineConfig"
+          ]
+        },
+        {
+          "source": "@vitejs/plugin-react",
+          "specifiers": [
+            "react"
+          ]
+        },
+        {
+          "source": "vite-plugin-pwa",
+          "specifiers": [
+            "VitePWA"
+          ]
+        },
+        {
+          "source": "path",
+          "specifiers": [
+            "path"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 64,
+      "hasStructuralAnalysis": true
+    }
+  }
+}

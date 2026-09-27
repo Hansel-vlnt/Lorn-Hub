@@ -1,7 +1,7 @@
 import React from 'react';
-import { BookOpen, Search, GitCompare, BookmarkCheck } from 'lucide-react';
+import { BookOpen, Search, GitCompare, BookmarkCheck, FileText } from 'lucide-react';
 
-export type MainNavTab = 'reader' | 'search' | 'compare' | 'study';
+export type MainNavTab = 'reader' | 'search' | 'compare' | 'study' | 'pdf';
 
 interface MobileNavProps {
   activeTab: MainNavTab;
@@ -18,6 +18,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
     { id: 'reader' as MainNavTab, label: 'Jelajah', icon: <BookOpen size={20} /> },
     { id: 'search' as MainNavTab, label: 'Cari Pasal', icon: <Search size={20} /> },
     { id: 'compare' as MainNavTab, label: 'KUHP Baru/Lama', icon: <GitCompare size={20} /> },
+    { id: 'pdf' as MainNavTab, label: 'PDF Hub', icon: <FileText size={20} /> },
     {
       id: 'study' as MainNavTab,
       label: 'Meja Belajar',

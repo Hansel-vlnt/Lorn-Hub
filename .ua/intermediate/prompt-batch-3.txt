@@ -1,0 +1,42 @@
+Analyze these files and produce GraphNode and GraphEdge objects.
+Project root: d:/Project/Lorn-Hub
+Project: Lorn-Hub — Asisten & Kompilasi Hukum Indonesia (PWA Offline-First)
+Languages: typescript, javascript, json, html, css, markdown
+Batch: 3/5
+Skill directory: C:/Users/harla/.gemini/config/plugins/understand-anything-plugin/skills/understand
+Output: write to d:/Project/Lorn-Hub/.ua/intermediate/batch-3.json
+
+> **Language directive**: Generate all textual content (summaries, descriptions, tags, titles, languageNotes, languageLesson) in **Indonesian** (Bahasa Indonesia). Maintain technical accuracy while using natural, native-level phrasing in Indonesian. Keep technical terms in English when no standard translation exists (e.g., "middleware", "hook", "barrel", "state", "props").
+
+Pre-resolved import data for this batch:
+{"postcss.config.js":[],"src/App.tsx":[],"src/components/comparison/KuhpComparisonMatrix.tsx":[],"src/components/comparison/index.ts":[],"src/components/law/ArticleCard.tsx":[],"src/components/law/LawReader.tsx":[],"src/components/law/TableOfContents.tsx":[],"src/components/law/index.ts":[],"src/components/layout/Header.tsx":[],"src/components/layout/MobileNav.tsx":[],"src/components/layout/OfflineBanner.tsx":[],"src/components/layout/PwaInstallPrompt.tsx":[],"src/components/layout/Sidebar.tsx":[],"src/components/layout/index.ts":[],"src/components/search/FilterChips.tsx":[],"src/components/search/SearchBar.tsx":[],"src/components/search/SearchResultCard.tsx":[],"src/components/search/SearchView.tsx":[],"src/components/search/index.ts":[],"src/components/study/BookmarkDrawer.tsx":[],"src/components/study/CitationModal.tsx":[],"src/components/study/NotesDrawer.tsx":[],"src/components/study/StudyDesk.tsx":[],"src/components/study/index.ts":[],"src/components/ui/Badge.tsx":[]}
+
+Cross-batch neighbors with their exported symbols:
+{}
+
+Files to analyze in this batch:
+1. postcss.config.js (6 lines, language: javascript, fileCategory: code)
+2. src/App.tsx (132 lines, language: typescript, fileCategory: code)
+3. src/components/comparison/KuhpComparisonMatrix.tsx (143 lines, language: typescript, fileCategory: code)
+4. src/components/comparison/index.ts (1 lines, language: typescript, fileCategory: code)
+5. src/components/law/ArticleCard.tsx (278 lines, language: typescript, fileCategory: code)
+6. src/components/law/LawReader.tsx (170 lines, language: typescript, fileCategory: code)
+7. src/components/law/TableOfContents.tsx (58 lines, language: typescript, fileCategory: code)
+8. src/components/law/index.ts (3 lines, language: typescript, fileCategory: code)
+9. src/components/layout/Header.tsx (113 lines, language: typescript, fileCategory: code)
+10. src/components/layout/MobileNav.tsx (62 lines, language: typescript, fileCategory: code)
+11. src/components/layout/OfflineBanner.tsx (25 lines, language: typescript, fileCategory: code)
+12. src/components/layout/PwaInstallPrompt.tsx (53 lines, language: typescript, fileCategory: code)
+13. src/components/layout/Sidebar.tsx (114 lines, language: typescript, fileCategory: code)
+14. src/components/layout/index.ts (5 lines, language: typescript, fileCategory: code)
+15. src/components/search/FilterChips.tsx (40 lines, language: typescript, fileCategory: code)
+16. src/components/search/SearchBar.tsx (61 lines, language: typescript, fileCategory: code)
+17. src/components/search/SearchResultCard.tsx (143 lines, language: typescript, fileCategory: code)
+18. src/components/search/SearchView.tsx (173 lines, language: typescript, fileCategory: code)
+19. src/components/search/index.ts (4 lines, language: typescript, fileCategory: code)
+20. src/components/study/BookmarkDrawer.tsx (147 lines, language: typescript, fileCategory: code)
+21. src/components/study/CitationModal.tsx (129 lines, language: typescript, fileCategory: code)
+22. src/components/study/NotesDrawer.tsx (105 lines, language: typescript, fileCategory: code)
+23. src/components/study/StudyDesk.tsx (285 lines, language: typescript, fileCategory: code)
+24. src/components/study/index.ts (4 lines, language: typescript, fileCategory: code)
+25. src/components/ui/Badge.tsx (37 lines, language: typescript, fileCategory: code)

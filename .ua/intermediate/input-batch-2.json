@@ -1,0 +1,63 @@
+{
+  "projectRoot": "d:/Project/Lorn-Hub",
+  "batchFiles": [
+    {
+      "path": "public/data/kuhap.json",
+      "language": "json",
+      "sizeLines": 61,
+      "fileCategory": "config"
+    },
+    {
+      "path": "public/data/kuhp-baru-uu-1-2023.json",
+      "language": "json",
+      "sizeLines": 105,
+      "fileCategory": "config"
+    },
+    {
+      "path": "public/data/kuhp-lama-wvs.json",
+      "language": "json",
+      "sizeLines": 105,
+      "fileCategory": "config"
+    },
+    {
+      "path": "public/data/kuhperdata.json",
+      "language": "json",
+      "sizeLines": 72,
+      "fileCategory": "config"
+    },
+    {
+      "path": "public/data/uu-ite.json",
+      "language": "json",
+      "sizeLines": 50,
+      "fileCategory": "config"
+    },
+    {
+      "path": "public/data/uu-ketenagakerjaan.json",
+      "language": "json",
+      "sizeLines": 39,
+      "fileCategory": "config"
+    },
+    {
+      "path": "public/data/uu-tipikor.json",
+      "language": "json",
+      "sizeLines": 50,
+      "fileCategory": "config"
+    },
+    {
+      "path": "public/data/uud-1945.json",
+      "language": "json",
+      "sizeLines": 107,
+      "fileCategory": "config"
+    }
+  ],
+  "batchImportData": {
+    "public/data/kuhap.json": [],
+    "public/data/kuhp-baru-uu-1-2023.json": [],
+    "public/data/kuhp-lama-wvs.json": [],
+    "public/data/kuhperdata.json": [],
+    "public/data/uu-ite.json": [],
+    "public/data/uu-ketenagakerjaan.json": [],
+    "public/data/uu-tipikor.json": [],
+    "public/data/uud-1945.json": []
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "nodes": [
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "summary": "Dokumentasi utama proyek Lorn-Hub yang merinci arsitektur PWA offline-first, fitur pencarian kilat dataset hukum Indonesia, komparasi KUHP, study desk, struktur folder, dan panduan instalasi lokal.",
+      "tags": ["documentation", "entry-point", "pwa", "hukum-indonesia", "panduan"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:index.html",
+      "type": "file",
+      "name": "index.html",
+      "filePath": "index.html",
+      "summary": "Titik masuk template HTML5 aplikasi web yang memuat font tipografi hukum (Inter & Merriweather), konfigurasi viewport mobile PWA, dan script modul React utama.",
+      "tags": ["markup", "entry-point", "html", "pwa", "template"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "package.json",
+      "summary": "Konfigurasi manajemen paket npm proyek yang mendefinisikan skrip build Vite, dependensi React 19, MiniSearch, Tailwind CSS, Lucide React, serta plugin PWA.",
+      "tags": ["configuration", "dependencies", "build-system", "npm", "pwa"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "tsconfig.json",
+      "summary": "Konfigurasi kompilator TypeScript utama aplikasi frontend dengan target ES2020, mode strict, path alias @/*, dan referensi ke konfigurasi build Node.",
+      "tags": ["configuration", "typescript", "compiler", "build-system"],
+      "complexity": "simple",
+      "languageNotes": "Menggunakan project references TypeScript ke tsconfig.node.json untuk isolasi lingkungan build Vite."
+    },
+    {
+      "id": "config:tsconfig.node.json",
+      "type": "config",
+      "name": "tsconfig.node.json",
+      "filePath": "tsconfig.node.json",
+      "summary": "Konfigurasi kompilator TypeScript pendukung untuk file konfigurasi build (vite.config.ts) yang berjalan di lingkungan Node.",
+      "tags": ["configuration", "typescript", "compiler", "vite"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:README.md",
+      "target": "file:index.html",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:package.json",
+      "target": "file:index.html",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:package.json",
+      "target": "config:tsconfig.json",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:tsconfig.json",
+      "target": "config:tsconfig.node.json",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

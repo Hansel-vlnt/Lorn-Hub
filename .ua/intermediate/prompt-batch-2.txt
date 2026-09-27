@@ -1,0 +1,25 @@
+Analyze these files and produce GraphNode and GraphEdge objects.
+Project root: d:/Project/Lorn-Hub
+Project: Lorn-Hub — Asisten & Kompilasi Hukum Indonesia (PWA Offline-First)
+Languages: typescript, javascript, json, html, css, markdown
+Batch: 2/5
+Skill directory: C:/Users/harla/.gemini/config/plugins/understand-anything-plugin/skills/understand
+Output: write to d:/Project/Lorn-Hub/.ua/intermediate/batch-2.json
+
+> **Language directive**: Generate all textual content (summaries, descriptions, tags, titles, languageNotes, languageLesson) in **Indonesian** (Bahasa Indonesia). Maintain technical accuracy while using natural, native-level phrasing in Indonesian. Keep technical terms in English when no standard translation exists (e.g., "middleware", "hook", "barrel", "state", "props").
+
+Pre-resolved import data for this batch:
+{"public/data/kuhap.json":[],"public/data/kuhp-baru-uu-1-2023.json":[],"public/data/kuhp-lama-wvs.json":[],"public/data/kuhperdata.json":[],"public/data/uu-ite.json":[],"public/data/uu-ketenagakerjaan.json":[],"public/data/uu-tipikor.json":[],"public/data/uud-1945.json":[]}
+
+Cross-batch neighbors with their exported symbols:
+{}
+
+Files to analyze in this batch:
+1. public/data/kuhap.json (61 lines, language: json, fileCategory: config)
+2. public/data/kuhp-baru-uu-1-2023.json (105 lines, language: json, fileCategory: config)
+3. public/data/kuhp-lama-wvs.json (105 lines, language: json, fileCategory: config)
+4. public/data/kuhperdata.json (72 lines, language: json, fileCategory: config)
+5. public/data/uu-ite.json (50 lines, language: json, fileCategory: config)
+6. public/data/uu-ketenagakerjaan.json (39 lines, language: json, fileCategory: config)
+7. public/data/uu-tipikor.json (50 lines, language: json, fileCategory: config)
+8. public/data/uud-1945.json (107 lines, language: json, fileCategory: config)

@@ -1,0 +1,20 @@
+Analyze these files and produce GraphNode and GraphEdge objects.
+Project root: d:/Project/Lorn-Hub
+Project: Lorn-Hub — Asisten & Kompilasi Hukum Indonesia (PWA Offline-First)
+Languages: typescript, javascript, json, html, css, markdown
+Batch: 5/5
+Skill directory: C:/Users/harla/.gemini/config/plugins/understand-anything-plugin/skills/understand
+Output: write to d:/Project/Lorn-Hub/.ua/intermediate/batch-5.json
+
+> **Language directive**: Generate all textual content (summaries, descriptions, tags, titles, languageNotes, languageLesson) in **Indonesian** (Bahasa Indonesia). Maintain technical accuracy while using natural, native-level phrasing in Indonesian. Keep technical terms in English when no standard translation exists (e.g., "middleware", "hook", "barrel", "state", "props").
+
+Pre-resolved import data for this batch:
+{"src/types/user.ts":[],"tailwind.config.js":[],"vite.config.ts":[]}
+
+Cross-batch neighbors with their exported symbols:
+{}
+
+Files to analyze in this batch:
+1. src/types/user.ts (38 lines, language: typescript, fileCategory: code)
+2. tailwind.config.js (37 lines, language: javascript, fileCategory: code)
+3. vite.config.ts (63 lines, language: typescript, fileCategory: code)

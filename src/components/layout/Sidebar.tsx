@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, Search, GitCompare, BookmarkCheck, ChevronRight, ShieldCheck } from 'lucide-react';
+import { BookOpen, Search, GitCompare, BookmarkCheck, ChevronRight, ShieldCheck, FileText } from 'lucide-react';
 import { MainNavTab } from './MobileNav';
 import { useLaw } from '../../context/LawContext';
 import { LawMetadata } from '../../types';
@@ -21,6 +21,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
     { id: 'reader' as MainNavTab, label: 'Jelajah Kitab & UU', icon: <BookOpen size={18} /> },
     { id: 'search' as MainNavTab, label: 'Pencarian Kilat Pasal', icon: <Search size={18} /> },
     { id: 'compare' as MainNavTab, label: 'Komparasi KUHP Baru vs Lama', icon: <GitCompare size={18} /> },
+    { id: 'pdf' as MainNavTab, label: 'PDF Hub', icon: <FileText size={18} /> },
     {
       id: 'study' as MainNavTab,
       label: 'Meja Belajar Mahasiswa',

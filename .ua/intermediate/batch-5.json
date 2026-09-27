@@ -1,0 +1,35 @@
+{
+  "nodes": [
+    {
+      "id": "file:src/types/user.ts",
+      "type": "file",
+      "name": "user.ts",
+      "filePath": "src/types/user.ts",
+      "summary": "Mendefinisikan tipe dan antarmuka TypeScript untuk data studi pengguna, termasuk penanda buku (bookmarks), catatan (notes), penyorotan teks (highlights), dan folder kustom.",
+      "tags": ["type-definition", "data-model", "user-study", "annotation"],
+      "complexity": "simple",
+      "languageNotes": "Mendefinisikan antarmuka dan tipe data studi pengguna untuk persistensi lokal dan state management."
+    },
+    {
+      "id": "config:tailwind.config.js",
+      "type": "config",
+      "name": "tailwind.config.js",
+      "filePath": "tailwind.config.js",
+      "summary": "Konfigurasi Tailwind CSS yang mendefinisikan palet warna bertema hukum (legal dan gold) serta pengaturan font untuk antarmuka pengguna.",
+      "tags": ["configuration", "tailwind", "styling", "design-system"],
+      "complexity": "simple",
+      "languageNotes": "Mengonfigurasi palet warna khusus legal dan gold dengan mode gelap (dark mode) berbasis class."
+    },
+    {
+      "id": "config:vite.config.ts",
+      "type": "config",
+      "name": "vite.config.ts",
+      "filePath": "vite.config.ts",
+      "summary": "Konfigurasi build Vite dengan integrasi React, plugin VitePWA untuk fungsionalitas offline-first, manifest aplikasi, serta strategi caching Workbox.",
+      "tags": ["configuration", "vite", "pwa", "build-system", "caching"],
+      "complexity": "moderate",
+      "languageNotes": "Mengonfigurasi Workbox runtimeCaching dengan handler CacheFirst untuk dataset hukum guna mendukung akses offline."
+    }
+  ],
+  "edges": []
+}

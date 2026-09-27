@@ -1,0 +1,1792 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 25,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 25,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "postcss.config.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 6,
+      "nonEmptyLines": 6,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/App.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 132,
+      "nonEmptyLines": 113,
+      "functions": [
+        {
+          "name": "App",
+          "startLine": 13,
+          "endLine": 131,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "App",
+          "line": 13,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "App",
+          "callee": "useState",
+          "lineNumber": 14
+        },
+        {
+          "caller": "App",
+          "callee": "useLaw",
+          "lineNumber": 15
+        },
+        {
+          "caller": "App",
+          "callee": "useUserData",
+          "lineNumber": 16
+        },
+        {
+          "caller": "App",
+          "callee": "useState",
+          "lineNumber": 19
+        },
+        {
+          "caller": "App",
+          "callee": "useState",
+          "lineNumber": 20
+        },
+        {
+          "caller": "App",
+          "callee": "useState",
+          "lineNumber": 21
+        },
+        {
+          "caller": "App",
+          "callee": "useState",
+          "lineNumber": 24
+        },
+        {
+          "caller": "showToast",
+          "callee": "setToast",
+          "lineNumber": 27
+        },
+        {
+          "caller": "showToast",
+          "callee": "Date.now",
+          "lineNumber": 28
+        },
+        {
+          "caller": "handleOpenArticleFromSearchOrStudy",
+          "callee": "setSelectedLawId",
+          "lineNumber": 35
+        },
+        {
+          "caller": "handleOpenArticleFromSearchOrStudy",
+          "callee": "setActiveTab",
+          "lineNumber": 36
+        },
+        {
+          "caller": "handleOpenArticleFromSearchOrStudy",
+          "callee": "setTimeout",
+          "lineNumber": 37
+        },
+        {
+          "caller": "handleOpenArticleFromSearchOrStudy",
+          "callee": "document.getElementById",
+          "lineNumber": 38
+        },
+        {
+          "caller": "handleOpenArticleFromSearchOrStudy",
+          "callee": "article.nomor.toLowerCase().replace",
+          "lineNumber": 38
+        },
+        {
+          "caller": "handleOpenArticleFromSearchOrStudy",
+          "callee": "article.nomor.toLowerCase",
+          "lineNumber": 38
+        },
+        {
+          "caller": "handleOpenArticleFromSearchOrStudy",
+          "callee": "el.scrollIntoView",
+          "lineNumber": 40
+        },
+        {
+          "caller": "App",
+          "callee": "lawsCatalog.find",
+          "lineNumber": 46
+        },
+        {
+          "caller": "App",
+          "callee": "Boolean",
+          "lineNumber": 106
+        },
+        {
+          "caller": "App",
+          "callee": "setSelectedArticleForCitation",
+          "lineNumber": 107
+        },
+        {
+          "caller": "App",
+          "callee": "Boolean",
+          "lineNumber": 114
+        },
+        {
+          "caller": "App",
+          "callee": "setSelectedArticleForNote",
+          "lineNumber": 115
+        },
+        {
+          "caller": "App",
+          "callee": "Boolean",
+          "lineNumber": 121
+        },
+        {
+          "caller": "App",
+          "callee": "setSelectedArticleForBookmark",
+          "lineNumber": 122
+        },
+        {
+          "caller": "App",
+          "callee": "setToast",
+          "lineNumber": 128
+        }
+      ],
+      "metrics": {
+        "importCount": 10,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/comparison/KuhpComparisonMatrix.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 143,
+      "nonEmptyLines": 126,
+      "functions": [
+        {
+          "name": "KuhpComparisonMatrix",
+          "startLine": 6,
+          "endLine": 143,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "KuhpComparisonMatrix",
+          "line": 6,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "KuhpComparisonMatrix",
+          "callee": "useState",
+          "lineNumber": 7
+        },
+        {
+          "caller": "KuhpComparisonMatrix",
+          "callee": "KUHP_COMPARISONS.find",
+          "lineNumber": 9
+        },
+        {
+          "caller": "KuhpComparisonMatrix",
+          "callee": "KUHP_COMPARISONS.map",
+          "lineNumber": 37
+        },
+        {
+          "caller": "KuhpComparisonMatrix",
+          "callee": "setSelectedComparisonId",
+          "lineNumber": 42
+        },
+        {
+          "caller": "KuhpComparisonMatrix",
+          "callee": "selectedCmp.poinPerubahan.map",
+          "lineNumber": 124
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/comparison/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/law/ArticleCard.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 278,
+      "nonEmptyLines": 258,
+      "functions": [
+        {
+          "name": "ArticleCard",
+          "startLine": 26,
+          "endLine": 278,
+          "params": [
+            "{\n  article,\n  onOpenCitation,\n  onOpenNote,\n  onOpenBookmark,\n  onShowToast,\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "ArticleCard",
+          "line": 26,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ArticleCard",
+          "callee": "useUserData",
+          "lineNumber": 33
+        },
+        {
+          "caller": "ArticleCard",
+          "callee": "useLaw",
+          "lineNumber": 34
+        },
+        {
+          "caller": "ArticleCard",
+          "callee": "useTheme",
+          "lineNumber": 35
+        },
+        {
+          "caller": "ArticleCard",
+          "callee": "useState",
+          "lineNumber": 36
+        },
+        {
+          "caller": "ArticleCard",
+          "callee": "useState",
+          "lineNumber": 37
+        },
+        {
+          "caller": "ArticleCard",
+          "callee": "lawsCatalog.find",
+          "lineNumber": 39
+        },
+        {
+          "caller": "ArticleCard",
+          "callee": "isBookmarked",
+          "lineNumber": 40
+        },
+        {
+          "caller": "ArticleCard",
+          "callee": "getNote",
+          "lineNumber": 41
+        },
+        {
+          "caller": "ArticleCard",
+          "callee": "getHighlight",
+          "lineNumber": 42
+        },
+        {
+          "caller": "handleCopyText",
+          "callee": "navigator.clipboard.writeText",
+          "lineNumber": 68
+        },
+        {
+          "caller": "handleCopyText",
+          "callee": "setCopied",
+          "lineNumber": 69
+        },
+        {
+          "caller": "handleCopyText",
+          "callee": "onShowToast",
+          "lineNumber": 70
+        },
+        {
+          "caller": "handleCopyText",
+          "callee": "setTimeout",
+          "lineNumber": 71
+        },
+        {
+          "caller": "handleCopyText",
+          "callee": "setCopied",
+          "lineNumber": 71
+        },
+        {
+          "caller": "handleSelectColor",
+          "callee": "removeHighlight",
+          "lineNumber": 76
+        },
+        {
+          "caller": "handleSelectColor",
+          "callee": "onShowToast",
+          "lineNumber": 77
+        },
+        {
+          "caller": "handleSelectColor",
+          "callee": "setHighlight",
+          "lineNumber": 79
+        },
+        {
+          "caller": "handleSelectColor",
+          "callee": "onShowToast",
+          "lineNumber": 80
+        },
+        {
+          "caller": "handleSelectColor",
+          "callee": "setShowColorPicker",
+          "lineNumber": 82
+        },
+        {
+          "caller": "ArticleCard",
+          "callee": "article.nomor.toLowerCase().replace",
+          "lineNumber": 87
+        },
+        {
+          "caller": "ArticleCard",
+          "callee": "article.nomor.toLowerCase",
+          "lineNumber": 87
+        },
+        {
+          "caller": "ArticleCard",
+          "callee": "setShowColorPicker",
+          "lineNumber": 115
+        },
+        {
+          "caller": "ArticleCard",
+          "callee": "colors.map",
+          "lineNumber": 128
+        },
+        {
+          "caller": "ArticleCard",
+          "callee": "handleSelectColor",
+          "lineNumber": 131
+        },
+        {
+          "caller": "ArticleCard",
+          "callee": "onOpenBookmark",
+          "lineNumber": 153
+        },
+        {
+          "caller": "ArticleCard",
+          "callee": "onOpenNote",
+          "lineNumber": 166
+        },
+        {
+          "caller": "ArticleCard",
+          "callee": "onOpenCitation",
+          "lineNumber": 188
+        },
+        {
+          "caller": "ArticleCard",
+          "callee": "article.ayat.map",
+          "lineNumber": 205
+        },
+        {
+          "caller": "ArticleCard",
+          "callee": "onOpenNote",
+          "lineNumber": 250
+        },
+        {
+          "caller": "ArticleCard",
+          "callee": "article.kataKunci.map",
+          "lineNumber": 266
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/law/LawReader.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 170,
+      "nonEmptyLines": 155,
+      "functions": [
+        {
+          "name": "LawReader",
+          "startLine": 16,
+          "endLine": 170,
+          "params": [
+            "{\n  onOpenCitation,\n  onOpenNote,\n  onOpenBookmark,\n  onShowToast,\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "LawReader",
+          "line": 16,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "LawReader",
+          "callee": "useLaw",
+          "lineNumber": 22
+        },
+        {
+          "caller": "LawReader",
+          "callee": "useState",
+          "lineNumber": 23
+        },
+        {
+          "caller": "LawReader",
+          "callee": "useState",
+          "lineNumber": 24
+        },
+        {
+          "caller": "LawReader",
+          "callee": "useMemo",
+          "lineNumber": 26
+        },
+        {
+          "caller": "LawReader",
+          "callee": "currentArticles.filter",
+          "lineNumber": 27
+        },
+        {
+          "caller": "LawReader",
+          "callee": "inLawFilterQuery.trim",
+          "lineNumber": 29
+        },
+        {
+          "caller": "LawReader",
+          "callee": "inLawFilterQuery.toLowerCase().trim",
+          "lineNumber": 30
+        },
+        {
+          "caller": "LawReader",
+          "callee": "inLawFilterQuery.toLowerCase",
+          "lineNumber": 30
+        },
+        {
+          "caller": "LawReader",
+          "callee": "art.nomor.toLowerCase().includes",
+          "lineNumber": 31
+        },
+        {
+          "caller": "LawReader",
+          "callee": "art.nomor.toLowerCase",
+          "lineNumber": 31
+        },
+        {
+          "caller": "LawReader",
+          "callee": "art.judul?.toLowerCase().includes",
+          "lineNumber": 32
+        },
+        {
+          "caller": "LawReader",
+          "callee": "art.judul?.toLowerCase",
+          "lineNumber": 32
+        },
+        {
+          "caller": "LawReader",
+          "callee": "art.isi.toLowerCase().includes",
+          "lineNumber": 33
+        },
+        {
+          "caller": "LawReader",
+          "callee": "art.isi.toLowerCase",
+          "lineNumber": 33
+        },
+        {
+          "caller": "LawReader",
+          "callee": "art.kataKunci?.some",
+          "lineNumber": 34
+        },
+        {
+          "caller": "LawReader",
+          "callee": "k.toLowerCase().includes",
+          "lineNumber": 34
+        },
+        {
+          "caller": "LawReader",
+          "callee": "k.toLowerCase",
+          "lineNumber": 34
+        },
+        {
+          "caller": "LawReader",
+          "callee": "currentLawMetadata.status.toUpperCase",
+          "lineNumber": 75
+        },
+        {
+          "caller": "LawReader",
+          "callee": "setInLawFilterQuery",
+          "lineNumber": 107
+        },
+        {
+          "caller": "LawReader",
+          "callee": "setSelectedBab",
+          "lineNumber": 115
+        },
+        {
+          "caller": "LawReader",
+          "callee": "filteredArticles.map",
+          "lineNumber": 155
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/law/TableOfContents.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 58,
+      "nonEmptyLines": 52,
+      "functions": [
+        {
+          "name": "TableOfContents",
+          "startLine": 11,
+          "endLine": 58,
+          "params": [
+            "{\n  articles,\n  selectedBab,\n  onSelectBab,\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "TableOfContents",
+          "line": 11,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "TableOfContents",
+          "callee": "articles.forEach",
+          "lineNumber": 18
+        },
+        {
+          "caller": "TableOfContents",
+          "callee": "chapters.includes",
+          "lineNumber": 19
+        },
+        {
+          "caller": "TableOfContents",
+          "callee": "chapters.push",
+          "lineNumber": 20
+        },
+        {
+          "caller": "TableOfContents",
+          "callee": "chapters.map",
+          "lineNumber": 36
+        },
+        {
+          "caller": "TableOfContents",
+          "callee": "articles.filter",
+          "lineNumber": 38
+        },
+        {
+          "caller": "TableOfContents",
+          "callee": "onSelectBab",
+          "lineNumber": 43
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/law/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 3,
+      "nonEmptyLines": 3,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/layout/Header.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 113,
+      "nonEmptyLines": 105,
+      "functions": [
+        {
+          "name": "Header",
+          "startLine": 11,
+          "endLine": 113,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Header",
+          "line": 11,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Header",
+          "callee": "useTheme",
+          "lineNumber": 12
+        },
+        {
+          "caller": "Header",
+          "callee": "usePWAInstall",
+          "lineNumber": 13
+        },
+        {
+          "caller": "Header",
+          "callee": "useOfflineStatus",
+          "lineNumber": 14
+        },
+        {
+          "caller": "Header",
+          "callee": "setFontFamily",
+          "lineNumber": 64
+        },
+        {
+          "caller": "Header",
+          "callee": "setFontFamily",
+          "lineNumber": 75
+        },
+        {
+          "caller": "Header",
+          "callee": "sizes.indexOf",
+          "lineNumber": 91
+        },
+        {
+          "caller": "Header",
+          "callee": "setFontSize",
+          "lineNumber": 92
+        },
+        {
+          "caller": "Header",
+          "callee": "setTheme",
+          "lineNumber": 103
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/layout/MobileNav.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 62,
+      "nonEmptyLines": 58,
+      "functions": [
+        {
+          "name": "MobileNav",
+          "startLine": 12,
+          "endLine": 62,
+          "params": [
+            "{\n  activeTab,\n  onChangeTab,\n  bookmarkCount = 0,\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "MobileNav",
+          "line": 12,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "MobileNav",
+          "callee": "navItems.map",
+          "lineNumber": 32
+        },
+        {
+          "caller": "MobileNav",
+          "callee": "onChangeTab",
+          "lineNumber": 37
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/layout/OfflineBanner.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 25,
+      "nonEmptyLines": 21,
+      "functions": [
+        {
+          "name": "OfflineBanner",
+          "startLine": 5,
+          "endLine": 25,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "OfflineBanner",
+          "line": 5,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "OfflineBanner",
+          "callee": "useOfflineStatus",
+          "lineNumber": 6
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/layout/PwaInstallPrompt.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 53,
+      "nonEmptyLines": 49,
+      "functions": [
+        {
+          "name": "PwaInstallPrompt",
+          "startLine": 6,
+          "endLine": 53,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PwaInstallPrompt",
+          "line": 6,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "PwaInstallPrompt",
+          "callee": "usePWAInstall",
+          "lineNumber": 7
+        },
+        {
+          "caller": "PwaInstallPrompt",
+          "callee": "useState",
+          "lineNumber": 8
+        },
+        {
+          "caller": "PwaInstallPrompt",
+          "callee": "setIsDismissed",
+          "lineNumber": 33
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/layout/Sidebar.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 114,
+      "nonEmptyLines": 107,
+      "functions": [
+        {
+          "name": "Sidebar",
+          "startLine": 13,
+          "endLine": 114,
+          "params": [
+            "{\n  activeTab,\n  onChangeTab,\n  bookmarkCount = 0,\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Sidebar",
+          "line": 13,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Sidebar",
+          "callee": "useLaw",
+          "lineNumber": 18
+        },
+        {
+          "caller": "Sidebar",
+          "callee": "mainNav.map",
+          "lineNumber": 39
+        },
+        {
+          "caller": "Sidebar",
+          "callee": "onChangeTab",
+          "lineNumber": 44
+        },
+        {
+          "caller": "Sidebar",
+          "callee": "lawsCatalog.map",
+          "lineNumber": 76
+        },
+        {
+          "caller": "Sidebar",
+          "callee": "setSelectedLawId",
+          "lineNumber": 82
+        },
+        {
+          "caller": "Sidebar",
+          "callee": "onChangeTab",
+          "lineNumber": 83
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/layout/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 5,
+      "nonEmptyLines": 5,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/search/FilterChips.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 40,
+      "nonEmptyLines": 37,
+      "functions": [
+        {
+          "name": "FilterChips",
+          "startLine": 9,
+          "endLine": 40,
+          "params": [
+            "{ filters, onFilterChange }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "FilterChips",
+          "line": 9,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "FilterChips",
+          "callee": "categories.map",
+          "lineNumber": 22
+        },
+        {
+          "caller": "FilterChips",
+          "callee": "onFilterChange",
+          "lineNumber": 27
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/search/SearchBar.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 61,
+      "nonEmptyLines": 54,
+      "functions": [
+        {
+          "name": "SearchBar",
+          "startLine": 12,
+          "endLine": 61,
+          "params": [
+            "{\n  value,\n  onChange,\n  onClear,\n  placeholder = 'Cari nomor pasal (misal: 362, 1365) atau kata kunci (pencurian, wanprestasi, praperadilan)...',\n  autoFocus = false,\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "SearchBar",
+          "line": 12,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "SearchBar",
+          "callee": "useRef",
+          "lineNumber": 19
+        },
+        {
+          "caller": "SearchBar",
+          "callee": "useEffect",
+          "lineNumber": 21
+        },
+        {
+          "caller": "SearchBar",
+          "callee": "inputRef.current.focus",
+          "lineNumber": 23
+        },
+        {
+          "caller": "SearchBar",
+          "callee": "onChange",
+          "lineNumber": 38
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/search/SearchResultCard.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 143,
+      "nonEmptyLines": 130,
+      "functions": [
+        {
+          "name": "SearchResultCard",
+          "startLine": 17,
+          "endLine": 143,
+          "params": [
+            "{\n  result,\n  query,\n  onOpenArticle,\n  onOpenCitation,\n  onOpenNote,\n  onOpenBookmark,\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "SearchResultCard",
+          "line": 17,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "SearchResultCard",
+          "callee": "useLaw",
+          "lineNumber": 26
+        },
+        {
+          "caller": "SearchResultCard",
+          "callee": "useUserData",
+          "lineNumber": 27
+        },
+        {
+          "caller": "SearchResultCard",
+          "callee": "lawsCatalog.find",
+          "lineNumber": 29
+        },
+        {
+          "caller": "SearchResultCard",
+          "callee": "isBookmarked",
+          "lineNumber": 30
+        },
+        {
+          "caller": "SearchResultCard",
+          "callee": "getNote",
+          "lineNumber": 31
+        },
+        {
+          "caller": "SearchResultCard",
+          "callee": "getHighlight",
+          "lineNumber": 32
+        },
+        {
+          "caller": "renderHighlightedText",
+          "callee": "query.trim",
+          "lineNumber": 36
+        },
+        {
+          "caller": "renderHighlightedText",
+          "callee": "text.split",
+          "lineNumber": 37
+        },
+        {
+          "caller": "renderHighlightedText",
+          "callee": "query.trim",
+          "lineNumber": 37
+        },
+        {
+          "caller": "renderHighlightedText",
+          "callee": "parts.map",
+          "lineNumber": 38
+        },
+        {
+          "caller": "renderHighlightedText",
+          "callee": "part.toLowerCase",
+          "lineNumber": 39
+        },
+        {
+          "caller": "renderHighlightedText",
+          "callee": "query.trim().toLowerCase",
+          "lineNumber": 39
+        },
+        {
+          "caller": "renderHighlightedText",
+          "callee": "query.trim",
+          "lineNumber": 39
+        },
+        {
+          "caller": "SearchResultCard",
+          "callee": "onOpenArticle",
+          "lineNumber": 78
+        },
+        {
+          "caller": "SearchResultCard",
+          "callee": "renderHighlightedText",
+          "lineNumber": 82
+        },
+        {
+          "caller": "SearchResultCard",
+          "callee": "renderHighlightedText",
+          "lineNumber": 87
+        },
+        {
+          "caller": "SearchResultCard",
+          "callee": "renderHighlightedText",
+          "lineNumber": 95
+        },
+        {
+          "caller": "SearchResultCard",
+          "callee": "onOpenCitation",
+          "lineNumber": 104
+        },
+        {
+          "caller": "SearchResultCard",
+          "callee": "onOpenBookmark",
+          "lineNumber": 113
+        },
+        {
+          "caller": "SearchResultCard",
+          "callee": "onOpenNote",
+          "lineNumber": 124
+        },
+        {
+          "caller": "SearchResultCard",
+          "callee": "onOpenArticle",
+          "lineNumber": 134
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/search/SearchView.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 173,
+      "nonEmptyLines": 161,
+      "functions": [
+        {
+          "name": "SearchView",
+          "startLine": 18,
+          "endLine": 173,
+          "params": [
+            "{\n  onOpenArticle,\n  onOpenCitation,\n  onOpenNote,\n  onOpenBookmark,\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "SearchView",
+          "line": 18,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "SearchView",
+          "callee": "useSearch",
+          "lineNumber": 24
+        },
+        {
+          "caller": "SearchView",
+          "callee": "useLaw",
+          "lineNumber": 25
+        },
+        {
+          "caller": "SearchView",
+          "callee": "storageService.getSearchHistory",
+          "lineNumber": 26
+        },
+        {
+          "caller": "SearchView",
+          "callee": "setQuery",
+          "lineNumber": 55
+        },
+        {
+          "caller": "SearchView",
+          "callee": "suggestedQueries.map",
+          "lineNumber": 72
+        },
+        {
+          "caller": "SearchView",
+          "callee": "setQuery",
+          "lineNumber": 75
+        },
+        {
+          "caller": "SearchView",
+          "callee": "storageService.clearSearchHistory",
+          "lineNumber": 94
+        },
+        {
+          "caller": "SearchView",
+          "callee": "setQuery",
+          "lineNumber": 95
+        },
+        {
+          "caller": "SearchView",
+          "callee": "searchHistory.map",
+          "lineNumber": 104
+        },
+        {
+          "caller": "SearchView",
+          "callee": "setQuery",
+          "lineNumber": 107
+        },
+        {
+          "caller": "SearchView",
+          "callee": "results.map",
+          "lineNumber": 157
+        }
+      ],
+      "metrics": {
+        "importCount": 7,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/search/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 4,
+      "nonEmptyLines": 4,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/study/BookmarkDrawer.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 147,
+      "nonEmptyLines": 138,
+      "functions": [
+        {
+          "name": "BookmarkDrawer",
+          "startLine": 15,
+          "endLine": 147,
+          "params": [
+            "{\n  isOpen,\n  onClose,\n  article,\n  onShowToast,\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "BookmarkDrawer",
+          "line": 15,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "BookmarkDrawer",
+          "callee": "useUserData",
+          "lineNumber": 21
+        },
+        {
+          "caller": "BookmarkDrawer",
+          "callee": "useState",
+          "lineNumber": 22
+        },
+        {
+          "caller": "BookmarkDrawer",
+          "callee": "useState",
+          "lineNumber": 23
+        },
+        {
+          "caller": "BookmarkDrawer",
+          "callee": "useState",
+          "lineNumber": 24
+        },
+        {
+          "caller": "BookmarkDrawer",
+          "callee": "isBookmarked",
+          "lineNumber": 28
+        },
+        {
+          "caller": "handleToggleBookmark",
+          "callee": "removeBookmark",
+          "lineNumber": 32
+        },
+        {
+          "caller": "handleToggleBookmark",
+          "callee": "onShowToast",
+          "lineNumber": 33
+        },
+        {
+          "caller": "handleToggleBookmark",
+          "callee": "addBookmark",
+          "lineNumber": 35
+        },
+        {
+          "caller": "handleToggleBookmark",
+          "callee": "onShowToast",
+          "lineNumber": 42
+        },
+        {
+          "caller": "handleToggleBookmark",
+          "callee": "onClose",
+          "lineNumber": 44
+        },
+        {
+          "caller": "handleAddCustomFolder",
+          "callee": "customFolderInput.trim",
+          "lineNumber": 48
+        },
+        {
+          "caller": "handleAddCustomFolder",
+          "callee": "customFolderInput.trim",
+          "lineNumber": 49
+        },
+        {
+          "caller": "handleAddCustomFolder",
+          "callee": "studyData.customFolders.push",
+          "lineNumber": 50
+        },
+        {
+          "caller": "handleAddCustomFolder",
+          "callee": "setSelectedFolder",
+          "lineNumber": 51
+        },
+        {
+          "caller": "handleAddCustomFolder",
+          "callee": "setCustomFolderInput",
+          "lineNumber": 52
+        },
+        {
+          "caller": "handleAddCustomFolder",
+          "callee": "setIsAddingFolder",
+          "lineNumber": 53
+        },
+        {
+          "caller": "BookmarkDrawer",
+          "callee": "handleToggleBookmark",
+          "lineNumber": 74
+        },
+        {
+          "caller": "BookmarkDrawer",
+          "callee": "studyData.customFolders.map",
+          "lineNumber": 86
+        },
+        {
+          "caller": "BookmarkDrawer",
+          "callee": "setSelectedFolder",
+          "lineNumber": 91
+        },
+        {
+          "caller": "BookmarkDrawer",
+          "callee": "setCustomFolderInput",
+          "lineNumber": 112
+        },
+        {
+          "caller": "BookmarkDrawer",
+          "callee": "setIsAddingFolder",
+          "lineNumber": 123
+        },
+        {
+          "caller": "BookmarkDrawer",
+          "callee": "handleToggleBookmark",
+          "lineNumber": 136
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/study/CitationModal.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 129,
+      "nonEmptyLines": 120,
+      "functions": [
+        {
+          "name": "CitationModal",
+          "startLine": 16,
+          "endLine": 129,
+          "params": [
+            "{\n  isOpen,\n  onClose,\n  article,\n  lawMetadata,\n  onShowToast,\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CitationModal",
+          "line": 16,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "CitationModal",
+          "callee": "useState",
+          "lineNumber": 23
+        },
+        {
+          "caller": "CitationModal",
+          "callee": "generateLegalCitation",
+          "lineNumber": 27
+        },
+        {
+          "caller": "handleCopy",
+          "callee": "navigator.clipboard.writeText",
+          "lineNumber": 30
+        },
+        {
+          "caller": "handleCopy",
+          "callee": "setCopiedType",
+          "lineNumber": 31
+        },
+        {
+          "caller": "handleCopy",
+          "callee": "onShowToast",
+          "lineNumber": 32
+        },
+        {
+          "caller": "handleCopy",
+          "callee": "setTimeout",
+          "lineNumber": 33
+        },
+        {
+          "caller": "handleCopy",
+          "callee": "setCopiedType",
+          "lineNumber": 33
+        },
+        {
+          "caller": "CitationModal",
+          "callee": "handleCopy",
+          "lineNumber": 55
+        },
+        {
+          "caller": "CitationModal",
+          "callee": "handleCopy",
+          "lineNumber": 75
+        },
+        {
+          "caller": "CitationModal",
+          "callee": "handleCopy",
+          "lineNumber": 95
+        },
+        {
+          "caller": "CitationModal",
+          "callee": "handleCopy",
+          "lineNumber": 116
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/study/NotesDrawer.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 105,
+      "nonEmptyLines": 95,
+      "functions": [
+        {
+          "name": "NotesDrawer",
+          "startLine": 15,
+          "endLine": 105,
+          "params": [
+            "{\n  isOpen,\n  onClose,\n  article,\n  onShowToast,\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "NotesDrawer",
+          "line": 15,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "NotesDrawer",
+          "callee": "useUserData",
+          "lineNumber": 21
+        },
+        {
+          "caller": "NotesDrawer",
+          "callee": "useState",
+          "lineNumber": 22
+        },
+        {
+          "caller": "NotesDrawer",
+          "callee": "useEffect",
+          "lineNumber": 24
+        },
+        {
+          "caller": "NotesDrawer",
+          "callee": "getNote",
+          "lineNumber": 26
+        },
+        {
+          "caller": "NotesDrawer",
+          "callee": "setContent",
+          "lineNumber": 27
+        },
+        {
+          "caller": "handleSave",
+          "callee": "content.trim",
+          "lineNumber": 34
+        },
+        {
+          "caller": "handleSave",
+          "callee": "deleteNote",
+          "lineNumber": 35
+        },
+        {
+          "caller": "handleSave",
+          "callee": "onShowToast",
+          "lineNumber": 36
+        },
+        {
+          "caller": "handleSave",
+          "callee": "saveNote",
+          "lineNumber": 38
+        },
+        {
+          "caller": "handleSave",
+          "callee": "onShowToast",
+          "lineNumber": 39
+        },
+        {
+          "caller": "handleSave",
+          "callee": "onClose",
+          "lineNumber": 41
+        },
+        {
+          "caller": "handleDelete",
+          "callee": "deleteNote",
+          "lineNumber": 45
+        },
+        {
+          "caller": "handleDelete",
+          "callee": "setContent",
+          "lineNumber": 46
+        },
+        {
+          "caller": "handleDelete",
+          "callee": "onShowToast",
+          "lineNumber": 47
+        },
+        {
+          "caller": "handleDelete",
+          "callee": "onClose",
+          "lineNumber": 48
+        },
+        {
+          "caller": "NotesDrawer",
+          "callee": "setContent",
+          "lineNumber": 76
+        },
+        {
+          "caller": "NotesDrawer",
+          "callee": "getNote",
+          "lineNumber": 85
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/study/StudyDesk.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 285,
+      "nonEmptyLines": 265,
+      "functions": [
+        {
+          "name": "StudyDesk",
+          "startLine": 13,
+          "endLine": 285,
+          "params": [
+            "{ onSelectArticle }"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "StudyDesk",
+          "line": 13,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "StudyDesk",
+          "callee": "useUserData",
+          "lineNumber": 14
+        },
+        {
+          "caller": "StudyDesk",
+          "callee": "useLaw",
+          "lineNumber": 15
+        },
+        {
+          "caller": "StudyDesk",
+          "callee": "useState",
+          "lineNumber": 16
+        },
+        {
+          "caller": "StudyDesk",
+          "callee": "useState",
+          "lineNumber": 17
+        },
+        {
+          "caller": "StudyDesk",
+          "callee": "Array.from",
+          "lineNumber": 26
+        },
+        {
+          "caller": "StudyDesk",
+          "callee": "bookmarks.map",
+          "lineNumber": 26
+        },
+        {
+          "caller": "StudyDesk",
+          "callee": "bookmarks.filter",
+          "lineNumber": 30
+        },
+        {
+          "caller": "getArticle",
+          "callee": "allArticles.find",
+          "lineNumber": 33
+        },
+        {
+          "caller": "StudyDesk",
+          "callee": "setActiveTab",
+          "lineNumber": 54
+        },
+        {
+          "caller": "StudyDesk",
+          "callee": "setSelectedFolderFilter",
+          "lineNumber": 63
+        },
+        {
+          "caller": "StudyDesk",
+          "callee": "folders.map",
+          "lineNumber": 72
+        },
+        {
+          "caller": "StudyDesk",
+          "callee": "setSelectedFolderFilter",
+          "lineNumber": 75
+        },
+        {
+          "caller": "StudyDesk",
+          "callee": "bookmarks.filter",
+          "lineNumber": 82
+        },
+        {
+          "caller": "StudyDesk",
+          "callee": "filteredBookmarks.map",
+          "lineNumber": 100
+        },
+        {
+          "caller": "StudyDesk",
+          "callee": "getArticle",
+          "lineNumber": 101
+        },
+        {
+          "caller": "StudyDesk",
+          "callee": "removeBookmark",
+          "lineNumber": 113
+        },
+        {
+          "caller": "StudyDesk",
+          "callee": "onSelectArticle",
+          "lineNumber": 137
+        },
+        {
+          "caller": "StudyDesk",
+          "callee": "notes.map",
+          "lineNumber": 167
+        },
+        {
+          "caller": "StudyDesk",
+          "callee": "getArticle",
+          "lineNumber": 168
+        },
+        {
+          "caller": "StudyDesk",
+          "callee": "deleteNote",
+          "lineNumber": 180
+        },
+        {
+          "caller": "StudyDesk",
+          "callee": "onSelectArticle",
+          "lineNumber": 198
+        },
+        {
+          "caller": "StudyDesk",
+          "callee": "highlights.map",
+          "lineNumber": 228
+        },
+        {
+          "caller": "StudyDesk",
+          "callee": "getArticle",
+          "lineNumber": 229
+        },
+        {
+          "caller": "StudyDesk",
+          "callee": "hl.color.toUpperCase",
+          "lineNumber": 246
+        },
+        {
+          "caller": "StudyDesk",
+          "callee": "removeHighlight",
+          "lineNumber": 249
+        },
+        {
+          "caller": "StudyDesk",
+          "callee": "onSelectArticle",
+          "lineNumber": 269
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/study/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 4,
+      "nonEmptyLines": 4,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "src/components/ui/Badge.tsx",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 37,
+      "nonEmptyLines": 33,
+      "functions": [
+        {
+          "name": "Badge",
+          "startLine": 10,
+          "endLine": 37,
+          "params": [
+            "{\n  children,\n  variant = 'primary',\n  size = 'sm',\n  className = '',\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Badge",
+          "line": 10,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,733 @@
+{
+  "nodes": [
+    {
+      "id": "config:postcss.config.js",
+      "type": "config",
+      "name": "postcss.config.js",
+      "filePath": "postcss.config.js",
+      "summary": "Konfigurasi PostCSS yang mengaktifkan plugin TailwindCSS dan Autoprefixer untuk pemrosesan styling aplikasi.",
+      "tags": ["configuration", "postcss", "tailwindcss", "build-system"],
+      "complexity": "simple",
+      "languageNotes": "Mengekspor konfigurasi objek standar untuk integrasi pipeline build CSS."
+    },
+    {
+      "id": "file:src/App.tsx",
+      "type": "file",
+      "name": "App.tsx",
+      "filePath": "src/App.tsx",
+      "summary": "Komponen utama aplikasi yang mengatur navigasi tab, inisialisasi PWA, status luring, serta penyajian modal anotasi dan sitasi.",
+      "tags": ["entry-point", "component", "navigation", "state-management"],
+      "complexity": "moderate",
+      "languageNotes": "Mengintegrasikan berbagai custom hook untuk manajemen hukum, data pengguna, dan status jaringan."
+    },
+    {
+      "id": "function:src/App.tsx:App",
+      "type": "function",
+      "name": "App",
+      "filePath": "src/App.tsx",
+      "lineRange": [13, 131],
+      "summary": "Komponen fungsional utama yang merender antarmuka aplikasi, mengontrol tab aktif, dan menangani navigasi ke pasal spesifik.",
+      "tags": ["component", "entry-point", "ui-layout"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/comparison/KuhpComparisonMatrix.tsx",
+      "type": "file",
+      "name": "KuhpComparisonMatrix.tsx",
+      "filePath": "src/components/comparison/KuhpComparisonMatrix.tsx",
+      "summary": "Komponen matriks komparasi yang membandingkan pasal KUHP Lama (WvS) dan KUHP Baru (UU 1/2023) secara berdampingan.",
+      "tags": ["component", "comparison", "kuhp", "law-reader"],
+      "complexity": "moderate",
+      "languageNotes": "Menampilkan perbedaan teks hukum, ancaman pidana, dan poin-poin perubahan signifikan antar regulasi."
+    },
+    {
+      "id": "function:src/components/comparison/KuhpComparisonMatrix.tsx:KuhpComparisonMatrix",
+      "type": "function",
+      "name": "KuhpComparisonMatrix",
+      "filePath": "src/components/comparison/KuhpComparisonMatrix.tsx",
+      "lineRange": [6, 143],
+      "summary": "Merender tampilan pemilih topik perbandingan KUHP beserta rincian komparasi pasal lama vs baru.",
+      "tags": ["component", "comparison", "matrix-view"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/comparison/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "src/components/comparison/index.ts",
+      "summary": "Berkas barrel yang mengekspor kembali modul perbandingan hukum seperti KuhpComparisonMatrix.",
+      "tags": ["barrel", "exports", "comparison"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/law/ArticleCard.tsx",
+      "type": "file",
+      "name": "ArticleCard.tsx",
+      "filePath": "src/components/law/ArticleCard.tsx",
+      "summary": "Komponen kartu pasal interaktif yang menampilkan isi pasal, ayat, kata kunci, penandaan warna (highlight), catatan, dan tombol sitasi.",
+      "tags": ["component", "article-card", "law-reader", "annotation"],
+      "complexity": "complex",
+      "languageNotes": "Mendukung penyorotan teks berwarna secara reaktif, penyalinan teks ke clipboard, dan pembukaan drawer kajian."
+    },
+    {
+      "id": "function:src/components/law/ArticleCard.tsx:ArticleCard",
+      "type": "function",
+      "name": "ArticleCard",
+      "filePath": "src/components/law/ArticleCard.tsx",
+      "lineRange": [26, 278],
+      "summary": "Merender tampilan kartu pasal hukum lengkap dengan opsi anotasi warna, bookmarking, dan sitasi cepat.",
+      "tags": ["component", "article-card", "annotation-ui"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/law/LawReader.tsx",
+      "type": "file",
+      "name": "LawReader.tsx",
+      "filePath": "src/components/law/LawReader.tsx",
+      "summary": "Tampilan pembaca undang-undang dengan penyaringan pasal internal, navigasi bab, dan informasi metadata peraturan.",
+      "tags": ["component", "law-reader", "navigation", "filtering"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/law/LawReader.tsx:LawReader",
+      "type": "function",
+      "name": "LawReader",
+      "filePath": "src/components/law/LawReader.tsx",
+      "lineRange": [16, 170],
+      "summary": "Mengelola daftar pasal terfilter berdasarkan bab yang dipilih dan kueri pencarian teks internal.",
+      "tags": ["component", "law-reader", "list-view"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/law/TableOfContents.tsx",
+      "type": "file",
+      "name": "TableOfContents.tsx",
+      "filePath": "src/components/law/TableOfContents.tsx",
+      "summary": "Komponen daftar isi hierarkis yang mengelompokkan pasal-pasal berdasarkan bab untuk memudahkan navigasi peraturan.",
+      "tags": ["component", "table-of-contents", "navigation", "law-reader"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/law/TableOfContents.tsx:TableOfContents",
+      "type": "function",
+      "name": "TableOfContents",
+      "filePath": "src/components/law/TableOfContents.tsx",
+      "lineRange": [11, 58],
+      "summary": "Mengekstrak daftar bab unik dari koleksi pasal dan menyediakan tombol pemilih bab aktif.",
+      "tags": ["component", "navigation", "chapter-selector"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/law/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "src/components/law/index.ts",
+      "summary": "Berkas barrel yang mengekspor komponen modul hukum seperti ArticleCard, TableOfContents, dan LawReader.",
+      "tags": ["barrel", "exports", "law-reader"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/layout/Header.tsx",
+      "type": "file",
+      "name": "Header.tsx",
+      "filePath": "src/components/layout/Header.tsx",
+      "summary": "Bilah tajuk aplikasi yang memuat pengaturan preferensi baca (tema, ukuran font, jenis huruf) dan indikator status luring.",
+      "tags": ["component", "layout", "header", "theme-control"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/layout/Header.tsx:Header",
+      "type": "function",
+      "name": "Header",
+      "filePath": "src/components/layout/Header.tsx",
+      "lineRange": [11, 113],
+      "summary": "Merender antarmuka bilah atas dengan tombol pemilih tema tampilan dan pengaturan tipografi pembaca.",
+      "tags": ["component", "header", "settings-ui"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/layout/MobileNav.tsx",
+      "type": "file",
+      "name": "MobileNav.tsx",
+      "filePath": "src/components/layout/MobileNav.tsx",
+      "summary": "Bilah navigasi bawah untuk perangkat bergerak yang menyediakan akses cepat ke tab baca, cari, komparasi, dan meja belajar.",
+      "tags": ["component", "layout", "mobile-nav", "navigation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/layout/MobileNav.tsx:MobileNav",
+      "type": "function",
+      "name": "MobileNav",
+      "filePath": "src/components/layout/MobileNav.tsx",
+      "lineRange": [12, 62],
+      "summary": "Merender deretan ikon navigasi bawah pada layar seluler beserta indikator jumlah bookmark.",
+      "tags": ["component", "navigation", "mobile-ui"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/layout/OfflineBanner.tsx",
+      "type": "file",
+      "name": "OfflineBanner.tsx",
+      "filePath": "src/components/layout/OfflineBanner.tsx",
+      "summary": "Banner notifikasi status luar jaringan yang memberitahu pengguna bahwa aplikasi berjalan dalam mode luring offline-first.",
+      "tags": ["component", "layout", "offline", "pwa"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/layout/OfflineBanner.tsx:OfflineBanner",
+      "type": "function",
+      "name": "OfflineBanner",
+      "filePath": "src/components/layout/OfflineBanner.tsx",
+      "lineRange": [5, 25],
+      "summary": "Menampilkan spanduk peringatan visual ketika koneksi internet terputus menggunakan useOfflineStatus.",
+      "tags": ["component", "banner", "offline-status"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/layout/PwaInstallPrompt.tsx",
+      "type": "file",
+      "name": "PwaInstallPrompt.tsx",
+      "filePath": "src/components/layout/PwaInstallPrompt.tsx",
+      "summary": "Komponen pop-up ajakan instalasi aplikasi web progresif (PWA) untuk pengalaman membaca mandiri secara offline.",
+      "tags": ["component", "layout", "pwa", "install-prompt"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/layout/PwaInstallPrompt.tsx:PwaInstallPrompt",
+      "type": "function",
+      "name": "PwaInstallPrompt",
+      "filePath": "src/components/layout/PwaInstallPrompt.tsx",
+      "lineRange": [6, 53],
+      "summary": "Menangani event interaksi instalasi PWA di peramban dan opsi penutupan prompt oleh pengguna.",
+      "tags": ["component", "pwa", "prompt-ui"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/layout/Sidebar.tsx",
+      "type": "file",
+      "name": "Sidebar.tsx",
+      "filePath": "src/components/layout/Sidebar.tsx",
+      "summary": "Bilah sisi desktop yang menyajikan menu navigasi utama serta katalog lengkap peraturan perundang-undangan.",
+      "tags": ["component", "layout", "sidebar", "navigation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/layout/Sidebar.tsx:Sidebar",
+      "type": "function",
+      "name": "Sidebar",
+      "filePath": "src/components/layout/Sidebar.tsx",
+      "lineRange": [13, 114],
+      "summary": "Merender menu navigasi samping dan daftar undang-undang yang dapat dipilih pada layar desktop.",
+      "tags": ["component", "sidebar", "catalog-menu"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/layout/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "src/components/layout/index.ts",
+      "summary": "Berkas barrel yang mengekspor komponen tata letak termasuk Header, MobileNav, Sidebar, OfflineBanner, dan PwaInstallPrompt.",
+      "tags": ["barrel", "exports", "layout"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/search/FilterChips.tsx",
+      "type": "file",
+      "name": "FilterChips.tsx",
+      "filePath": "src/components/search/FilterChips.tsx",
+      "summary": "Komponen chip filter kategori hukum untuk mempersempit ruang lingkup pencarian pasal berdasarkan bidang hukum.",
+      "tags": ["component", "search", "filter", "chips"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/search/FilterChips.tsx:FilterChips",
+      "type": "function",
+      "name": "FilterChips",
+      "filePath": "src/components/search/FilterChips.tsx",
+      "lineRange": [9, 40],
+      "summary": "Menampilkan tombol filter kategori hukum seperti pidana, perdata, dan tata usaha negara.",
+      "tags": ["component", "filter", "category-chips"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/search/SearchBar.tsx",
+      "type": "file",
+      "name": "SearchBar.tsx",
+      "filePath": "src/components/search/SearchBar.tsx",
+      "summary": "Komponen bilah input pencarian kata kunci atau nomor pasal dengan tombol hapus cepat dan autofokus.",
+      "tags": ["component", "search", "search-bar", "input"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/search/SearchBar.tsx:SearchBar",
+      "type": "function",
+      "name": "SearchBar",
+      "filePath": "src/components/search/SearchBar.tsx",
+      "lineRange": [12, 61],
+      "summary": "Merender formulir input pencarian teks hukum dengan penanganan pembersihan kueri.",
+      "tags": ["component", "search-bar", "input-ui"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/search/SearchResultCard.tsx",
+      "type": "file",
+      "name": "SearchResultCard.tsx",
+      "filePath": "src/components/search/SearchResultCard.tsx",
+      "summary": "Kartu penampil hasil pencarian pasal dengan fitur penyorotan teks kecocokan kueri dan akses anotasi cepat.",
+      "tags": ["component", "search", "result-card", "highlight"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/search/SearchResultCard.tsx:SearchResultCard",
+      "type": "function",
+      "name": "SearchResultCard",
+      "filePath": "src/components/search/SearchResultCard.tsx",
+      "lineRange": [17, 143],
+      "summary": "Merender cuplikan pasal yang cocok dengan kueri dan menyediakan tautan langsung ke pasal penuh.",
+      "tags": ["component", "search-result", "snippet-view"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/search/SearchView.tsx",
+      "type": "file",
+      "name": "SearchView.tsx",
+      "filePath": "src/components/search/SearchView.tsx",
+      "summary": "Tampilan utama mesin pencari hukum yang mengintegrasikan SearchBar, FilterChips, riwayat pencarian, dan daftar hasil.",
+      "tags": ["component", "search", "search-view", "search-engine"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/search/SearchView.tsx:SearchView",
+      "type": "function",
+      "name": "SearchView",
+      "filePath": "src/components/search/SearchView.tsx",
+      "lineRange": [18, 173],
+      "summary": "Mengelola status kueri pencarian, saran istilah hukum, riwayat pencarian lokal, dan merender daftar kartu hasil.",
+      "tags": ["component", "search-view", "query-handler"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/search/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "src/components/search/index.ts",
+      "summary": "Berkas barrel yang mengekspor seluruh komponen pencarian seperti SearchBar, FilterChips, SearchResultCard, dan SearchView.",
+      "tags": ["barrel", "exports", "search"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/study/BookmarkDrawer.tsx",
+      "type": "file",
+      "name": "BookmarkDrawer.tsx",
+      "filePath": "src/components/study/BookmarkDrawer.tsx",
+      "summary": "Laci pengelola bookmark pasal yang memungkinkan penyimpanan ke folder bawaan atau pembuatan folder kustom baru.",
+      "tags": ["component", "study", "bookmark", "drawer"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/study/BookmarkDrawer.tsx:BookmarkDrawer",
+      "type": "function",
+      "name": "BookmarkDrawer",
+      "filePath": "src/components/study/BookmarkDrawer.tsx",
+      "lineRange": [15, 147],
+      "summary": "Merender dialog laci penyimpanan penanda pasal dan manajemen kategori folder pengguna.",
+      "tags": ["component", "bookmark-drawer", "folder-management"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/study/CitationModal.tsx",
+      "type": "file",
+      "name": "CitationModal.tsx",
+      "filePath": "src/components/study/CitationModal.tsx",
+      "summary": "Modal generator sitasi hukum otomatis dalam format APA, MLA, Chicago, dan format Putusan Mahkamah Agung.",
+      "tags": ["component", "study", "citation", "modal"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/study/CitationModal.tsx:CitationModal",
+      "type": "function",
+      "name": "CitationModal",
+      "filePath": "src/components/study/CitationModal.tsx",
+      "lineRange": [16, 129],
+      "summary": "Menghasilkan kutipan akademik dan yuridis berstandar dari data pasal serta memfasilitasi penyalinan cepat.",
+      "tags": ["component", "citation-generator", "modal-ui"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/study/NotesDrawer.tsx",
+      "type": "file",
+      "name": "NotesDrawer.tsx",
+      "filePath": "src/components/study/NotesDrawer.tsx",
+      "summary": "Laci formulir pencatatan analisis hukum pribadi untuk menulis, memperbarui, atau menghapus catatan per pasal.",
+      "tags": ["component", "study", "notes", "drawer"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/study/NotesDrawer.tsx:NotesDrawer",
+      "type": "function",
+      "name": "NotesDrawer",
+      "filePath": "src/components/study/NotesDrawer.tsx",
+      "lineRange": [15, 105],
+      "summary": "Merender editor teks catatan kajian pasal dengan integrasi penyimpanan data pengguna lokal.",
+      "tags": ["component", "notes-editor", "drawer-ui"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/study/StudyDesk.tsx",
+      "type": "file",
+      "name": "StudyDesk.tsx",
+      "filePath": "src/components/study/StudyDesk.tsx",
+      "summary": "Ruang kerja Meja Belajar yang mengorganisasi seluruh bookmark pasal per folder, kumpulan catatan, dan daftar penyorotan warna.",
+      "tags": ["component", "study", "study-desk", "workspace"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/study/StudyDesk.tsx:StudyDesk",
+      "type": "function",
+      "name": "StudyDesk",
+      "filePath": "src/components/study/StudyDesk.tsx",
+      "lineRange": [13, 285],
+      "summary": "Merender antarmuka Meja Belajar dengan navigasi tab untuk bookmark, catatan hukum, dan riwayat highlight.",
+      "tags": ["component", "study-desk", "workspace-ui"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/study/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "src/components/study/index.ts",
+      "summary": "Berkas barrel yang mengekspor seluruh modul studi hukum seperti CitationModal, NotesDrawer, BookmarkDrawer, dan StudyDesk.",
+      "tags": ["barrel", "exports", "study"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/ui/Badge.tsx",
+      "type": "file",
+      "name": "Badge.tsx",
+      "filePath": "src/components/ui/Badge.tsx",
+      "summary": "Komponen UI lencana (Badge) serbaguna yang mendukung berbagai varian warna dan ukuran untuk status atau tag.",
+      "tags": ["component", "ui", "badge", "design-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/ui/Badge.tsx:Badge",
+      "type": "function",
+      "name": "Badge",
+      "filePath": "src/components/ui/Badge.tsx",
+      "lineRange": [10, 37],
+      "summary": "Merender badge elemen teks dengan styling varian warna Tailwind yang fleksibel.",
+      "tags": ["component", "badge", "ui-element"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/App.tsx",
+      "target": "function:src/App.tsx:App",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "function:src/App.tsx:App",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/comparison/KuhpComparisonMatrix.tsx",
+      "target": "function:src/components/comparison/KuhpComparisonMatrix.tsx:KuhpComparisonMatrix",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/comparison/KuhpComparisonMatrix.tsx",
+      "target": "function:src/components/comparison/KuhpComparisonMatrix.tsx:KuhpComparisonMatrix",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/comparison/index.ts",
+      "target": "file:src/components/comparison/KuhpComparisonMatrix.tsx",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:src/components/law/ArticleCard.tsx",
+      "target": "function:src/components/law/ArticleCard.tsx:ArticleCard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/law/ArticleCard.tsx",
+      "target": "function:src/components/law/ArticleCard.tsx:ArticleCard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/law/LawReader.tsx",
+      "target": "function:src/components/law/LawReader.tsx:LawReader",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/law/LawReader.tsx",
+      "target": "function:src/components/law/LawReader.tsx:LawReader",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/law/LawReader.tsx",
+      "target": "file:src/components/law/ArticleCard.tsx",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:src/components/law/TableOfContents.tsx",
+      "target": "function:src/components/law/TableOfContents.tsx:TableOfContents",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/law/TableOfContents.tsx",
+      "target": "function:src/components/law/TableOfContents.tsx:TableOfContents",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/law/index.ts",
+      "target": "file:src/components/law/ArticleCard.tsx",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:src/components/layout/Header.tsx",
+      "target": "function:src/components/layout/Header.tsx:Header",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/layout/Header.tsx",
+      "target": "function:src/components/layout/Header.tsx:Header",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/layout/MobileNav.tsx",
+      "target": "function:src/components/layout/MobileNav.tsx:MobileNav",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/layout/MobileNav.tsx",
+      "target": "function:src/components/layout/MobileNav.tsx:MobileNav",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/layout/OfflineBanner.tsx",
+      "target": "function:src/components/layout/OfflineBanner.tsx:OfflineBanner",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/layout/OfflineBanner.tsx",
+      "target": "function:src/components/layout/OfflineBanner.tsx:OfflineBanner",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/layout/PwaInstallPrompt.tsx",
+      "target": "function:src/components/layout/PwaInstallPrompt.tsx:PwaInstallPrompt",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/layout/PwaInstallPrompt.tsx",
+      "target": "function:src/components/layout/PwaInstallPrompt.tsx:PwaInstallPrompt",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/layout/Sidebar.tsx",
+      "target": "function:src/components/layout/Sidebar.tsx:Sidebar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/layout/Sidebar.tsx",
+      "target": "function:src/components/layout/Sidebar.tsx:Sidebar",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/search/FilterChips.tsx",
+      "target": "function:src/components/search/FilterChips.tsx:FilterChips",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/search/FilterChips.tsx",
+      "target": "function:src/components/search/FilterChips.tsx:FilterChips",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/search/SearchBar.tsx",
+      "target": "function:src/components/search/SearchBar.tsx:SearchBar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/search/SearchBar.tsx",
+      "target": "function:src/components/search/SearchBar.tsx:SearchBar",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/search/SearchResultCard.tsx",
+      "target": "function:src/components/search/SearchResultCard.tsx:SearchResultCard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/search/SearchResultCard.tsx",
+      "target": "function:src/components/search/SearchResultCard.tsx:SearchResultCard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/search/SearchView.tsx",
+      "target": "function:src/components/search/SearchView.tsx:SearchView",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/search/SearchView.tsx",
+      "target": "function:src/components/search/SearchView.tsx:SearchView",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/search/SearchView.tsx",
+      "target": "file:src/components/search/SearchBar.tsx",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:src/components/search/SearchView.tsx",
+      "target": "file:src/components/search/FilterChips.tsx",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:src/components/search/SearchView.tsx",
+      "target": "file:src/components/search/SearchResultCard.tsx",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:src/components/study/BookmarkDrawer.tsx",
+      "target": "function:src/components/study/BookmarkDrawer.tsx:BookmarkDrawer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/study/BookmarkDrawer.tsx",
+      "target": "function:src/components/study/BookmarkDrawer.tsx:BookmarkDrawer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/study/CitationModal.tsx",
+      "target": "function:src/components/study/CitationModal.tsx:CitationModal",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/study/CitationModal.tsx",
+      "target": "function:src/components/study/CitationModal.tsx:CitationModal",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/study/NotesDrawer.tsx",
+      "target": "function:src/components/study/NotesDrawer.tsx:NotesDrawer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/study/NotesDrawer.tsx",
+      "target": "function:src/components/study/NotesDrawer.tsx:NotesDrawer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/study/StudyDesk.tsx",
+      "target": "function:src/components/study/StudyDesk.tsx:StudyDesk",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/study/StudyDesk.tsx",
+      "target": "function:src/components/study/StudyDesk.tsx:StudyDesk",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/ui/Badge.tsx",
+      "target": "function:src/components/ui/Badge.tsx:Badge",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:src/components/ui/Badge.tsx",
+      "target": "function:src/components/ui/Badge.tsx:Badge",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

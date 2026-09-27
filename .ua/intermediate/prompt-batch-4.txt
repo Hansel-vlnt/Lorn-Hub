@@ -1,0 +1,42 @@
+Analyze these files and produce GraphNode and GraphEdge objects.
+Project root: d:/Project/Lorn-Hub
+Project: Lorn-Hub — Asisten & Kompilasi Hukum Indonesia (PWA Offline-First)
+Languages: typescript, javascript, json, html, css, markdown
+Batch: 4/5
+Skill directory: C:/Users/harla/.gemini/config/plugins/understand-anything-plugin/skills/understand
+Output: write to d:/Project/Lorn-Hub/.ua/intermediate/batch-4.json
+
+> **Language directive**: Generate all textual content (summaries, descriptions, tags, titles, languageNotes, languageLesson) in **Indonesian** (Bahasa Indonesia). Maintain technical accuracy while using natural, native-level phrasing in Indonesian. Keep technical terms in English when no standard translation exists (e.g., "middleware", "hook", "barrel", "state", "props").
+
+Pre-resolved import data for this batch:
+{"src/components/ui/Button.tsx":[],"src/components/ui/Modal.tsx":[],"src/components/ui/Tabs.tsx":[],"src/components/ui/Toast.tsx":[],"src/components/ui/index.ts":[],"src/context/LawContext.tsx":[],"src/context/ThemeContext.tsx":[],"src/context/UserDataContext.tsx":[],"src/context/index.ts":[],"src/data/comparisons.ts":[],"src/data/index.ts":[],"src/data/lawsMetadata.ts":[],"src/hooks/index.ts":[],"src/hooks/useOfflineStatus.ts":[],"src/hooks/usePWAInstall.ts":[],"src/hooks/useSearch.ts":[],"src/index.css":[],"src/main.tsx":[],"src/services/citationGenerator.ts":[],"src/services/index.ts":[],"src/services/searchEngine.ts":[],"src/services/storageService.ts":[],"src/types/index.ts":[],"src/types/law.ts":[],"src/types/search.ts":[]}
+
+Cross-batch neighbors with their exported symbols:
+{}
+
+Files to analyze in this batch:
+1. src/components/ui/Button.tsx (57 lines, language: typescript, fileCategory: code)
+2. src/components/ui/Modal.tsx (86 lines, language: typescript, fileCategory: code)
+3. src/components/ui/Tabs.tsx (55 lines, language: typescript, fileCategory: code)
+4. src/components/ui/Toast.tsx (55 lines, language: typescript, fileCategory: code)
+5. src/components/ui/index.ts (5 lines, language: typescript, fileCategory: code)
+6. src/context/LawContext.tsx (117 lines, language: typescript, fileCategory: code)
+7. src/context/ThemeContext.tsx (75 lines, language: typescript, fileCategory: code)
+8. src/context/UserDataContext.tsx (127 lines, language: typescript, fileCategory: code)
+9. src/context/index.ts (3 lines, language: typescript, fileCategory: code)
+10. src/data/comparisons.ts (110 lines, language: typescript, fileCategory: code)
+11. src/data/index.ts (2 lines, language: typescript, fileCategory: code)
+12. src/data/lawsMetadata.ts (108 lines, language: typescript, fileCategory: code)
+13. src/hooks/index.ts (3 lines, language: typescript, fileCategory: code)
+14. src/hooks/useOfflineStatus.ts (35 lines, language: typescript, fileCategory: code)
+15. src/hooks/usePWAInstall.ts (58 lines, language: typescript, fileCategory: code)
+16. src/hooks/useSearch.ts (58 lines, language: typescript, fileCategory: code)
+17. src/index.css (38 lines, language: css, fileCategory: markup)
+18. src/main.tsx (19 lines, language: typescript, fileCategory: code)
+19. src/services/citationGenerator.ts (43 lines, language: typescript, fileCategory: code)
+20. src/services/index.ts (3 lines, language: typescript, fileCategory: code)
+21. src/services/searchEngine.ts (129 lines, language: typescript, fileCategory: code)
+22. src/services/storageService.ts (131 lines, language: typescript, fileCategory: code)
+23. src/types/index.ts (3 lines, language: typescript, fileCategory: code)
+24. src/types/law.ts (67 lines, language: typescript, fileCategory: code)
+25. src/types/search.ts (22 lines, language: typescript, fileCategory: code)

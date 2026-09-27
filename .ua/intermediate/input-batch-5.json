@@ -1,0 +1,28 @@
+{
+  "projectRoot": "d:/Project/Lorn-Hub",
+  "batchFiles": [
+    {
+      "path": "src/types/user.ts",
+      "language": "typescript",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tailwind.config.js",
+      "language": "javascript",
+      "sizeLines": 37,
+      "fileCategory": "code"
+    },
+    {
+      "path": "vite.config.ts",
+      "language": "typescript",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "src/types/user.ts": [],
+    "tailwind.config.js": [],
+    "vite.config.ts": []
+  }
+}

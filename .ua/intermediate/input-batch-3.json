@@ -1,0 +1,182 @@
+{
+  "projectRoot": "d:/Project/Lorn-Hub",
+  "batchFiles": [
+    {
+      "path": "postcss.config.js",
+      "language": "javascript",
+      "sizeLines": 6,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/App.tsx",
+      "language": "typescript",
+      "sizeLines": 132,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/comparison/KuhpComparisonMatrix.tsx",
+      "language": "typescript",
+      "sizeLines": 143,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/comparison/index.ts",
+      "language": "typescript",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/law/ArticleCard.tsx",
+      "language": "typescript",
+      "sizeLines": 278,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/law/LawReader.tsx",
+      "language": "typescript",
+      "sizeLines": 170,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/law/TableOfContents.tsx",
+      "language": "typescript",
+      "sizeLines": 58,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/law/index.ts",
+      "language": "typescript",
+      "sizeLines": 3,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/layout/Header.tsx",
+      "language": "typescript",
+      "sizeLines": 113,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/layout/MobileNav.tsx",
+      "language": "typescript",
+      "sizeLines": 62,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/layout/OfflineBanner.tsx",
+      "language": "typescript",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/layout/PwaInstallPrompt.tsx",
+      "language": "typescript",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/layout/Sidebar.tsx",
+      "language": "typescript",
+      "sizeLines": 114,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/layout/index.ts",
+      "language": "typescript",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/search/FilterChips.tsx",
+      "language": "typescript",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/search/SearchBar.tsx",
+      "language": "typescript",
+      "sizeLines": 61,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/search/SearchResultCard.tsx",
+      "language": "typescript",
+      "sizeLines": 143,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/search/SearchView.tsx",
+      "language": "typescript",
+      "sizeLines": 173,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/search/index.ts",
+      "language": "typescript",
+      "sizeLines": 4,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/study/BookmarkDrawer.tsx",
+      "language": "typescript",
+      "sizeLines": 147,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/study/CitationModal.tsx",
+      "language": "typescript",
+      "sizeLines": 129,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/study/NotesDrawer.tsx",
+      "language": "typescript",
+      "sizeLines": 105,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/study/StudyDesk.tsx",
+      "language": "typescript",
+      "sizeLines": 285,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/study/index.ts",
+      "language": "typescript",
+      "sizeLines": 4,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/Badge.tsx",
+      "language": "typescript",
+      "sizeLines": 37,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "postcss.config.js": [],
+    "src/App.tsx": [],
+    "src/components/comparison/KuhpComparisonMatrix.tsx": [],
+    "src/components/comparison/index.ts": [],
+    "src/components/law/ArticleCard.tsx": [],
+    "src/components/law/LawReader.tsx": [],
+    "src/components/law/TableOfContents.tsx": [],
+    "src/components/law/index.ts": [],
+    "src/components/layout/Header.tsx": [],
+    "src/components/layout/MobileNav.tsx": [],
+    "src/components/layout/OfflineBanner.tsx": [],
+    "src/components/layout/PwaInstallPrompt.tsx": [],
+    "src/components/layout/Sidebar.tsx": [],
+    "src/components/layout/index.ts": [],
+    "src/components/search/FilterChips.tsx": [],
+    "src/components/search/SearchBar.tsx": [],
+    "src/components/search/SearchResultCard.tsx": [],
+    "src/components/search/SearchView.tsx": [],
+    "src/components/search/index.ts": [],
+    "src/components/study/BookmarkDrawer.tsx": [],
+    "src/components/study/CitationModal.tsx": [],
+    "src/components/study/NotesDrawer.tsx": [],
+    "src/components/study/StudyDesk.tsx": [],
+    "src/components/study/index.ts": [],
+    "src/components/ui/Badge.tsx": []
+  }
+}

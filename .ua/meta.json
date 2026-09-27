@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "gitCommitHash": "d23f823c991f24fbd27fb7541b1f0974e67b5d2c",
+  "analyzedAt": "2026-09-09T11:43:03.586Z",
+  "totalNodes": 100,
+  "totalEdges": 119,
+  "totalLayers": 5,
+  "totalTourSteps": 10,
+  "outputLanguage": "id"
+}
