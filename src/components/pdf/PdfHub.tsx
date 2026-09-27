@@ -227,15 +227,15 @@ export const PdfHub: React.FC = () => {
       {/* Sidebar for PDF List */}
       <div className="w-full md:w-64 flex-shrink-0 flex flex-col bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
         <div className="p-4 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center">
-          <h2 className="font-semibold text-slate-800 dark:text-slate-200">Dokumen PDF</h2>
-          <label className="cursor-pointer bg-amber-500 hover:bg-amber-600 text-white p-1.5 rounded-lg transition-colors" title="Unggah PDF">
+          <h2 className="font-semibold text-slate-900 dark:text-slate-100">Dokumen PDF</h2>
+          <label className="cursor-pointer bg-amber-600 hover:bg-amber-700 text-white min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg transition-colors" title="Unggah PDF" aria-label="Unggah dokumen PDF">
             <Upload size={18} />
             <input type="file" accept=".pdf" className="hidden" onChange={handleFileUpload} />
           </label>
         </div>
         <div className="flex-1 overflow-y-auto p-2 space-y-1">
           {pdfs.length === 0 ? (
-            <div className="text-center p-4 text-slate-500 text-sm">
+            <div className="text-center p-4 text-slate-600 dark:text-slate-400 text-sm">
               Belum ada PDF. Unggah dokumen untuk mulai membaca.
             </div>
           ) : (
@@ -245,8 +245,8 @@ export const PdfHub: React.FC = () => {
                 onClick={() => handleSelectPdf(pdf.id)}
                 className={`flex items-center justify-between p-2.5 rounded-xl cursor-pointer transition-colors ${
                   selectedPdfId === pdf.id 
-                    ? 'bg-amber-50 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-500/30'
-                    : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800'
+                    ? 'bg-amber-50 dark:bg-amber-500/10 text-amber-800 dark:text-amber-400 border border-amber-300 dark:border-amber-500/30'
+                    : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
                 }`}
               >
                 <div className="flex items-center gap-2 overflow-hidden">
@@ -255,7 +255,8 @@ export const PdfHub: React.FC = () => {
                 </div>
                 <button 
                   onClick={(e) => handleDeletePdf(e, pdf.id)}
-                  className="p-1 text-slate-400 hover:text-red-500 transition-colors"
+                  className="min-h-[44px] min-w-[44px] flex items-center justify-center text-slate-400 hover:text-rose-600 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors"
+                  aria-label={`Hapus ${pdf.name}`}
                 >
                   <Trash2 size={14} />
                 </button>
@@ -275,18 +276,20 @@ export const PdfHub: React.FC = () => {
                 {selectedPdfName}
               </div>
               
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5">
                 <button 
                   onClick={() => setScale(Math.max(0.5, scale - 0.2))}
-                  className="p-1.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800"
+                  className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors"
                   title="Perkecil"
+                  aria-label="Perkecil tampilan"
                 >
                   <ZoomOut size={18} />
                 </button>
                 <button 
                   onClick={() => setScale(Math.min(3, scale + 0.2))}
-                  className="p-1.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800"
+                  className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors"
                   title="Perbesar"
+                  aria-label="Perbesar tampilan"
                 >
                   <ZoomIn size={18} />
                 </button>
@@ -294,27 +297,29 @@ export const PdfHub: React.FC = () => {
                 <button 
                   onClick={() => setPageNum(Math.max(1, pageNum - 1))}
                   disabled={pageNum <= 1}
-                  className="p-1.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-50"
+                  className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 disabled:opacity-40 transition-colors"
+                  aria-label="Halaman sebelumnya"
                 >
                   <ChevronLeft size={20} />
                 </button>
-                <span className="text-sm text-slate-600 dark:text-slate-400">
+                <span className="text-sm font-medium text-slate-700 dark:text-slate-300 px-1">
                   {pageNum} / {numPages}
                 </span>
                 <button 
                   onClick={() => setPageNum(Math.min(numPages, pageNum + 1))}
                   disabled={pageNum >= numPages}
-                  className="p-1.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-50"
+                  className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 disabled:opacity-40 transition-colors"
+                  aria-label="Halaman berikutnya"
                 >
                   <ChevronRight size={20} />
                 </button>
               </div>
 
-              <div className="flex items-center gap-2 bg-slate-50 dark:bg-slate-800 rounded-lg p-1 border border-slate-200 dark:border-slate-700">
+              <div className="flex items-center gap-1 bg-slate-50 dark:bg-slate-800 rounded-lg p-1 border border-slate-200 dark:border-slate-700">
                 <input
                   type="text"
                   placeholder={isSearching ? "Mengindeks..." : "Cari di PDF..."}
-                  className="bg-transparent border-none text-sm px-2 py-1 outline-none text-slate-800 dark:text-slate-200 w-32 md:w-48"
+                  className="bg-transparent border-none text-sm px-2 py-1 outline-none text-slate-800 dark:text-slate-200 w-32 md:w-48 placeholder-slate-400"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
@@ -323,7 +328,8 @@ export const PdfHub: React.FC = () => {
                 <button 
                   onClick={handleSearch}
                   disabled={isSearching}
-                  className="p-1 text-slate-500 hover:text-amber-500 transition-colors"
+                  className="min-h-[44px] min-w-[44px] flex items-center justify-center text-slate-500 hover:text-amber-600 dark:hover:text-amber-400 rounded-md transition-colors"
+                  aria-label="Cari kata dalam PDF"
                 >
                   <Search size={16} />
                 </button>
@@ -335,10 +341,14 @@ export const PdfHub: React.FC = () => {
               {searchResults.length > 0 && (
                 <div className="w-64 border-r border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 flex flex-col">
                   <div className="p-3 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center bg-white dark:bg-slate-800/50">
-                    <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">
+                    <span className="text-sm font-semibold text-slate-800 dark:text-slate-200">
                       {searchResults.length} Hasil
                     </span>
-                    <button onClick={() => setSearchResults([])} className="text-slate-400 hover:text-slate-700">
+                    <button 
+                      onClick={() => setSearchResults([])} 
+                      className="min-h-[44px] min-w-[44px] flex items-center justify-center text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 rounded-md"
+                      aria-label="Tutup hasil pencarian"
+                    >
                       <X size={16} />
                     </button>
                   </div>
@@ -349,7 +359,7 @@ export const PdfHub: React.FC = () => {
                         onClick={() => setPageNum(res.page)}
                         className="p-3 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 cursor-pointer hover:border-amber-400 transition-colors"
                       >
-                        <div className="text-xs font-semibold text-amber-600 dark:text-amber-400 mb-1">
+                        <div className="text-xs font-semibold text-amber-800 dark:text-amber-400 mb-1">
                           Halaman {res.page}
                         </div>
                         <div className="text-xs text-slate-600 dark:text-slate-400 line-clamp-3">
@@ -364,15 +374,15 @@ export const PdfHub: React.FC = () => {
               <div className="flex-1 overflow-auto bg-slate-100 dark:bg-slate-950 flex justify-center p-4">
                 <canvas 
                   ref={canvasRef} 
-                  className="shadow-lg bg-white rounded"
+                  className="shadow-md bg-white rounded border border-slate-200 dark:border-slate-800"
                 />
               </div>
             </div>
           </>
         ) : (
-          <div className="flex-1 flex flex-col items-center justify-center text-slate-400 p-8 text-center">
+          <div className="flex-1 flex flex-col items-center justify-center text-slate-600 dark:text-slate-400 p-8 text-center">
             <FileText size={64} className="mb-4 opacity-20" />
-            <h3 className="text-lg font-medium text-slate-600 dark:text-slate-300 mb-2">Belum ada dokumen yang dipilih</h3>
+            <h3 className="text-lg font-medium text-slate-800 dark:text-slate-200 mb-2">Belum ada dokumen yang dipilih</h3>
             <p className="text-sm">Pilih PDF dari sidebar atau unggah dokumen baru untuk mulai membaca.</p>
           </div>
         )}

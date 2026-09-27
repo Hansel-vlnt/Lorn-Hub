@@ -5,7 +5,7 @@ import { SearchBar } from './SearchBar';
 import { FilterChips } from './FilterChips';
 import { SearchResultCard } from './SearchResultCard';
 import { Article } from '../../types';
-import { History, Zap, BookOpen, AlertCircle } from 'lucide-react';
+import { History, Search, BookOpen, AlertCircle } from 'lucide-react';
 import { storageService } from '../../services/storageService';
 
 interface SearchViewProps {
@@ -40,15 +40,15 @@ export const SearchView: React.FC<SearchViewProps> = ({
       {/* Search Header Hero */}
       <div className="text-center space-y-2 py-4">
         <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-          Pencarian Kilat Seluruh Pasal Hukum
+          Pencarian Naskah & Pasal Regulasi
         </h1>
-        <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-lg mx-auto">
-          Cari nomor pasal, nama delik, unsur pidana/perdata, atau kata kunci kasus secara instan (100% offline).
+        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-lg mx-auto">
+          Cari nomor pasal, nama delik, unsur pidana/perdata, atau kata kunci kasus secara instan tanpa memerlukan koneksi internet.
         </p>
       </div>
 
-      {/* Search Bar & Filters */}
-      <div className="space-y-3 sticky top-16 z-20 bg-slate-50/90 dark:bg-slate-950/90 backdrop-blur-md pt-2 pb-1">
+      {/* Search Bar & Filters (Solid background, no glassmorphism blur) */}
+      <div className="space-y-3 sticky top-16 z-20 bg-slate-50 dark:bg-slate-950 pt-2 pb-2 border-b border-slate-200/60 dark:border-slate-800/60">
         <SearchBar
           value={query}
           onChange={setQuery}
@@ -63,17 +63,17 @@ export const SearchView: React.FC<SearchViewProps> = ({
       {!query && (
         <div className="space-y-6 pt-4">
           {/* Quick Search Chips */}
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 space-y-3">
-            <div className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
-              <Zap size={14} className="text-amber-500" />
-              <span>Pencarian Populer Mahasiswa Hukum</span>
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 space-y-3 shadow-xs">
+            <div className="flex items-center gap-2 text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider">
+              <Search size={14} className="text-amber-700 dark:text-amber-400" />
+              <span>Pencarian Populer Bidang Hukum</span>
             </div>
             <div className="flex items-center gap-2 flex-wrap">
               {suggestedQueries.map((s, idx) => (
                 <button
                   key={idx}
                   onClick={() => setQuery(s.q)}
-                  className="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-amber-500/10 hover:text-amber-600 dark:hover:text-amber-400 border border-slate-200 dark:border-slate-700 text-xs font-medium text-slate-700 dark:text-slate-300 transition-colors"
+                  className="min-h-[44px] px-3.5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-amber-500/15 hover:text-amber-800 dark:hover:text-amber-300 border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-300 transition-colors flex items-center"
                 >
                   {s.label}
                 </button>
@@ -83,10 +83,10 @@ export const SearchView: React.FC<SearchViewProps> = ({
 
           {/* Search History */}
           {searchHistory.length > 0 && (
-            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 space-y-3">
+            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 space-y-3 shadow-xs">
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
-                  <History size={14} className="text-slate-400" />
+                <div className="flex items-center gap-2 text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider">
+                  <History size={14} className="text-slate-500 dark:text-slate-400" />
                   <span>Riwayat Pencarian Terakhir</span>
                 </div>
                 <button
@@ -94,7 +94,7 @@ export const SearchView: React.FC<SearchViewProps> = ({
                     storageService.clearSearchHistory();
                     setQuery('');
                   }}
-                  className="text-xs text-slate-400 hover:text-rose-500"
+                  className="min-h-[44px] px-2.5 text-xs font-semibold text-slate-600 hover:text-rose-600 dark:text-slate-400 dark:hover:text-rose-400 flex items-center"
                 >
                   Bersihkan
                 </button>
@@ -105,22 +105,23 @@ export const SearchView: React.FC<SearchViewProps> = ({
                   <button
                     key={item.id}
                     onClick={() => setQuery(item.query)}
-                    className="px-3 py-1 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 hover:text-amber-500 transition-colors"
+                    className="min-h-[44px] px-3.5 py-2 rounded-lg bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs font-medium text-slate-700 dark:text-slate-300 hover:text-amber-800 dark:hover:text-amber-300 hover:border-amber-500/30 transition-colors flex items-center gap-1.5"
                   >
-                    🔍 {item.query}
+                    <Search size={12} className="text-slate-500 dark:text-slate-400" />
+                    <span>{item.query}</span>
                   </button>
                 ))}
               </div>
             </div>
           )}
 
-          {/* Database stats */}
-          <div className="p-4 rounded-2xl bg-amber-500/5 dark:bg-amber-400/5 border border-amber-500/20 flex items-center justify-between text-xs text-slate-600 dark:text-slate-400">
+          {/* Database stats with honest microcopy (Directive 3) */}
+          <div className="p-4 rounded-2xl bg-amber-500/5 dark:bg-amber-400/5 border border-amber-500/30 flex items-center justify-between text-xs text-slate-700 dark:text-slate-300 shadow-xs">
             <span className="flex items-center gap-2">
-              <BookOpen size={16} className="text-amber-500" />
-              <span>Total Indeks Database: <strong>{allArticles.length}</strong> Pasal Hukum</span>
+              <BookOpen size={16} className="text-amber-700 dark:text-amber-400" />
+              <span>Dataset Terpilih (<strong>{allArticles.length}</strong> Pasal Tersedia)</span>
             </span>
-            <span className="text-amber-600 dark:text-amber-400 font-semibold">Offline Ready ⚡</span>
+            <span className="text-amber-800 dark:text-amber-300 font-bold">Tersimpan Offline</span>
           </div>
         </div>
       )}
@@ -128,12 +129,12 @@ export const SearchView: React.FC<SearchViewProps> = ({
       {/* Results Header */}
       {query && (
         <div className="flex items-center justify-between px-1">
-          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+          <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300">
             Ditemukan <strong className="text-slate-900 dark:text-white">{resultCount}</strong> hasil untuk "
-            <span className="text-amber-600 dark:text-amber-400 font-semibold">{query}</span>"
+            <span className="text-amber-800 dark:text-amber-300 font-bold">{query}</span>"
           </p>
           {isSearching && (
-            <span className="text-xs text-amber-500 animate-pulse font-medium">
+            <span className="text-xs text-amber-700 dark:text-amber-400 font-semibold">
               Mencari...
             </span>
           )}
@@ -149,7 +150,7 @@ export const SearchView: React.FC<SearchViewProps> = ({
               <h3 className="text-sm font-bold text-slate-700 dark:text-slate-300">
                 Tidak ada pasal yang cocok
               </h3>
-              <p className="text-xs text-slate-500 max-w-sm mx-auto">
+              <p className="text-xs text-slate-600 dark:text-slate-400 max-w-sm mx-auto">
                 Coba gunakan nomor pasal saja (misal: "362") atau kata kunci lebih umum seperti "pencurian" atau "ganti rugi".
               </p>
             </div>

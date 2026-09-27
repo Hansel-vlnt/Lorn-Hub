@@ -45,7 +45,7 @@ export const CitationModal: React.FC<CitationModalProps> = ({
         {/* Footnote FH Standar */}
         <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
           <div className="flex items-center justify-between mb-1.5">
-            <span className="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
+            <span className="text-xs font-bold text-amber-700 dark:text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
               <Quote size={13} />
               Format Footnote (Standar FH Indonesia)
             </span>

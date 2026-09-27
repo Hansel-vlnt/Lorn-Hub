@@ -11,13 +11,13 @@ export const OfflineBanner: React.FC = () => {
     return (
       <div className="bg-amber-500 text-slate-950 px-4 py-2 text-xs font-semibold flex items-center justify-center gap-2 shadow-inner">
         <WifiOff size={16} />
-        <span>Mode Offline Aktif — Seluruh dataset pasal & pencarian tetap berfungsi normal tanpa internet.</span>
+        <span>Mode Offline Aktif: Seluruh dataset pasal dan pencarian tetap berfungsi normal tanpa internet.</span>
       </div>
     );
   }
 
   return (
-    <div className="bg-emerald-500 text-white px-4 py-2 text-xs font-semibold flex items-center justify-center gap-2 transition-all">
+    <div className="bg-emerald-600 text-white px-4 py-2 text-xs font-semibold flex items-center justify-center gap-2 transition-all">
       <Wifi size={16} />
       <span>Koneksi kembali terhubung!</span>
     </div>

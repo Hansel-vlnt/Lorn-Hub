@@ -27,12 +27,12 @@ export function generateLegalCitation(article: Article, lawMetadata?: LawMetadat
   const inText = `(${singkatan || regulasi}, Pasal ${nomorPasal})`;
 
   // Format Ringkas & WhatsApp Share
-  const shareableText = `📌 *${singkatan} - Pasal ${nomorPasal}*
+  const shareableText = `*${singkatan ? `${singkatan} - ` : ''}Pasal ${nomorPasal}*
 ${article.judul ? `_${article.judul}_\n` : ''}
 "${article.isi}"
-${article.penjelasan ? `\n💡 *Penjelasan:* ${article.penjelasan}` : ''}
+${article.penjelasan ? `\nPenjelasan: ${article.penjelasan}` : ''}
 
-🔗 Dikutip via Lorn-Hub (Kompilasi Hukum Indonesia Offline)`;
+Dikutip dari Lorn-Hub (Kompilasi Hukum Indonesia)`;
 
   return {
     footnote,

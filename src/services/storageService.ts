@@ -99,6 +99,16 @@ export const storageService = {
     this.saveStudyData(current);
   },
 
+  addCustomFolder(folderName: string): void {
+    const trimmed = folderName.trim();
+    if (!trimmed) return;
+    const current = this.getStudyData();
+    if (!current.customFolders.includes(trimmed)) {
+      current.customFolders.push(trimmed);
+      this.saveStudyData(current);
+    }
+  },
+
   getSearchHistory(): SearchHistoryItem[] {
     try {
       const data = localStorage.getItem(STORAGE_KEYS.SEARCH_HISTORY);

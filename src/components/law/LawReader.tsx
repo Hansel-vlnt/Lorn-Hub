@@ -3,7 +3,7 @@ import { useLaw } from '../../context/LawContext';
 import { ArticleCard } from './ArticleCard';
 import { TableOfContents } from './TableOfContents';
 import { Article } from '../../types';
-import { Search, Book, Sparkles, AlertCircle } from 'lucide-react';
+import { Search, Book, ShieldCheck, AlertCircle } from 'lucide-react';
 import { Badge } from '../ui/Badge';
 
 interface LawReaderProps {
@@ -41,8 +41,8 @@ export const LawReader: React.FC<LawReaderProps> = ({
   if (isLoading) {
     return (
       <div className="flex flex-col items-center justify-center py-20 space-y-4">
-        <div className="w-12 h-12 border-4 border-amber-500 border-t-transparent rounded-full animate-spin" />
-        <p className="text-sm font-medium text-slate-500">Memuat teks undang-undang...</p>
+        <div className="w-12 h-12 border-4 border-amber-600 border-t-transparent rounded-full animate-spin" />
+        <p className="text-sm font-medium text-slate-600 dark:text-slate-400">Memuat teks undang-undang...</p>
       </div>
     );
   }
@@ -52,7 +52,7 @@ export const LawReader: React.FC<LawReaderProps> = ({
       <div className="text-center py-20 space-y-3">
         <AlertCircle className="mx-auto text-rose-500" size={36} />
         <h3 className="text-base font-bold text-slate-800 dark:text-slate-200">Gagal Memuat Regulasi</h3>
-        <p className="text-xs text-slate-500">{error || 'Dataset tidak ditemukan'}</p>
+        <p className="text-xs text-slate-600 dark:text-slate-400">{error || 'Dataset tidak ditemukan'}</p>
       </div>
     );
   }
@@ -60,12 +60,10 @@ export const LawReader: React.FC<LawReaderProps> = ({
   return (
     <div className="space-y-6 max-w-5xl mx-auto pb-20">
       {/* Law Hero Header */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-850 to-slate-950 text-white border border-slate-800 shadow-xl relative overflow-hidden">
-        <div className="absolute right-0 top-0 w-64 h-64 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
-
+      <div className="p-6 sm:p-8 rounded-2xl bg-slate-900 text-white border border-slate-800 shadow-xs relative overflow-hidden">
         <div className="relative z-10 space-y-3">
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="px-2.5 py-1 rounded-md bg-amber-500 text-slate-950 text-xs font-bold uppercase tracking-wider">
+            <span className="px-2.5 py-1 rounded-md bg-amber-600 text-white dark:bg-amber-500 dark:text-slate-950 text-xs font-bold uppercase tracking-wider shadow-xs">
               {currentLawMetadata.singkatan}
             </span>
             <Badge variant="secondary" size="sm">
@@ -84,13 +82,13 @@ export const LawReader: React.FC<LawReaderProps> = ({
             {currentLawMetadata.deskripsi}
           </p>
 
-          <div className="flex items-center gap-4 pt-2 text-xs text-slate-400">
+          <div className="flex items-center gap-4 pt-2 text-xs text-slate-300">
             <span className="flex items-center gap-1.5">
               <Book size={14} className="text-amber-400" />
-              <span>{currentArticles.length} Pasal Tersedia</span>
+              <span>Dataset Terpilih ({currentArticles.length} Pasal Tersedia)</span>
             </span>
             <span className="flex items-center gap-1.5">
-              <Sparkles size={14} className="text-emerald-400" />
+              <ShieldCheck size={14} className="text-emerald-400" />
               <span>Teks Resmi & Anotasi</span>
             </span>
           </div>
@@ -100,20 +98,20 @@ export const LawReader: React.FC<LawReaderProps> = ({
       {/* Filter / Search within Current Law */}
       <div className="flex flex-col sm:flex-row gap-3 items-center">
         <div className="relative flex-1 w-full">
-          <Search size={16} className="absolute left-3.5 top-3.5 text-slate-400" />
+          <Search size={16} className="absolute left-3.5 top-3.5 text-slate-500 dark:text-slate-400" />
           <input
             type="text"
             value={inLawFilterQuery}
             onChange={(e) => setInLawFilterQuery(e.target.value)}
             placeholder={`Saring pasal dalam ${currentLawMetadata.singkatan}...`}
-            className="w-full pl-10 pr-4 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-xs sm:text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
+            className="w-full min-h-[44px] pl-10 pr-4 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-xs sm:text-sm text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500/50"
           />
         </div>
 
         {selectedBab && (
           <button
             onClick={() => setSelectedBab('')}
-            className="text-xs px-3 py-2 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 whitespace-nowrap"
+            className="min-h-[44px] text-xs px-3.5 py-2 rounded-xl bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/30 font-medium whitespace-nowrap"
           >
             Reset Filter Bab ✕
           </button>

@@ -3,7 +3,7 @@ import { Article } from '../../types';
 import { useUserData } from '../../context/UserDataContext';
 import { Modal } from '../ui/Modal';
 import { Button } from '../ui/Button';
-import { Bookmark, FolderPlus, Check } from 'lucide-react';
+import { Bookmark, FolderPlus, Check, Folder } from 'lucide-react';
 
 interface BookmarkDrawerProps {
   isOpen: boolean;
@@ -18,7 +18,7 @@ export const BookmarkDrawer: React.FC<BookmarkDrawerProps> = ({
   article,
   onShowToast,
 }) => {
-  const { studyData, addBookmark, removeBookmark, isBookmarked } = useUserData();
+  const { studyData, addBookmark, removeBookmark, isBookmarked, addCustomFolder } = useUserData();
   const [selectedFolder, setSelectedFolder] = useState<string>('Umum');
   const [customFolderInput, setCustomFolderInput] = useState<string>('');
   const [isAddingFolder, setIsAddingFolder] = useState<boolean>(false);
@@ -47,7 +47,7 @@ export const BookmarkDrawer: React.FC<BookmarkDrawerProps> = ({
   const handleAddCustomFolder = () => {
     if (!customFolderInput.trim()) return;
     const folder = customFolderInput.trim();
-    studyData.customFolders.push(folder);
+    addCustomFolder(folder);
     setSelectedFolder(folder);
     setCustomFolderInput('');
     setIsAddingFolder(false);
@@ -89,14 +89,17 @@ export const BookmarkDrawer: React.FC<BookmarkDrawerProps> = ({
                     <button
                       key={folder}
                       onClick={() => setSelectedFolder(folder)}
-                      className={`w-full flex items-center justify-between p-2.5 rounded-xl text-xs font-medium border transition-all ${
+                      className={`w-full flex items-center justify-between p-2.5 min-h-[44px] rounded-xl text-xs font-medium border transition-all ${
                         isSelected
                           ? 'bg-amber-500/10 border-amber-500/40 text-amber-700 dark:text-amber-400 font-bold'
                           : 'border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
                       }`}
                     >
-                      <span>📁 {folder}</span>
-                      {isSelected && <Check size={14} className="text-amber-500" />}
+                      <span className="flex items-center gap-2">
+                        <Folder size={14} className="text-amber-600 dark:text-amber-400 flex-shrink-0" />
+                        {folder}
+                      </span>
+                      {isSelected && <Check size={14} className="text-amber-600 dark:text-amber-400" />}
                     </button>
                   );
                 })}
@@ -111,7 +114,7 @@ export const BookmarkDrawer: React.FC<BookmarkDrawerProps> = ({
                   value={customFolderInput}
                   onChange={(e) => setCustomFolderInput(e.target.value)}
                   placeholder="Nama folder baru..."
-                  className="flex-1 px-3 py-1.5 text-xs rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 focus:outline-none focus:ring-1 focus:ring-amber-500"
+                  className="flex-1 px-3 py-2 text-xs rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 focus:outline-none focus:ring-1 focus:ring-amber-500"
                   autoFocus
                 />
                 <Button size="sm" variant="primary" onClick={handleAddCustomFolder}>
@@ -121,7 +124,7 @@ export const BookmarkDrawer: React.FC<BookmarkDrawerProps> = ({
             ) : (
               <button
                 onClick={() => setIsAddingFolder(true)}
-                className="w-full flex items-center justify-center gap-1.5 text-xs font-medium text-amber-600 dark:text-amber-400 hover:underline pt-1"
+                className="w-full min-h-[44px] flex items-center justify-center gap-1.5 text-xs font-medium text-amber-700 dark:text-amber-400 hover:underline pt-1"
               >
                 <FolderPlus size={14} />
                 <span>Buat Folder Baru</span>

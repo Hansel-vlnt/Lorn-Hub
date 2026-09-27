@@ -16,6 +16,7 @@ interface UserDataContextType {
   setHighlight: (articleId: string, lawId: string, pasalNomor: string, color: HighlightColor) => HighlightItem;
   removeHighlight: (articleId: string) => void;
   getHighlight: (articleId: string) => HighlightItem | undefined;
+  addCustomFolder: (folderName: string) => void;
 }
 
 const UserDataContext = createContext<UserDataContextType | undefined>(undefined);
@@ -95,6 +96,11 @@ export const UserDataProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     [studyData.highlights]
   );
 
+  const addCustomFolder = useCallback((folderName: string) => {
+    storageService.addCustomFolder(folderName);
+    setStudyData(storageService.getStudyData());
+  }, []);
+
   return (
     <UserDataContext.Provider
       value={{
@@ -111,6 +117,7 @@ export const UserDataProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         setHighlight,
         removeHighlight,
         getHighlight,
+        addCustomFolder,
       }}
     >
       {children}
