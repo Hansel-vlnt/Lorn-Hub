@@ -13,7 +13,6 @@ import {
   Check,
   Tag,
 } from 'lucide-react';
-import { Badge } from '../ui/Badge';
 
 interface ArticleCardProps {
   article: Article;
@@ -88,27 +87,27 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
       className={`p-5 sm:p-6 rounded-2xl border transition-all shadow-xs hover:border-slate-300 dark:hover:border-slate-700 ${highlightBg} space-y-4`}
     >
       {/* Article Header */}
-      <div className="flex items-start justify-between gap-3">
-        <div>
+      <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 pb-3 border-b border-slate-100 dark:border-slate-800/80">
+        <div className="space-y-1 min-w-0 flex-1">
           {article.bab && (
-            <p className="text-xs font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wider mb-1">
+            <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
               {article.bab}
             </p>
           )}
-          <div className="flex items-center gap-2 flex-wrap">
+          <div className="flex items-baseline gap-2 flex-wrap">
             <h3 className="text-lg font-bold text-slate-900 dark:text-white">
               Pasal {article.nomor}
             </h3>
             {article.judul && (
-              <Badge variant="secondary" size="md">
-                {article.judul}
-              </Badge>
+              <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">
+                ({article.judul})
+              </span>
             )}
           </div>
         </div>
 
         {/* Quick Toolbar (44x44px minimum tap targets for accessibility) */}
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1 self-start sm:self-auto flex-wrap sm:flex-nowrap pt-1 sm:pt-0">
           {/* Stabilo / Highlight Picker */}
           <div className="relative">
             <button

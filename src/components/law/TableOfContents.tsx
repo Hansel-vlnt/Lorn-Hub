@@ -45,7 +45,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({
         </div>
       </button>
 
-      <div className={`space-y-1 max-h-72 overflow-y-auto pr-1 ${isExpanded ? 'block' : 'hidden lg:block'}`}>
+      <div className={`space-y-1 max-h-72 lg:max-h-[calc(100vh-14rem)] overflow-y-auto pr-1 ${isExpanded ? 'block' : 'hidden lg:block'}`}>
         {chapters.map((ch) => {
           const isSelected = (ch === 'Semua Bab' && !selectedBab) || selectedBab === ch;
           const articleCount = ch === 'Semua Bab' ? articles.length : articles.filter((a) => a.bab === ch).length;
@@ -57,14 +57,16 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({
                 onSelectBab(ch === 'Semua Bab' ? '' : ch);
                 setIsExpanded(false);
               }}
-              className={`w-full min-h-[44px] text-left px-3 py-2 rounded-xl text-xs font-medium transition-all flex items-center justify-between border ${
+              className={`w-full min-h-[44px] text-left px-3 py-2 rounded-xl text-xs font-medium transition-all flex items-start justify-between gap-2 border ${
                 isSelected
-                  ? 'bg-amber-500/15 text-amber-800 dark:text-amber-300 font-bold border-amber-500/30'
+                  ? 'bg-amber-500/15 text-amber-900 dark:text-amber-300 font-bold border-amber-500/30'
                   : 'border-transparent text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/80 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
-              <span className="line-clamp-1 flex-1">{ch}</span>
-              <span className="text-[11px] text-slate-500 dark:text-slate-400 font-semibold ml-2">({articleCount})</span>
+              <span className="line-clamp-2 leading-snug flex-1">{ch}</span>
+              <span className="text-[11px] text-slate-500 dark:text-slate-400 font-semibold flex-shrink-0 pt-0.5">
+                ({articleCount})
+              </span>
             </button>
           );
         })}

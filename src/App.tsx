@@ -13,6 +13,7 @@ import { Article } from './types';
 
 export const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState<MainNavTab>('reader');
+  const [readerViewMode, setReaderViewMode] = useState<'catalog' | 'reading'>('catalog');
   const { setSelectedLawId, lawsCatalog } = useLaw();
   const { bookmarks } = useUserData();
 
@@ -34,6 +35,7 @@ export const App: React.FC = () => {
 
   const handleOpenArticleFromSearchOrStudy = (article: Article) => {
     setSelectedLawId(article.lawId);
+    setReaderViewMode('reading');
     setActiveTab('reader');
     setTimeout(() => {
       const el = document.getElementById(`pasal-${article.nomor.toLowerCase().replace(/[^a-z0-9]/g, '-')}`);
@@ -62,16 +64,29 @@ export const App: React.FC = () => {
           activeTab={activeTab}
           onChangeTab={setActiveTab}
           bookmarkCount={bookmarks.length}
+          readerViewMode={readerViewMode}
+          onOpenCatalog={() => {
+            setReaderViewMode('catalog');
+            setActiveTab('reader');
+          }}
+          onSelectLawAndRead={(lawId) => {
+            setSelectedLawId(lawId);
+            setReaderViewMode('reading');
+            setActiveTab('reader');
+          }}
         />
 
         {/* Dynamic Main View Area */}
         <main className="flex-1 p-4 sm:p-6 lg:p-8 pb-24 md:pb-8 overflow-y-auto">
           {activeTab === 'reader' && (
             <LawReader
+              viewMode={readerViewMode}
+              onViewModeChange={setReaderViewMode}
               onOpenCitation={setSelectedArticleForCitation}
               onOpenNote={setSelectedArticleForNote}
               onOpenBookmark={setSelectedArticleForBookmark}
               onShowToast={showToast}
+              onOpenCompare={() => setActiveTab('compare')}
             />
           )}
 
@@ -99,6 +114,10 @@ export const App: React.FC = () => {
         activeTab={activeTab}
         onChangeTab={setActiveTab}
         bookmarkCount={bookmarks.length}
+        onOpenCatalog={() => {
+          setReaderViewMode('catalog');
+          setActiveTab('reader');
+        }}
       />
 
       {/* PWA Add to Home Screen Prompt */}

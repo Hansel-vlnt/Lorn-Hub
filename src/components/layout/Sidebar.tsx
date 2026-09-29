@@ -8,12 +8,18 @@ interface SidebarProps {
   activeTab: MainNavTab;
   onChangeTab: (tab: MainNavTab) => void;
   bookmarkCount?: number;
+  readerViewMode?: 'catalog' | 'reading';
+  onOpenCatalog?: () => void;
+  onSelectLawAndRead?: (lawId: string) => void;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
   activeTab,
   onChangeTab,
   bookmarkCount = 0,
+  readerViewMode = 'catalog',
+  onOpenCatalog,
+  onSelectLawAndRead,
 }) => {
   const { lawsCatalog, selectedLawId, setSelectedLawId } = useLaw();
 
@@ -42,7 +48,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
           return (
             <button
               key={item.id}
-              onClick={() => onChangeTab(item.id)}
+              onClick={() => {
+                if (item.id === 'reader' && onOpenCatalog) {
+                  onOpenCatalog();
+                }
+                onChangeTab(item.id);
+              }}
               className={`w-full min-h-[44px] flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
                 isActive
                   ? 'bg-amber-500/10 text-amber-700 dark:text-amber-400 font-semibold'
@@ -75,13 +86,17 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
         <div className="space-y-1">
           {lawsCatalog.map((law: LawMetadata) => {
-            const isSelected = selectedLawId === law.id;
+            const isSelected = activeTab === 'reader' && readerViewMode === 'reading' && selectedLawId === law.id;
             return (
               <button
                 key={law.id}
                 onClick={() => {
-                  setSelectedLawId(law.id);
-                  if (activeTab !== 'reader') onChangeTab('reader');
+                  if (onSelectLawAndRead) {
+                    onSelectLawAndRead(law.id);
+                  } else {
+                    setSelectedLawId(law.id);
+                    if (activeTab !== 'reader') onChangeTab('reader');
+                  }
                 }}
                 className={`w-full text-left p-2.5 min-h-[44px] rounded-xl transition-all border ${
                   isSelected

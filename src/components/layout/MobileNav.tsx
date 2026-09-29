@@ -7,12 +7,14 @@ interface MobileNavProps {
   activeTab: MainNavTab;
   onChangeTab: (tab: MainNavTab) => void;
   bookmarkCount?: number;
+  onOpenCatalog?: () => void;
 }
 
 export const MobileNav: React.FC<MobileNavProps> = ({
   activeTab,
   onChangeTab,
   bookmarkCount = 0,
+  onOpenCatalog,
 }) => {
   const navItems = [
     { id: 'reader' as MainNavTab, label: 'Jelajah', icon: <BookOpen size={20} /> },
@@ -35,7 +37,12 @@ export const MobileNav: React.FC<MobileNavProps> = ({
           return (
             <button
               key={item.id}
-              onClick={() => onChangeTab(item.id)}
+              onClick={() => {
+                if (item.id === 'reader' && onOpenCatalog) {
+                  onOpenCatalog();
+                }
+                onChangeTab(item.id);
+              }}
               className={`flex flex-col items-center justify-center flex-1 h-full py-1 relative min-h-[48px] transition-colors ${
                 isActive
                   ? 'text-amber-800 dark:text-amber-400 font-semibold'
