@@ -44,10 +44,23 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   useEffect(() => {
     localStorage.setItem('lorn_hub_font_family', fontFamily);
+    const root = document.documentElement;
+    root.classList.toggle('font-serif', fontFamily === 'serif');
+    root.classList.toggle('font-sans', fontFamily === 'sans');
+    root.setAttribute('data-font-family', fontFamily);
   }, [fontFamily]);
 
   useEffect(() => {
     localStorage.setItem('lorn_hub_font_size', fontSize);
+    const root = document.documentElement;
+    const sizeMap: Record<FontSize, string> = {
+      sm: '14px',
+      base: '16px',
+      lg: '18px',
+      xl: '20px',
+    };
+    root.style.fontSize = sizeMap[fontSize] || '16px';
+    root.setAttribute('data-font-size', fontSize);
   }, [fontSize]);
 
   return (

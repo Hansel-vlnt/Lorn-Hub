@@ -1,8 +1,23 @@
 import React, { useState, useEffect, useRef } from 'react';
 import * as pdfjsLib from 'pdfjs-dist';
 import { pdfStorageService, PdfDocument } from '../../services/pdfStorage';
-import { Upload, FileText, Search, Trash2, ChevronLeft, ChevronRight, X, ZoomIn, ZoomOut } from 'lucide-react';
+import {
+  Upload,
+  FileText,
+  Search,
+  Trash2,
+  ChevronLeft,
+  ChevronRight,
+  X,
+  ZoomIn,
+  ZoomOut,
+  Copy,
+  Check,
+  DownloadCloud,
+} from 'lucide-react';
 import MiniSearch from 'minisearch';
+import { Modal } from '../ui/Modal';
+import { Button } from '../ui/Button';
 
 // Setup pdf.js worker
 pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
@@ -10,10 +25,21 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
   import.meta.url,
 ).toString();
 
-export const PdfHub: React.FC = () => {
+export interface PdfHubProps {
+  onSendToScraper?: (data: { rawText: string; judul: string; nomor?: string }) => void;
+  onShowToast?: (msg: string, type?: 'success' | 'error' | 'info') => void;
+}
+
+export const PdfHub: React.FC<PdfHubProps> = ({ onSendToScraper, onShowToast }) => {
   const [pdfs, setPdfs] = useState<Omit<PdfDocument, 'data'>[]>([]);
   const [selectedPdfId, setSelectedPdfId] = useState<string | null>(null);
   const [pdfData, setPdfData] = useState<ArrayBuffer | null>(null);
+  
+  // Extraction states
+  const [isExtracting, setIsExtracting] = useState(false);
+  const [extractedText, setExtractedText] = useState('');
+  const [showExtractModal, setShowExtractModal] = useState(false);
+  const [copiedExtract, setCopiedExtract] = useState(false);
   
   // Viewer states
   const [pdfDoc, setPdfDoc] = useState<pdfjsLib.PDFDocumentProxy | null>(null);
@@ -220,6 +246,30 @@ export const PdfHub: React.FC = () => {
     setSearchResults(results.map(r => ({ page: r.page, text: r.text })));
   };
 
+  const handleExtractFullText = async () => {
+    if (!pdfDoc) return;
+    setIsExtracting(true);
+    try {
+      const pageTexts: string[] = [];
+      for (let i = 1; i <= pdfDoc.numPages; i++) {
+        const page = await pdfDoc.getPage(i);
+        const content = await page.getTextContent();
+        const text = content.items.map((item: any) => item.str).join(' ');
+        if (text.trim()) {
+          pageTexts.push(text.trim());
+        }
+      }
+      const full = pageTexts.join('\n\n');
+      setExtractedText(full);
+      setShowExtractModal(true);
+    } catch (err: any) {
+      console.error(err);
+      onShowToast?.('Gagal mengekstrak teks dari PDF', 'error');
+    } finally {
+      setIsExtracting(false);
+    }
+  };
+
   const selectedPdfName = pdfs.find(p => p.id === selectedPdfId)?.name;
 
   return (
@@ -276,7 +326,7 @@ export const PdfHub: React.FC = () => {
                 {selectedPdfName}
               </div>
               
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-1.5 flex-wrap">
                 <button 
                   onClick={() => setScale(Math.max(0.5, scale - 0.2))}
                   className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors"
@@ -312,6 +362,22 @@ export const PdfHub: React.FC = () => {
                   aria-label="Halaman berikutnya"
                 >
                   <ChevronRight size={20} />
+                </button>
+
+                <div className="w-px h-6 bg-slate-200 dark:bg-slate-700 mx-1"></div>
+
+                {/* Extract Text Button */}
+                <button
+                  type="button"
+                  data-testid="btn-extract-pdf-text"
+                  onClick={handleExtractFullText}
+                  disabled={isExtracting}
+                  className="min-h-[44px] px-3 py-1.5 rounded-lg border border-amber-500/30 bg-amber-500/10 hover:bg-amber-500/20 text-amber-700 dark:text-amber-400 text-xs font-semibold flex items-center gap-1.5 transition-colors disabled:opacity-50"
+                  title="Ekstrak Teks dari PDF untuk Scraper"
+                  aria-label="Ekstrak teks naskah PDF"
+                >
+                  <FileText size={15} />
+                  <span>{isExtracting ? 'Mengekstrak...' : 'Ekstrak Teks'}</span>
                 </button>
               </div>
 
@@ -387,6 +453,64 @@ export const PdfHub: React.FC = () => {
           </div>
         )}
       </div>
+
+      {/* Extracted Text Modal */}
+      {showExtractModal && (
+        <Modal
+          isOpen={showExtractModal}
+          onClose={() => setShowExtractModal(false)}
+          title="Ekstraksi Teks Naskah PDF"
+          subtitle={`Naskah digital hasil ekstraksi dari ${selectedPdfName || 'Dokumen'}`}
+          maxWidth="lg"
+        >
+          <div className="space-y-4">
+            <textarea
+              readOnly
+              rows={12}
+              value={extractedText}
+              className="w-full p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-mono text-slate-800 dark:text-slate-200 focus:outline-none resize-none leading-relaxed"
+            />
+            <div className="flex flex-wrap items-center justify-between gap-2 pt-2">
+              <span className="text-xs text-slate-500 dark:text-slate-400">
+                {extractedText.length} karakter diekstrak ({numPages} halaman)
+              </span>
+              <div className="flex items-center gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    navigator.clipboard.writeText(extractedText);
+                    setCopiedExtract(true);
+                    onShowToast?.('Teks PDF disalin ke clipboard!', 'success');
+                    setTimeout(() => setCopiedExtract(false), 2000);
+                  }}
+                  icon={copiedExtract ? <Check size={14} className="text-emerald-500" /> : <Copy size={14} />}
+                >
+                  {copiedExtract ? 'Tersalin' : 'Salin Teks'}
+                </Button>
+
+                {onSendToScraper && (
+                  <Button
+                    variant="primary"
+                    size="sm"
+                    onClick={() => {
+                      const cleanTitle = (selectedPdfName || 'Naskah Regulasi PDF').replace(/\.pdf$/i, '');
+                      onSendToScraper({
+                        rawText: extractedText,
+                        judul: cleanTitle,
+                      });
+                      setShowExtractModal(false);
+                    }}
+                    icon={<DownloadCloud size={14} />}
+                  >
+                    Kirim ke Scraper Regulasi
+                  </Button>
+                )}
+              </div>
+            </div>
+          </div>
+        </Modal>
+      )}
     </div>
   );
 };

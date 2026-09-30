@@ -12,6 +12,18 @@
     @apply bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
+
+  html.font-serif,
+  html.font-serif body,
+  html[data-font-family="serif"] body {
+    font-family: 'Merriweather', ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+
+  html.font-sans,
+  html.font-sans body,
+  html[data-font-family="sans"] body {
+    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
 }
 
 /* Custom scrollbars for law reader */

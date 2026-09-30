@@ -1,21 +1,17 @@
 import React, { useState } from 'react';
 import { useLaw } from './context/LawContext';
-import { useUserData } from './context/UserDataContext';
 import { Header, MobileNav, Sidebar, OfflineBanner, PwaInstallPrompt, MainNavTab } from './components/layout';
 import { LawReader } from './components/law/LawReader';
 import { SearchView } from './components/search/SearchView';
-import { KuhpComparisonMatrix } from './components/comparison/KuhpComparisonMatrix';
-import { StudyDesk } from './components/study/StudyDesk';
+import { RegulationScraperView } from './components/scraper';
 import { CitationModal, NotesDrawer, BookmarkDrawer } from './components/study';
 import { PdfHub } from './components/pdf/PdfHub';
 import { Toast, ToastMessage } from './components/ui/Toast';
 import { Article } from './types';
 
 export const App: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<MainNavTab>('reader');
-  const [readerViewMode, setReaderViewMode] = useState<'catalog' | 'reading'>('catalog');
+  const [activeTab, setActiveTab] = useState<MainNavTab>('scraper');
   const { setSelectedLawId, lawsCatalog } = useLaw();
-  const { bookmarks } = useUserData();
 
   // Active Modals & Selected Article
   const [selectedArticleForCitation, setSelectedArticleForCitation] = useState<Article | null>(null);
@@ -25,6 +21,13 @@ export const App: React.FC = () => {
   // Toast Notification
   const [toast, setToast] = useState<ToastMessage | null>(null);
 
+  // Scraper initial pre-filled data (e.g. from PDF text extraction)
+  const [scraperInitialData, setScraperInitialData] = useState<{
+    rawText?: string;
+    judul?: string;
+    nomor?: string;
+  } | null>(null);
+
   const showToast = (message: string, type: 'success' | 'error' | 'info' = 'success') => {
     setToast({
       id: `toast-${Date.now()}`,
@@ -33,9 +36,14 @@ export const App: React.FC = () => {
     });
   };
 
-  const handleOpenArticleFromSearchOrStudy = (article: Article) => {
+  const handleSendPdfToScraper = (data: { rawText: string; judul: string; nomor?: string }) => {
+    setScraperInitialData(data);
+    setActiveTab('scraper');
+    showToast(`Naskah dari "${data.judul}" dimuat ke Scraper!`, 'success');
+  };
+
+  const handleOpenArticleFromSearch = (article: Article) => {
     setSelectedLawId(article.lawId);
-    setReaderViewMode('reading');
     setActiveTab('reader');
     setTimeout(() => {
       const el = document.getElementById(`pasal-${article.nomor.toLowerCase().replace(/[^a-z0-9]/g, '-')}`);
@@ -58,54 +66,60 @@ export const App: React.FC = () => {
       <Header />
 
       {/* Main Container */}
-      <div className="flex-1 flex max-w-7xl w-full mx-auto">
+      <div className="h-[calc(100vh-4rem)] flex overflow-hidden w-full max-w-7xl mx-auto">
         {/* Desktop Sidebar */}
         <Sidebar
           activeTab={activeTab}
           onChangeTab={setActiveTab}
-          bookmarkCount={bookmarks.length}
-          readerViewMode={readerViewMode}
-          onOpenCatalog={() => {
-            setReaderViewMode('catalog');
-            setActiveTab('reader');
-          }}
           onSelectLawAndRead={(lawId) => {
             setSelectedLawId(lawId);
-            setReaderViewMode('reading');
             setActiveTab('reader');
           }}
         />
 
         {/* Dynamic Main View Area */}
-        <main className="flex-1 p-4 sm:p-6 lg:p-8 pb-24 md:pb-8 overflow-y-auto">
-          {activeTab === 'reader' && (
-            <LawReader
-              viewMode={readerViewMode}
-              onViewModeChange={setReaderViewMode}
-              onOpenCitation={setSelectedArticleForCitation}
-              onOpenNote={setSelectedArticleForNote}
-              onOpenBookmark={setSelectedArticleForBookmark}
+        <main
+          data-testid="main-content"
+          className="flex-1 h-full overflow-y-auto p-6 pb-24 md:pb-6"
+        >
+          {activeTab === 'scraper' && (
+            <RegulationScraperView
+              initialData={scraperInitialData}
               onShowToast={showToast}
-              onOpenCompare={() => setActiveTab('compare')}
+              onOpenLaw={(lawId) => {
+                setSelectedLawId(lawId);
+                setActiveTab('reader');
+              }}
             />
           )}
 
           {activeTab === 'search' && (
             <SearchView
-              onOpenArticle={handleOpenArticleFromSearchOrStudy}
+              onOpenArticle={handleOpenArticleFromSearch}
               onOpenCitation={setSelectedArticleForCitation}
               onOpenNote={setSelectedArticleForNote}
               onOpenBookmark={setSelectedArticleForBookmark}
+              onOpenScraper={() => setActiveTab('scraper')}
             />
           )}
 
-          {activeTab === 'compare' && <KuhpComparisonMatrix />}
-
-          {activeTab === 'study' && (
-            <StudyDesk onSelectArticle={handleOpenArticleFromSearchOrStudy} />
+          {activeTab === 'pdf' && (
+            <PdfHub
+              onSendToScraper={handleSendPdfToScraper}
+              onShowToast={showToast}
+            />
           )}
 
-          {activeTab === 'pdf' && <PdfHub />}
+          {activeTab === 'reader' && (
+            <LawReader
+              onOpenScraper={() => setActiveTab('scraper')}
+              onOpenPdf={() => setActiveTab('pdf')}
+              onOpenCitation={setSelectedArticleForCitation}
+              onOpenNote={setSelectedArticleForNote}
+              onOpenBookmark={setSelectedArticleForBookmark}
+              onShowToast={showToast}
+            />
+          )}
         </main>
       </div>
 
@@ -113,11 +127,6 @@ export const App: React.FC = () => {
       <MobileNav
         activeTab={activeTab}
         onChangeTab={setActiveTab}
-        bookmarkCount={bookmarks.length}
-        onOpenCatalog={() => {
-          setReaderViewMode('catalog');
-          setActiveTab('reader');
-        }}
       />
 
       {/* PWA Add to Home Screen Prompt */}
@@ -151,4 +160,5 @@ export const App: React.FC = () => {
     </div>
   );
 };
+
 export default App;

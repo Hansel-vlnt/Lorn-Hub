@@ -9,11 +9,11 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg', 'data/*.json'],
+      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
       manifest: {
         name: 'Lorn-Hub - Kompilasi & Penelusuran Hukum Indonesia',
         short_name: 'Lorn-Hub',
-        description: 'Aplikasi pencarian pasal, komparasi KUHP, dan toolkit belajar hukum Indonesia (Online & Offline).',
+        description: 'Aplikasi penelusuran regulasi, pembaca naskah hukum, dan pembaca PDF dokumen hukum Indonesia.',
         theme_color: '#0f172a',
         background_color: '#0f172a',
         display: 'standalone',
@@ -38,20 +38,7 @@ export default defineConfig({
         ],
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,json}'],
-        runtimeCaching: [
-          {
-            urlPattern: ({ url }) => url.pathname.startsWith('/data/'),
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'legal-datasets-cache',
-              expiration: {
-                maxEntries: 50,
-                maxAgeSeconds: 60 * 60 * 24 * 365, // 1 year
-              },
-            },
-          },
-        ],
+        globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
       },
     }),
   ],

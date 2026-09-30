@@ -30,38 +30,22 @@ export interface Article {
 
 export interface LawMetadata {
   id: string;
-  kode: string; // e.g. "KUHP-2023", "KUHP-WVS", "UUD-1945", "KUHPERDATA", "KUHAP"
-  judulLengkap: string;
-  nomorRegulasi: string; // e.g. "UU No. 1 Tahun 2023", "Staatsblad 1915:732"
-  singkatan: string; // e.g. "KUHP Baru", "KUHP Lama", "KUHPerdata"
-  kategori: LawCategory;
+  kode?: string;
+  judul: string; 
+  nomor: string; 
   tahun: number;
-  status: 'berlaku' | 'transisi' | 'dicabut' | 'sebagian-dicabut';
-  deskripsi: string;
-  totalPasal: number;
-  fileData: string; // filename in /data/*.json
+  kategori: LawCategory;
+  sumberUrl: string;
+  statusDownload: 'online-only' | 'cached-offline';
+  totalPasal?: number;
+  judulLengkap?: string;
+  singkatan?: string;
+  nomorRegulasi?: string;
+  deskripsi?: string;
+  status?: 'berlaku' | 'transisi' | 'dicabut' | 'sebagian-dicabut';
 }
 
-export interface LawDataset {
+export interface DynamicLawDataset {
   metadata: LawMetadata;
   pasalList: Article[];
-}
-
-export interface KuhpComparison {
-  id: string;
-  kategoriKejahatan: string;
-  pasalLama: {
-    nomor: string;
-    judul: string;
-    isi: string;
-    sanksi: string;
-  };
-  pasalBaru: {
-    nomor: string;
-    judul: string;
-    isi: string;
-    sanksi: string;
-  };
-  poinPerubahan: string[];
-  catatanPenting: string;
 }

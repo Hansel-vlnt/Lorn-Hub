@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync, statSync } from 'fs';
+import { readFileSync, readdirSync, statSync, existsSync } from 'fs';
 import { join } from 'path';
 
 console.log('--- RUNNING LORN-HUB ANTISLOP & LOGIC SELF-CHECK ---');
@@ -81,10 +81,12 @@ if (hasDuplicationFix) {
 
 // Test 5: Check font scale options in Header.tsx and ThemeContext
 const themeContextSrc = readFileSync('src/context/ThemeContext.tsx', 'utf-8');
-if (themeContextSrc.includes("'sm' | 'base' | 'lg' | 'xl'")) {
-  console.log(`PASS: 4-level font scale ('sm' | 'base' | 'lg' | 'xl') is active.`);
+const hasGlobalScaling = themeContextSrc.includes("root.style.fontSize = sizeMap[fontSize]") &&
+  themeContextSrc.includes("root.classList.toggle('font-serif'");
+if (themeContextSrc.includes("'sm' | 'base' | 'lg' | 'xl'") && hasGlobalScaling) {
+  console.log(`PASS: 4-level font scale with real global CSS scaling and serif/sans switching is active.`);
 } else {
-  console.error(`FAIL: 4-level font scale missing in ThemeContext.`);
+  console.error(`FAIL: Global font scale or serif/sans switching missing in ThemeContext.`);
   errors++;
 }
 
@@ -112,7 +114,6 @@ let sub44Violations = [];
 const componentFiles = srcFiles.filter(f => f.includes('components'));
 for (const file of componentFiles) {
   const content = readFileSync(file, 'utf-8');
-  // Check for any sub-44px min-h utility in components (e.g. min-h-[36px], min-h-[40px])
   const matches = content.match(/min-h-\[([123]\dpx|40px)\]/g);
   if (matches) {
     sub44Violations.push({ file, matches });
@@ -132,6 +133,90 @@ if (storageServiceSrc.includes('addCustomFolder') && userDataContextSrc.includes
   console.log(`PASS: Custom folder creation properly persists to storage and state.`);
 } else {
   console.error(`FAIL: Custom folder persistence missing in storageService or UserDataContext.`);
+  errors++;
+}
+
+// Test 10: Modern CSS Layout Structure (TC-UI-01)
+const appSrc = readFileSync('src/App.tsx', 'utf-8');
+const headerSrc = readFileSync('src/components/layout/Header.tsx', 'utf-8');
+const sidebarSrc = readFileSync('src/components/layout/Sidebar.tsx', 'utf-8');
+
+const hasMainContainerLayout = appSrc.includes('h-[calc(100vh-4rem)] flex overflow-hidden');
+const hasHeaderLayout = headerSrc.includes('sticky top-0 z-30 h-16');
+const hasSidebarLayout = sidebarSrc.includes('w-72 h-full flex flex-col justify-between') &&
+  sidebarSrc.includes('overflow-hidden');
+const hasMainScrollLayout = appSrc.includes('flex-1 h-full overflow-y-auto');
+
+if (hasMainContainerLayout && hasHeaderLayout && hasSidebarLayout && hasMainScrollLayout) {
+  console.log(`PASS: [TC-UI-01] Modern layout, overflow containment, and independent scrolling structure correctly implemented.`);
+} else {
+  console.error(`FAIL: [TC-UI-01] Layout and scrolling structure mismatch.`);
+  errors++;
+}
+
+// Test 11: Menu Navigation Cleanliness & Active Accent (TC-UI-02)
+const hasDeletedOldFeatures =
+  !sidebarSrc.includes('Komparasi KUHP Baru vs Lama') &&
+  !sidebarSrc.includes('Jelajah Regulasi') &&
+  !sidebarSrc.includes('Meja Belajar');
+const has4RealTools =
+  sidebarSrc.includes('Scraper / Tambah Regulasi') &&
+  sidebarSrc.includes('Pencarian Kilat') &&
+  sidebarSrc.includes('PDF & Dokumen Hub') &&
+  sidebarSrc.includes('Baca Regulasi');
+const hasActiveAmberAccent =
+  sidebarSrc.includes('bg-amber-500/10') &&
+  (sidebarSrc.includes('text-amber-600') || sidebarSrc.includes('text-amber-700')) &&
+  sidebarSrc.includes('dark:text-amber-400');
+
+if (hasDeletedOldFeatures && has4RealTools && hasActiveAmberAccent) {
+  console.log(`PASS: [TC-UI-02] Menu Utama clean with 4 real tools, Jelajah Regulasi & Meja Belajar deleted, amber active accent.`);
+} else {
+  console.error(`FAIL: [TC-UI-02] Menu Utama navigation or active state styling mismatch.`);
+  errors++;
+}
+
+// Test 12: Responsive Mobile Ergonomics (TC-UI-03)
+const mobileNavSrc = readFileSync('src/components/layout/MobileNav.tsx', 'utf-8');
+const hasDesktopSidebarHidden = sidebarSrc.includes('hidden md:flex');
+const hasMobileNav4Items =
+  !mobileNavSrc.includes('Jelajah') &&
+  !mobileNavSrc.includes('Belajar') &&
+  mobileNavSrc.includes('Scraper') &&
+  mobileNavSrc.includes('Cari') &&
+  mobileNavSrc.includes('PDF Hub') &&
+  mobileNavSrc.includes('Baca');
+
+if (hasDesktopSidebarHidden && hasMobileNav4Items) {
+  console.log(`PASS: [TC-UI-03] Responsive mobile ergonomics valid (hidden md:flex and MobileNav synced to 4 real tools).`);
+} else {
+  console.error(`FAIL: [TC-UI-03] Responsive mobile ergonomics mismatch.`);
+  errors++;
+}
+
+// Test 13: Storage card removed, compact add-button present (TC-UI-04)
+const storageCardRemoved = !sidebarSrc.includes('Storage & Offline') && !sidebarSrc.includes('Kelola Unduhan');
+const hasAddButton = sidebarSrc.includes('Tambah regulasi baru') && sidebarSrc.includes('Plus');
+
+if (storageCardRemoved && hasAddButton) {
+  console.log(`PASS: [TC-UI-04] Storage card removed. Compact add-button present in sidebar header.`);
+} else {
+  console.error(`FAIL: [TC-UI-04] Storage card not fully removed or add-button missing.`);
+  errors++;
+}
+
+// Test 14: Zero Hardcoded Mock Datasets (TC-DATA-01)
+const hasPublicDataDir = existsSync('public/data');
+const hasDistDataDir = existsSync('dist/data');
+const lawContextSrc = readFileSync('src/context/LawContext.tsx', 'utf-8');
+const hasSeededHardcodedLaws = lawContextSrc.includes('DEFAULT_BUNDLED_LAWS') ||
+  lawContextSrc.includes('uud-1945.json') ||
+  lawContextSrc.includes('kuhp-baru');
+
+if (!hasPublicDataDir && !hasDistDataDir && !hasSeededHardcodedLaws) {
+  console.log(`PASS: [TC-DATA-01] Zero hardcoded mock datasets found. System operates purely on clean dynamic IndexedDB model.`);
+} else {
+  console.error(`FAIL: [TC-DATA-01] Hardcoded mock datasets or seeding detected.`);
   errors++;
 }
 

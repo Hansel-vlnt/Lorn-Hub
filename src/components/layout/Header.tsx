@@ -22,8 +22,8 @@ export const Header: React.FC<HeaderProps> = () => {
   const [showFontSizeMenu, setShowFontSizeMenu] = useState(false);
 
   return (
-    <header className="sticky top-0 z-30 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors">
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <header className="sticky top-0 z-30 h-16 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-full flex items-center justify-between">
         {/* Brand */}
         <div className="flex items-center gap-2.5 sm:gap-3">
           <div className="w-10 h-10 rounded-xl bg-amber-500/10 dark:bg-amber-400/10 border border-amber-500/30 flex items-center justify-center text-amber-700 dark:text-amber-400 shadow-xs flex-shrink-0">
@@ -39,7 +39,7 @@ export const Header: React.FC<HeaderProps> = () => {
               </span>
             </div>
             <p className="text-[11px] text-slate-600 dark:text-slate-400 hidden md:block">
-              Antarmuka Pembacaan & Komparasi Regulasi Indonesia
+              Pustaka Regulasi & Naskah Hukum Digital Indonesia
             </p>
           </div>
         </div>
