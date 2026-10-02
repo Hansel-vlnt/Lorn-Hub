@@ -18,7 +18,7 @@ export const FilterChips: React.FC<FilterChipsProps> = ({ filters, onFilterChang
   ];
 
   return (
-    <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+    <div className="flex flex-wrap items-center gap-2 pt-1 pb-1">
       {categories.map((cat) => {
         const isSelected = filters.kategori === cat.id;
         return (

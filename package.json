@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "node scripts/verify-antislop.mjs",
+    "test": "node scripts/verify-antislop.mjs && node --experimental-strip-types scripts/test-scraper.mjs",
     "test:e2e": "node scripts/test-e2e-playwright.mjs"
   },
   "dependencies": {

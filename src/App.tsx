@@ -66,7 +66,7 @@ export const App: React.FC = () => {
       <Header />
 
       {/* Main Container */}
-      <div className="h-[calc(100vh-4rem)] flex overflow-hidden w-full max-w-7xl mx-auto">
+      <div className="h-[calc(100vh-4rem)] flex overflow-hidden w-full">
         {/* Desktop Sidebar */}
         <Sidebar
           activeTab={activeTab}

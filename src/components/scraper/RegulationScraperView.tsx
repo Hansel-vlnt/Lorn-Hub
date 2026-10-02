@@ -10,6 +10,7 @@ import {
   FileCode,
   Trash2,
   AlertTriangle,
+  FileText,
 } from 'lucide-react';
 import { LawCategory, LawMetadata } from '../../types/law';
 
@@ -52,7 +53,40 @@ export const RegulationScraperView: React.FC<RegulationScraperViewProps> = ({
     kategori: 'khusus',
   });
 
+  const [idManuallyEdited, setIdManuallyEdited] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleJudulChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    setMeta((prev) => ({
+      ...prev,
+      judul: val,
+      id: idManuallyEdited ? prev.id : val.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
+    }));
+  };
+
+  const handleLoadSample = () => {
+    setIngestMode('text');
+    setIdManuallyEdited(true);
+    setMeta({
+      id: 'uu-39-1999',
+      judul: 'Undang-Undang Hak Asasi Manusia',
+      nomor: 'UU No. 39 Tahun 1999',
+      tahun: 1999,
+      kategori: 'khusus',
+    });
+    setRawText(`BAB I
+KETENTUAN UMUM
+
+Pasal 1
+Dalam Undang-Undang ini yang dimaksud dengan:
+(1) Hak Asasi Manusia adalah seperangkat hak yang melekat pada hakikat dan keberadaan manusia sebagai makhluk Tuhan Yang Maha Esa dan merupakan anugerah-Nya yang wajib dihormati, dijunjung tinggi dan dilindungi oleh negara, hukum, Pemerintah, dan setiap orang demi kehormatan serta perlindungan harkat dan martabat manusia.
+(2) Kewajiban dasar manusia adalah seperangkat kewajiban yang apabila tidak dilaksanakan, tidak memungkinkan terlaksana dan tegaknya hak asasi manusia.
+
+Pasal 2
+Negara Republik Indonesia mengakui dan menjunjung tinggi hak asasi manusia dan kebebasan dasar manusia sebagai hak yang secara kodrati melekat pada dan tidak terpisahkan dari manusia, yang harus dilindungi, dihormati, dan ditegakkan demi peningkatan martabat kemanusiaan, kesejahteraan, kebahagiaan, dan keadilan.`);
+    onShowToast?.('Naskah contoh UU No. 39/1999 dimuat ke formulir.', 'info');
+  };
 
   React.useEffect(() => {
     if (initialData) {
@@ -175,6 +209,7 @@ export const RegulationScraperView: React.FC<RegulationScraperViewProps> = ({
         <div className="flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-4">
           <button
             type="button"
+            data-testid="scraper-tab-text"
             onClick={() => setIngestMode('text')}
             className={`min-h-[44px] px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all ${
               ingestMode === 'text'
@@ -187,6 +222,7 @@ export const RegulationScraperView: React.FC<RegulationScraperViewProps> = ({
           </button>
           <button
             type="button"
+            data-testid="scraper-tab-url"
             onClick={() => setIngestMode('url')}
             className={`min-h-[44px] px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all ${
               ingestMode === 'url'
@@ -199,72 +235,88 @@ export const RegulationScraperView: React.FC<RegulationScraperViewProps> = ({
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} noValidate className="space-y-5">
           {/* Metadata Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="space-y-4">
+            {/* Row 1: Full-width Judul Regulasi */}
             <div className="space-y-1.5">
-              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300">
-                ID Unik Dokumen <span className="text-rose-500">*</span>
-              </label>
-              <input
-                required
-                data-testid="scraper-input-id"
-                placeholder="Misal: uu-1-2024 atau kuhp-2023"
-                value={meta.id}
-                onChange={(e) => setMeta({ ...meta, id: e.target.value })}
-                className="w-full min-h-[44px] px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 text-slate-900 dark:text-white text-xs sm:text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500/40"
-              />
-            </div>
-
-            <div className="space-y-1.5">
-              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300">
+              <label htmlFor="scraper-input-judul" className="block text-xs font-semibold text-slate-700 dark:text-slate-300">
                 Judul Regulasi <span className="text-rose-500">*</span>
               </label>
               <input
+                id="scraper-input-judul"
+                name="scraper-input-judul"
                 required
                 data-testid="scraper-input-judul"
                 placeholder="Misal: Undang-Undang Informasi dan Transaksi Elektronik"
                 value={meta.judul}
-                onChange={(e) => setMeta({ ...meta, judul: e.target.value })}
-                className="w-full min-h-[44px] px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 text-slate-900 dark:text-white text-xs sm:text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500/40"
+                onChange={handleJudulChange}
+                className="w-full min-h-[44px] px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 text-slate-900 dark:text-white text-xs sm:text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500/40 transition-colors"
               />
             </div>
 
-            <div className="space-y-1.5">
-              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300">
-                Nomor Resmi Regulasi
-              </label>
-              <input
-                data-testid="scraper-input-nomor"
-                placeholder="Misal: UU No. 1 Tahun 2024"
-                value={meta.nomor}
-                onChange={(e) => setMeta({ ...meta, nomor: e.target.value })}
-                className="w-full min-h-[44px] px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 text-slate-900 dark:text-white text-xs sm:text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500/40"
-              />
-            </div>
+            {/* Row 2: Balanced 12-Column Responsive Grid on Desktop, 2-Col on Tablet, 1-Col on Mobile */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4">
+              <div className="space-y-1.5 lg:col-span-3">
+                <label htmlFor="scraper-input-id" className="block text-xs font-semibold text-slate-700 dark:text-slate-300">
+                  ID Unik Dokumen <span className="text-rose-500">*</span>
+                </label>
+                <input
+                  id="scraper-input-id"
+                  name="scraper-input-id"
+                  required
+                  data-testid="scraper-input-id"
+                  placeholder="Misal: uu-1-2024"
+                  value={meta.id}
+                  onChange={(e) => {
+                    setIdManuallyEdited(true);
+                    setMeta({ ...meta, id: e.target.value });
+                  }}
+                  className="w-full min-h-[44px] px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 text-slate-900 dark:text-white text-xs sm:text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500/40 font-mono transition-colors"
+                />
+              </div>
 
-            <div className="grid grid-cols-2 gap-3">
-              <div className="space-y-1.5">
-                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300">
+              <div className="space-y-1.5 lg:col-span-3">
+                <label htmlFor="scraper-input-nomor" className="block text-xs font-semibold text-slate-700 dark:text-slate-300">
+                  Nomor Resmi Regulasi
+                </label>
+                <input
+                  id="scraper-input-nomor"
+                  name="scraper-input-nomor"
+                  data-testid="scraper-input-nomor"
+                  placeholder="Misal: UU No. 1 Tahun 2024"
+                  value={meta.nomor}
+                  onChange={(e) => setMeta({ ...meta, nomor: e.target.value })}
+                  className="w-full min-h-[44px] px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 text-slate-900 dark:text-white text-xs sm:text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500/40 transition-colors"
+                />
+              </div>
+
+              <div className="space-y-1.5 lg:col-span-2">
+                <label htmlFor="scraper-input-tahun" className="block text-xs font-semibold text-slate-700 dark:text-slate-300">
                   Tahun Terbit
                 </label>
                 <input
+                  id="scraper-input-tahun"
+                  name="scraper-input-tahun"
                   type="number"
                   data-testid="scraper-input-tahun"
                   value={meta.tahun}
                   onChange={(e) => setMeta({ ...meta, tahun: parseInt(e.target.value, 10) || new Date().getFullYear() })}
-                  className="w-full min-h-[44px] px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 text-slate-900 dark:text-white text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/40"
+                  className="w-full min-h-[44px] px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 text-slate-900 dark:text-white text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/40 transition-colors"
                 />
               </div>
 
-              <div className="space-y-1.5">
-                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300">
+              <div className="space-y-1.5 lg:col-span-4">
+                <label htmlFor="scraper-select-kategori" className="block text-xs font-semibold text-slate-700 dark:text-slate-300">
                   Kategori
                 </label>
                 <select
+                  id="scraper-select-kategori"
+                  name="scraper-select-kategori"
+                  data-testid="scraper-select-kategori"
                   value={meta.kategori}
                   onChange={(e) => setMeta({ ...meta, kategori: e.target.value as LawCategory })}
-                  className="w-full min-h-[44px] px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500/40"
+                  className="w-full min-h-[44px] px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs sm:text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500/40 transition-colors"
                 >
                   <option value="khusus">Hukum Khusus / Sektoral</option>
                   <option value="pidana">Hukum Pidana</option>
@@ -280,43 +332,57 @@ export const RegulationScraperView: React.FC<RegulationScraperViewProps> = ({
           {/* Dynamic Input depending on Mode */}
           {ingestMode === 'url' ? (
             <div className="space-y-1.5 pt-1">
-              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300">
+              <label htmlFor="scraper-input-url" className="block text-xs font-semibold text-slate-700 dark:text-slate-300">
                 URL Sumber Naskah (.html atau .json) <span className="text-rose-500">*</span>
               </label>
               <input
+                id="scraper-input-url"
+                name="scraper-input-url"
                 required
                 type="url"
                 data-testid="scraper-input-url"
                 placeholder="https://contoh-sumber-hukum.go.id/peraturan.html"
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
-                className="w-full min-h-[44px] px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 text-slate-900 dark:text-white text-xs sm:text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500/40"
+                className="w-full min-h-[44px] px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 text-slate-900 dark:text-white text-xs sm:text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500/40 transition-colors"
               />
-              <p className="text-[11px] text-slate-500">
+              <p className="text-[11px] text-slate-500 dark:text-slate-400">
                 Sistem akan mengunduh dan mengekstrak struktur pasal serta penjelasan dari tautan di atas.
               </p>
             </div>
           ) : (
             <div className="space-y-1.5 pt-1">
-              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300">
+              <label htmlFor="scraper-textarea-raw" className="block text-xs font-semibold text-slate-700 dark:text-slate-300">
                 Naskah Teks Regulasi atau JSON <span className="text-rose-500">*</span>
               </label>
               <textarea
+                id="scraper-textarea-raw"
+                name="scraper-textarea-raw"
                 required
                 rows={8}
                 data-testid="scraper-textarea-raw"
                 placeholder="Tempel naskah undang-undang di sini... (Sistem mengenali format 'BAB ...', 'Pasal 1 ...', '(1) ...' secara otomatis, atau array JSON pasal)"
                 value={rawText}
                 onChange={(e) => setRawText(e.target.value)}
-                className="w-full p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 text-slate-900 dark:text-white text-xs sm:text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500/40 font-mono leading-relaxed"
+                className="w-full p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 text-slate-900 dark:text-white text-xs sm:text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500/40 font-mono leading-relaxed transition-colors"
               />
-              <p className="text-[11px] text-slate-500">
+              <p className="text-[11px] text-slate-500 dark:text-slate-400">
                 Tips: Tempel salinan naskah asli dari dokumen hukum. Parser otomatis akan mengelompokkan pasal dan ayat ke dalam IndexedDB.
               </p>
             </div>
           )}
 
-          <div className="flex justify-end pt-2">
+          <div className="flex flex-col-reverse sm:flex-row sm:items-center justify-between gap-3 pt-2">
+            <button
+              type="button"
+              data-testid="scraper-btn-sample"
+              onClick={handleLoadSample}
+              className="min-h-[44px] px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700/80 font-medium text-xs sm:text-sm flex items-center justify-center gap-2 transition-colors"
+            >
+              <FileText size={15} className="text-amber-600 dark:text-amber-400" />
+              <span>Muat Format Contoh Regulasi</span>
+            </button>
+
             <button
               type="submit"
               data-testid="scraper-btn-submit"
@@ -379,12 +445,13 @@ export const RegulationScraperView: React.FC<RegulationScraperViewProps> = ({
               return (
                 <div
                   key={law.id}
+                  data-testid={`scraper-law-item-${law.id}`}
                   className="py-3.5 first:pt-0 last:pb-0 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
                 >
                   <div className="space-y-1 min-w-0 flex-1">
                     <div className="flex items-center gap-2 flex-wrap">
                       <span className="font-bold text-xs tracking-tight text-slate-900 dark:text-white">
-                        {law.singkatan || law.judul}
+                        {law.singkatan ? `${law.singkatan} (${law.nomorRegulasi || law.nomor})` : (law.nomorRegulasi || (law.nomor && law.nomor !== '-') ? `${law.nomorRegulasi || law.nomor}` : law.judul)}
                       </span>
                       <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20">
                         <CheckCircle2 size={11} />
@@ -392,7 +459,7 @@ export const RegulationScraperView: React.FC<RegulationScraperViewProps> = ({
                       </span>
                     </div>
                     <p className="text-xs text-slate-600 dark:text-slate-300 truncate">
-                      {law.nomorRegulasi || law.nomor} - {law.judul}
+                      {law.judul}
                     </p>
                     <p className="text-[11px] text-slate-400 dark:text-slate-500">
                       Cakupan: {law.totalPasal || 0} Pasal | Tahun: {law.tahun} | Sumber: {law.sumberUrl || 'Naskah Langsung'}
@@ -403,6 +470,7 @@ export const RegulationScraperView: React.FC<RegulationScraperViewProps> = ({
                     {onOpenLaw && (
                       <button
                         type="button"
+                        data-testid={`scraper-btn-open-${law.id}`}
                         onClick={() => onOpenLaw(law.id)}
                         className="min-h-[44px] px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-amber-500/10 hover:text-amber-600 dark:hover:text-amber-400 hover:border-amber-500/30 text-xs font-semibold flex items-center gap-1.5 transition-colors"
                       >
@@ -413,6 +481,7 @@ export const RegulationScraperView: React.FC<RegulationScraperViewProps> = ({
 
                     <button
                       type="button"
+                      data-testid={`scraper-btn-delete-${law.id}`}
                       onClick={() => handleDelete(law.id, law.singkatan || law.judul)}
                       className="min-h-[44px] min-w-[44px] px-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-400 hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors flex items-center justify-center"
                       title="Hapus dari penyimpanan"

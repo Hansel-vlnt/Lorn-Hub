@@ -33,10 +33,13 @@ export const SearchBar: React.FC<SearchBarProps> = ({
 
         <input
           ref={inputRef}
+          id="search-main-input"
+          name="search-main-input"
           type="text"
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder}
+          aria-label="Cari nomor pasal atau kata kunci hukum"
           className="w-full min-h-[48px] pl-11 pr-20 py-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 shadow-xs focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-600 transition-all font-medium"
         />
 

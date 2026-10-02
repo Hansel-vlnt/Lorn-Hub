@@ -275,7 +275,7 @@ export const PdfHub: React.FC<PdfHubProps> = ({ onSendToScraper, onShowToast }) 
   return (
     <div className="flex flex-col md:flex-row h-full gap-4">
       {/* Sidebar for PDF List */}
-      <div className="w-full md:w-64 flex-shrink-0 flex flex-col bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+      <div className="w-full md:w-64 flex-shrink-0 flex flex-col bg-white dark:bg-slate-900 rounded-2xl shadow-xs border border-slate-200 dark:border-slate-800 overflow-hidden">
         <div className="p-4 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center">
           <h2 className="font-semibold text-slate-900 dark:text-slate-100">Dokumen PDF</h2>
           <label className="cursor-pointer bg-amber-600 hover:bg-amber-700 text-white min-h-[44px] min-w-[44px] flex items-center justify-center rounded-lg transition-colors" title="Unggah PDF" aria-label="Unggah dokumen PDF">
@@ -317,7 +317,7 @@ export const PdfHub: React.FC<PdfHubProps> = ({ onSendToScraper, onShowToast }) 
       </div>
 
       {/* Main Viewer Area */}
-      <div className="flex-1 flex flex-col min-w-0 bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+      <div className="flex-1 flex flex-col min-w-0 bg-white dark:bg-slate-900 rounded-2xl shadow-xs border border-slate-200 dark:border-slate-800 overflow-hidden">
         {selectedPdfId ? (
           <>
             {/* Toolbar */}
@@ -449,7 +449,7 @@ export const PdfHub: React.FC<PdfHubProps> = ({ onSendToScraper, onShowToast }) 
           <div className="flex-1 flex flex-col items-center justify-center text-slate-600 dark:text-slate-400 p-8 text-center">
             <FileText size={64} className="mb-4 opacity-20" />
             <h3 className="text-lg font-medium text-slate-800 dark:text-slate-200 mb-2">Belum ada dokumen yang dipilih</h3>
-            <p className="text-sm">Pilih PDF dari sidebar atau unggah dokumen baru untuk mulai membaca.</p>
+            <p className="text-sm">Pilih PDF dari panel daftar di sebelah kiri atau unggah dokumen baru untuk mulai membaca.</p>
           </div>
         )}
       </div>

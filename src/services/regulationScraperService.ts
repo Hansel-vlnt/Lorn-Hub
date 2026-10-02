@@ -1,4 +1,4 @@
-import { Article, DynamicLawDataset, LawMetadata } from '../types/law';
+import type { Article, DynamicLawDataset, LawMetadata } from '../types/law';
 
 export class RegulationScraperService {
   private async fetchWithTimeout(url: string, timeout = 8000, signal?: AbortSignal): Promise<Response> {
@@ -17,7 +17,10 @@ export class RegulationScraperService {
     } catch (err: any) {
       clearTimeout(id);
       if (err.name === 'AbortError') {
-        throw new Error('Koneksi Terputus atau Timeout');
+        throw new Error('Koneksi Terputus atau Timeout (maksimal 8 detik).');
+      }
+      if (err.name === 'TypeError' || (err.message && err.message.toLowerCase().includes('fetch'))) {
+        throw new Error('Koneksi gagal atau terhalang kebijakan CORS browser. Pastikan URL dapat diakses atau gunakan opsi Input Teks Langsung.');
       }
       throw err;
     }
@@ -80,46 +83,151 @@ export class RegulationScraperService {
     })).filter(a => a.nomor && a.isi);
   }
 
-  private parseHTML(html: string, lawId: string): Article[] {
+  public parseHTML(html: string, lawId: string): Article[] {
+    if (typeof DOMParser === 'undefined') {
+      const stripped = html
+        .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+        .replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '')
+        .replace(/<[^>]+>/g, '\n')
+        .replace(/&nbsp;/g, ' ')
+        .replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>');
+      return this.parseRawText(stripped, { id: lawId }).pasalList;
+    }
+
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, 'text/html');
+
+    // Remove non-content elements
+    doc.querySelectorAll('script, style, noscript, nav, header, footer').forEach((el) => el.remove());
+
     const articles: Article[] = [];
-    
-    // Simple heuristic parser for Indonesian Laws HTML
-    // Looking for elements that denote Bab, Bagian, Pasal
-    const elements = doc.body.querySelectorAll('h1, h2, h3, h4, h5, p, div.pasal, div.bab');
-    
+    const elements = doc.body.querySelectorAll('h1, h2, h3, h4, h5, h6, p, li, blockquote');
+
     let currentBab = '';
     let currentBagian = '';
+    let currentParagraf = '';
     let currentArticle: Article | null = null;
-    
+    let awaitingBabTitle = false;
+    let awaitingBagianTitle = false;
+    let awaitingParagrafTitle = false;
+
     elements.forEach((el) => {
       const text = el.textContent?.trim() || '';
-      const lowerText = text.toLowerCase();
+      if (!text) return;
+      const lower = text.toLowerCase();
 
-      if (lowerText.startsWith('bab ')) {
+      // Skip elements that contain child headings/paragraphs to avoid duplicate parsing
+      if (el.querySelector('h1, h2, h3, h4, h5, h6, p')) {
+        return;
+      }
+
+      if (lower.startsWith('bab ')) {
+        if (currentArticle) {
+          articles.push(currentArticle);
+          currentArticle = null;
+        }
         currentBab = text;
-      } else if (lowerText.startsWith('bagian ')) {
+        currentBagian = '';
+        currentParagraf = '';
+        awaitingBabTitle = true;
+        return;
+      }
+
+      if (awaitingBabTitle) {
+        if (!lower.startsWith('bagian ') && !lower.startsWith('paragraf ') && !lower.startsWith('pasal ')) {
+          currentBab = `${currentBab} - ${text}`;
+          awaitingBabTitle = false;
+          return;
+        }
+        awaitingBabTitle = false;
+      }
+
+      if (lower.startsWith('bagian ')) {
+        if (currentArticle) {
+          articles.push(currentArticle);
+          currentArticle = null;
+        }
         currentBagian = text;
-      } else if (lowerText.startsWith('pasal ')) {
+        currentParagraf = '';
+        awaitingBagianTitle = true;
+        return;
+      }
+
+      if (awaitingBagianTitle) {
+        if (!lower.startsWith('bab ') && !lower.startsWith('paragraf ') && !lower.startsWith('pasal ')) {
+          currentBagian = `${currentBagian} - ${text}`;
+          awaitingBagianTitle = false;
+          return;
+        }
+        awaitingBagianTitle = false;
+      }
+
+      if (lower.startsWith('paragraf ')) {
+        if (currentArticle) {
+          articles.push(currentArticle);
+          currentArticle = null;
+        }
+        currentParagraf = text;
+        awaitingParagrafTitle = true;
+        return;
+      }
+
+      if (awaitingParagrafTitle) {
+        if (!lower.startsWith('bab ') && !lower.startsWith('bagian ') && !lower.startsWith('pasal ')) {
+          currentParagraf = `${currentParagraf} - ${text}`;
+          awaitingParagrafTitle = false;
+          return;
+        }
+        awaitingParagrafTitle = false;
+      }
+
+      if (lower.startsWith('pasal ')) {
         if (currentArticle) {
           articles.push(currentArticle);
         }
 
-        const match = lowerText.match(/pasal\s+([0-9]+(?:\s*[a-z]+|\s+bis)?)/i);
-        const nomor = match ? match[1].trim().replace(/\s+([a-zA-Z])$/, '$1').toUpperCase() : `X-${Math.floor(Math.random() * 1000)}`;
+        const match = lower.match(/^pasal\s+([0-9]+(?:\s*[a-z]+|\s+bis)?)/i);
+        const rawMatch = match ? match[1] : `${articles.length + 1}`;
+        const nomor = rawMatch.trim().replace(/\s+([a-zA-Z])$/, '$1').toUpperCase();
         const slug = nomor.toLowerCase().replace(/[^a-z0-9]/g, '-');
+
+        const lineWithoutPasal = text.replace(
+          new RegExp(`^pasal\\s+${rawMatch.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*`, 'i'),
+          ''
+        );
+
+        let judul: string | undefined = undefined;
+        let contentAfterPasal = lineWithoutPasal;
+        const titleMatch = lineWithoutPasal.match(/^[:–-]\s*([^(]+)/);
+        if (titleMatch && titleMatch[1].trim().length < 80) {
+          judul = titleMatch[1].trim();
+          contentAfterPasal = lineWithoutPasal.slice(titleMatch[0].length).trim();
+        } else {
+          contentAfterPasal = lineWithoutPasal.replace(/^[:.-]\s*/, '');
+        }
 
         currentArticle = {
           id: `${lawId}-pasal-${slug}`,
-          lawId: lawId,
-          nomor: nomor,
+          lawId,
+          nomor,
+          judul,
           bab: currentBab,
           bagian: currentBagian,
-          isi: text.replace(new RegExp(`^pasal\\s+${match ? match[1].replace(/[.*+?^${}()|[\]\\]/g, '\\$&') : nomor}\\s*[:.-]?\\s*`, 'i'), ''),
+          paragraf: currentParagraf,
+          isi: contentAfterPasal,
           kategori: 'khusus',
           ayat: [],
         };
+
+        const directAyatMatch = contentAfterPasal.match(/^\(([0-9]+)\)\s*(.*)/);
+        if (directAyatMatch) {
+          currentArticle.ayat!.push({
+            nomor: parseInt(directAyatMatch[1], 10),
+            teks: contentAfterPasal,
+          });
+        }
       } else if (currentArticle) {
         const ayatMatch = text.match(/^\(([0-9]+)\)\s*(.*)/);
         if (ayatMatch) {
@@ -127,11 +235,11 @@ export class RegulationScraperService {
             nomor: parseInt(ayatMatch[1], 10),
             teks: text,
           });
-          currentArticle.isi += `\n${text}`;
-        } else if (lowerText.startsWith('penjelasan')) {
+          currentArticle.isi = currentArticle.isi ? `${currentArticle.isi}\n${text}` : text;
+        } else if (lower.startsWith('penjelasan')) {
           currentArticle.penjelasan = text;
         } else {
-          currentArticle.isi += `\n${text}`;
+          currentArticle.isi = currentArticle.isi ? `${currentArticle.isi}\n${text}` : text;
         }
       }
     });
@@ -141,6 +249,18 @@ export class RegulationScraperService {
     }
 
     if (articles.length === 0) {
+      const fullText = doc.body.textContent?.trim() || '';
+      if (fullText) {
+        return [{
+          id: `${lawId}-pasal-1`,
+          lawId,
+          nomor: '1',
+          bab: currentBab || 'UMUM',
+          isi: fullText,
+          kategori: 'khusus',
+          ayat: [],
+        }];
+      }
       throw new Error('Gagal mengekstrak pasal dari HTML (struktur tidak dikenali).');
     }
 
@@ -155,6 +275,25 @@ export class RegulationScraperService {
 
     const lawId = metadataParams.id || `law-${Date.now()}`;
     let pasalList: Article[] = [];
+
+    // Check if user pasted HTML
+    if (trimmed.includes('<html') || trimmed.includes('<body') || (trimmed.startsWith('<') && trimmed.includes('>'))) {
+      const articles = this.parseHTML(trimmed, lawId);
+      return {
+        metadata: {
+          id: lawId,
+          judul: metadataParams.judul || 'Regulasi Tanpa Judul',
+          nomor: metadataParams.nomor || '-',
+          tahun: metadataParams.tahun || new Date().getFullYear(),
+          kategori: metadataParams.kategori || 'khusus',
+          sumberUrl: metadataParams.sumberUrl || 'Naskah Langsung (Ingestion)',
+          statusDownload: 'cached-offline',
+          totalPasal: articles.length,
+          ...metadataParams,
+        },
+        pasalList: articles,
+      };
+    }
 
     // Check if user pasted JSON
     if (trimmed.startsWith('{') || trimmed.startsWith('[')) {
@@ -173,9 +312,11 @@ export class RegulationScraperService {
       const lines = trimmed.split(/\r?\n/);
       let currentBab = '';
       let currentBagian = '';
+      let currentParagraf = '';
       let currentArticle: Article | null = null;
       let awaitingBabTitle = false;
       let awaitingBagianTitle = false;
+      let awaitingParagrafTitle = false;
 
       for (const line of lines) {
         const trimmedLine = line.trim();
@@ -190,12 +331,14 @@ export class RegulationScraperService {
             currentArticle = null;
           }
           currentBab = trimmedLine;
+          currentBagian = '';
+          currentParagraf = '';
           awaitingBabTitle = true;
           continue;
         }
 
         if (awaitingBabTitle) {
-          if (!lower.startsWith('bagian ') && !lower.startsWith('pasal ')) {
+          if (!lower.startsWith('bagian ') && !lower.startsWith('paragraf ') && !lower.startsWith('pasal ')) {
             currentBab = `${currentBab} - ${trimmedLine}`;
             awaitingBabTitle = false;
             continue;
@@ -210,12 +353,13 @@ export class RegulationScraperService {
             currentArticle = null;
           }
           currentBagian = trimmedLine;
+          currentParagraf = '';
           awaitingBagianTitle = true;
           continue;
         }
 
         if (awaitingBagianTitle) {
-          if (!lower.startsWith('bab ') && !lower.startsWith('pasal ')) {
+          if (!lower.startsWith('bab ') && !lower.startsWith('paragraf ') && !lower.startsWith('pasal ')) {
             currentBagian = `${currentBagian} - ${trimmedLine}`;
             awaitingBagianTitle = false;
             continue;
@@ -223,7 +367,27 @@ export class RegulationScraperService {
           awaitingBagianTitle = false;
         }
 
-        // 3. Pasal detection (handles standard e.g. "Pasal 1", plus "Pasal 1A", "Pasal 14 bis", "Pasal 27 B")
+        // 3. Paragraf detection and continuation
+        if (lower.startsWith('paragraf ')) {
+          if (currentArticle) {
+            pasalList.push(currentArticle);
+            currentArticle = null;
+          }
+          currentParagraf = trimmedLine;
+          awaitingParagrafTitle = true;
+          continue;
+        }
+
+        if (awaitingParagrafTitle) {
+          if (!lower.startsWith('bab ') && !lower.startsWith('bagian ') && !lower.startsWith('pasal ')) {
+            currentParagraf = `${currentParagraf} - ${trimmedLine}`;
+            awaitingParagrafTitle = false;
+            continue;
+          }
+          awaitingParagrafTitle = false;
+        }
+
+        // 4. Pasal detection (handles standard e.g. "Pasal 1", plus "Pasal 1A", "Pasal 14 bis", "Pasal 27 B")
         if (lower.startsWith('pasal ')) {
           if (currentArticle) {
             pasalList.push(currentArticle);
@@ -233,17 +397,29 @@ export class RegulationScraperService {
           const nomor = rawMatch.trim().replace(/\s+([a-zA-Z])$/, '$1').toUpperCase();
           const nomorSlug = nomor.toLowerCase().replace(/[^a-z0-9]/g, '-');
 
-          const contentAfterPasal = trimmedLine.replace(
-            new RegExp(`^pasal\\s+${rawMatch.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*[:.-]?\\s*`, 'i'),
+          const lineWithoutPasal = trimmedLine.replace(
+            new RegExp(`^pasal\\s+${rawMatch.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*`, 'i'),
             ''
           );
+
+          let judul: string | undefined = undefined;
+          let contentAfterPasal = lineWithoutPasal;
+          const titleMatch = lineWithoutPasal.match(/^[:–-]\s*([^(]+)/);
+          if (titleMatch && titleMatch[1].trim().length < 80) {
+            judul = titleMatch[1].trim();
+            contentAfterPasal = lineWithoutPasal.slice(titleMatch[0].length).trim();
+          } else {
+            contentAfterPasal = lineWithoutPasal.replace(/^[:.-]\s*/, '');
+          }
 
           currentArticle = {
             id: `${lawId}-pasal-${nomorSlug}`,
             lawId,
             nomor,
+            judul,
             bab: currentBab,
             bagian: currentBagian,
+            paragraf: currentParagraf,
             isi: contentAfterPasal,
             kategori: metadataParams.kategori || 'khusus',
             ayat: [],

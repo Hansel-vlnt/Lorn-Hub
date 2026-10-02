@@ -32,7 +32,11 @@ export const Toast: React.FC<ToastProps> = ({ toast, onClose }) => {
   };
 
   return (
-    <div className="fixed bottom-20 md:bottom-6 right-6 z-50 flex items-start gap-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md rounded-xl p-4 max-w-sm animate-in slide-in-from-bottom-5 duration-200">
+    <div
+      role="alert"
+      data-testid="toast-notification"
+      className="fixed bottom-20 md:bottom-6 right-6 z-50 flex items-start gap-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md rounded-xl p-4 max-w-sm animate-in slide-in-from-bottom-5 duration-200"
+    >
       {icons[toast.type]}
       <div className="flex-1">
         <h4 className="text-sm font-semibold text-slate-900 dark:text-white">

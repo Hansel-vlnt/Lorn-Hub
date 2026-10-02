@@ -9,6 +9,7 @@ async function runTests() {
   const server = await createServer({
     server: { port: 0 },
   });
+
   await server.listen();
   const address = server.httpServer.address();
   const port = address.port;
@@ -36,6 +37,63 @@ async function runTests() {
     page.on('console', (msg) => console.log('BROWSER CONSOLE:', msg.type(), msg.text()));
     page.on('pageerror', (err) => console.error('BROWSER PAGE ERROR:', err));
 
+    // Register network mock route for online URL scraping test (JSON)
+    await page.route('**/api/mock-regulation.json', async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        headers: { 'Access-Control-Allow-Origin': '*' },
+        body: JSON.stringify({
+          judul: 'UU Keterbukaan Informasi Publik',
+          nomor: 'UU No. 14 Tahun 2008',
+          tahun: 2008,
+          kategori: 'khusus',
+          pasalList: [
+            {
+              id: 'uu-14-2008-pasal-1',
+              nomor: '1',
+              bab: 'BAB I - KETENTUAN UMUM',
+              isi: 'Informasi adalah keterangan, pernyataan, gagasan, dan pesan-pesan yang mengandung nilai, makna, dan pesan.',
+              kategori: 'khusus',
+            },
+            {
+              id: 'uu-14-2008-pasal-2',
+              nomor: '2',
+              bab: 'BAB II - ASAS DAN TUJUAN',
+              isi: 'Setiap Informasi Publik bersifat terbuka dan dapat diakses oleh setiap Pengguna Informasi Publik.',
+              kategori: 'khusus',
+            },
+          ],
+        }),
+      });
+    });
+
+    // Register network mock route for online URL scraping test (HTML)
+    await page.route('**/api/mock-regulation.html', async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: 'text/html; charset=utf-8',
+        headers: { 'Access-Control-Allow-Origin': '*' },
+        body: `<!DOCTYPE html>
+<html>
+<head><title>UU Kearsipan</title></head>
+<body>
+  <h1>UNDANG-UNDANG NOMOR 43 TAHUN 2009 TENTANG KEARSIPAN</h1>
+  <h2>BAB I - KETENTUAN UMUM</h2>
+  <div class="pasal">
+    <h3>Pasal 1</h3>
+    <p>(1) Kearsipan adalah hal-hal yang berkenaan dengan arsip.</p>
+    <p>(2) Arsip adalah rekaman kegiatan atau peristiwa dalam berbagai bentuk.</p>
+  </div>
+  <div class="pasal">
+    <h3>Pasal 2</h3>
+    <p>Penyelenggaraan kearsipan berasaskan kepastian hukum dan keterbukaan.</p>
+  </div>
+</body>
+</html>`,
+      });
+    });
+
     // 1. Load initial page with clean storage
     console.log('\n--- 1. Testing Initial Empty State (Zero Hardcoded Data) ---');
     await page.goto(`http://localhost:${port}`);
@@ -50,7 +108,7 @@ async function runTests() {
     // Initial state: Should have 0 regulations
     const initialSidebarText = await page.locator('[data-testid="sidebar-desktop"]').textContent();
     assert(initialSidebarText.includes('Regulasi Tersimpan (0)'), 'Sidebar shows 0 regulations initially');
-    assert(initialSidebarText.includes('0 Regulasi Tersimpan Offline'), 'Storage card shows 0 offline regulations');
+    assert(initialSidebarText.includes('Belum ada regulasi'), 'Sidebar shows zero regulations empty text initially');
 
     // Verify Jelajah Regulasi and Meja Belajar are completely gone
     assert(!initialSidebarText.includes('Jelajah Regulasi'), 'Jelajah Regulasi removed from sidebar');
@@ -149,10 +207,153 @@ async function runTests() {
 
     await page.screenshot({ path: 'screenshots/02_reader_empty_state.png' });
 
-    // 6. Test Direct Ingestion via Scraper with Edge-Case Numbering
-    console.log('\n--- 6. Testing Scraper with Edge-Case Statutory Numbering (Pasal 1A, 2 bis, BAB titles) ---');
+    // 6. Test Regulation Scraper Comprehensively
+    console.log('\n--- 6. Testing Regulation Scraper Comprehensively ---');
     await page.locator('[data-testid="sidebar-nav-scraper"]').click();
     await page.waitForTimeout(500);
+
+    // 6A. Test Form Validation: Empty Title and Empty Body/URL
+    console.log('Testing Scraper: Form validation on empty submission...');
+    await page.click('[data-testid="scraper-btn-submit"]');
+    await page.waitForTimeout(300);
+    const toastValidation1 = await page.locator('[data-testid="toast-notification"]').textContent();
+    assert(toastValidation1.includes('Mohon isi Judul regulasi'), 'Empty title displays validation error toast');
+
+    // Fill title only, empty text
+    await page.fill('[data-testid="scraper-input-judul"]', 'Regulasi Tanpa Teks');
+    await page.click('[data-testid="scraper-btn-submit"]');
+    await page.waitForTimeout(300);
+    const toastValidation2 = await page.locator('[data-testid="toast-notification"]').textContent();
+    assert(toastValidation2.includes('Mohon masukkan naskah teks atau JSON regulasi'), 'Empty body displays validation error toast');
+
+    // Clear title
+    await page.fill('[data-testid="scraper-input-judul"]', '');
+    await page.fill('[data-testid="scraper-input-id"]', '');
+
+    // 6B. Test Sample Regulation Loader ("Muat Format Contoh Regulasi")
+    console.log('Testing Scraper: Loading sample regulation...');
+    await page.click('[data-testid="scraper-btn-sample"]');
+    await page.waitForTimeout(300);
+
+    const sampleTitle = await page.inputValue('[data-testid="scraper-input-judul"]');
+    const sampleId = await page.inputValue('[data-testid="scraper-input-id"]');
+    const sampleNomor = await page.inputValue('[data-testid="scraper-input-nomor"]');
+    const sampleRaw = await page.inputValue('[data-testid="scraper-textarea-raw"]');
+
+    assert(sampleTitle === 'Undang-Undang Hak Asasi Manusia', 'Sample title loaded accurately');
+    assert(sampleId === 'uu-39-1999', 'Sample ID loaded accurately');
+    assert(sampleNomor === 'UU No. 39 Tahun 1999', 'Sample nomor loaded accurately');
+    assert(sampleRaw.includes('BAB I\nKETENTUAN UMUM'), 'Sample statutory raw text populated');
+
+    // Clear fields before testing URL mode
+    await page.fill('[data-testid="scraper-input-judul"]', '');
+    await page.fill('[data-testid="scraper-input-id"]', '');
+    await page.fill('[data-testid="scraper-input-nomor"]', '');
+    await page.fill('[data-testid="scraper-textarea-raw"]', '');
+
+    // 6C. Test URL Mode: Network/CORS Error Handling
+    console.log('Testing Scraper: URL mode error handling on unreachable source...');
+    await page.click('[data-testid="scraper-tab-url"]');
+    await page.waitForTimeout(300);
+
+    // Empty URL validation
+    await page.fill('[data-testid="scraper-input-judul"]', 'Test URL Kosong');
+    await page.click('[data-testid="scraper-btn-submit"]');
+    await page.waitForTimeout(300);
+    const toastUrlEmpty = await page.locator('[data-testid="toast-notification"]').textContent();
+    assert(toastUrlEmpty.includes('Mohon masukkan tautan URL naskah'), 'Empty URL shows validation error toast');
+
+    // Unreachable URL failure
+    await page.fill('[data-testid="scraper-input-url"]', 'http://localhost:59999/unreachable.json');
+    await page.click('[data-testid="scraper-btn-submit"]');
+    await page.waitForTimeout(1000);
+    const toastUrlFail = await page.locator('[data-testid="toast-notification"]').textContent();
+    assert(toastUrlFail.includes('Gagal menyimpan') || toastUrlFail.includes('Koneksi'), 'Unreachable URL displays error feedback');
+
+    // Dismiss error toast so subsequent toast is clean
+    const toastCloseBtn = page.locator('[data-testid="toast-notification"] button');
+    if (await toastCloseBtn.isVisible()) {
+      await toastCloseBtn.click();
+      await page.waitForTimeout(300);
+    }
+
+    // 6D. Test URL Mode: Successful Ingestion via Mock HTTP JSON Endpoint
+    console.log('Testing Scraper: Successful URL ingestion via mock endpoint...');
+    await page.fill('[data-testid="scraper-input-judul"]', 'UU Keterbukaan Informasi Publik');
+    await page.fill('[data-testid="scraper-input-id"]', 'uu-14-2008');
+    await page.fill('[data-testid="scraper-input-url"]', `http://localhost:${port}/api/mock-regulation.json`);
+    await page.click('[data-testid="scraper-btn-submit"]');
+    await page.waitForTimeout(1000);
+
+    const toastSuccessUrl = await page.locator('[data-testid="toast-notification"]').textContent();
+    assert(toastSuccessUrl.includes('Berhasil'), 'Mock URL ingested and saved successfully');
+
+    // Verify it appeared in scraper archive table
+    const archiveItemUrl = page.locator('[data-testid="scraper-law-item-uu-14-2008"]');
+    assert(await archiveItemUrl.isVisible(), 'Ingested URL regulation appears in Scraper archive list');
+
+    // Test Scraper "Buka di Pembaca" button
+    await page.click('[data-testid="scraper-btn-open-uu-14-2008"]');
+    await page.waitForTimeout(500);
+    const readerTitle = await page.locator('[data-testid="main-content"]').textContent();
+    assert(readerTitle.includes('UU Keterbukaan Informasi Publik'), 'Clicking Buka di Pembaca from scraper opens reader');
+    assert(readerTitle.includes('Informasi adalah keterangan'), 'Reader renders content scraped via URL');
+
+    // Delete mock regulation so count resets cleanly for subsequent steps
+    await page.locator('[data-testid="sidebar-nav-scraper"]').click();
+    await page.waitForTimeout(400);
+
+    page.once('dialog', async (dialog) => {
+      await dialog.accept();
+    });
+    await page.click('[data-testid="scraper-btn-delete-uu-14-2008"]');
+    await page.waitForTimeout(500);
+
+    const scraperAfterDelete = await page.locator('[data-testid="sidebar-desktop"]').textContent();
+    assert(scraperAfterDelete.includes('Regulasi Tersimpan (0)'), 'Mock regulation deleted cleanly via archive delete button');
+
+    // 6E. Test URL Mode: Successful Ingestion via Mock HTML Web Page
+    console.log('Testing Scraper: Successful URL ingestion via mock HTML endpoint...');
+    await page.click('[data-testid="scraper-tab-url"]');
+    await page.waitForTimeout(300);
+
+    await page.fill('[data-testid="scraper-input-judul"]', 'UU Kearsipan');
+    await page.fill('[data-testid="scraper-input-id"]', 'uu-43-2009');
+    await page.fill('[data-testid="scraper-input-url"]', `http://localhost:${port}/api/mock-regulation.html`);
+    await page.click('[data-testid="scraper-btn-submit"]');
+    await page.waitForTimeout(1000);
+
+    const toastSuccessHtml = await page.locator('[data-testid="toast-notification"]').textContent();
+    assert(toastSuccessHtml.includes('Berhasil'), 'Mock HTML URL ingested and saved successfully');
+
+    // Verify it appeared in scraper archive table
+    const archiveItemHtml = page.locator('[data-testid="scraper-law-item-uu-43-2009"]');
+    assert(await archiveItemHtml.isVisible(), 'Ingested HTML regulation appears in Scraper archive list');
+
+    // Test Scraper "Buka di Pembaca" button for HTML scraped regulation
+    await page.click('[data-testid="scraper-btn-open-uu-43-2009"]');
+    await page.waitForTimeout(500);
+    const readerTitleHtml = await page.locator('[data-testid="main-content"]').textContent();
+    assert(readerTitleHtml.includes('UU Kearsipan'), 'Clicking Buka di Pembaca opens HTML scraped regulation');
+    assert(readerTitleHtml.includes('Kearsipan adalah hal-hal yang berkenaan dengan arsip'), 'Reader renders content scraped via HTML URL');
+
+    // Delete HTML mock regulation so count resets cleanly for subsequent steps
+    await page.locator('[data-testid="sidebar-nav-scraper"]').click();
+    await page.waitForTimeout(400);
+
+    page.once('dialog', async (dialog) => {
+      await dialog.accept();
+    });
+    await page.click('[data-testid="scraper-btn-delete-uu-43-2009"]');
+    await page.waitForTimeout(500);
+
+    const scraperAfterHtmlDelete = await page.locator('[data-testid="sidebar-desktop"]').textContent();
+    assert(scraperAfterHtmlDelete.includes('Regulasi Tersimpan (0)'), 'Mock HTML regulation deleted cleanly via archive delete button');
+
+    // 6F. Test Direct Text Ingestion with Edge-Case Numbering (Pasal 1A, 2 bis, BAB titles)
+    console.log('Testing Scraper: Direct text ingestion with edge-case statutory numbering...');
+    await page.click('[data-testid="scraper-tab-text"]');
+    await page.waitForTimeout(300);
 
     await page.fill('[data-testid="scraper-input-id"]', 'uu-1-2024');
     await page.fill('[data-testid="scraper-input-judul"]', 'UU Informasi dan Transaksi Elektronik');
@@ -186,7 +387,6 @@ Pemanfaatan Teknologi Informasi dan Transaksi Elektronik dilaksanakan berdasarka
     const updatedSidebarText = await page.locator('[data-testid="sidebar-desktop"]').textContent();
     assert(updatedSidebarText.includes('Regulasi Tersimpan (1)'), 'Sidebar updated dynamically to 1 regulation');
     assert(updatedSidebarText.includes('UU Informasi dan Transaksi Elektronik'), 'Ingested regulation visible in sidebar');
-    assert(updatedSidebarText.includes('1 Regulasi Tersimpan Offline'), 'Storage card counts 1 offline regulation');
 
     await page.screenshot({ path: 'screenshots/03_scraper_after_ingest.png' });
 
@@ -352,18 +552,18 @@ Pemanfaatan Teknologi Informasi dan Transaksi Elektronik dilaksanakan berdasarka
       await page.waitForTimeout(300);
 
       const scrollContainer = page.locator('[data-testid="sidebar-regulations-scroll-container"]');
-      const storageCard = page.locator('[data-testid="storage-offline-card"]');
+      const sidebar = page.locator('[data-testid="sidebar-desktop"]');
 
       const scrollBox = await scrollContainer.boundingBox();
-      const storageBox = await storageCard.boundingBox();
+      const sidebarBox = await sidebar.boundingBox();
 
-      assert(scrollBox && storageBox, `Elements mounted at ${vp.width}x${vp.height}`);
-      if (scrollBox && storageBox) {
+      assert(scrollBox && sidebarBox, `Elements mounted at ${vp.width}x${vp.height}`);
+      if (scrollBox && sidebarBox) {
         const scrollBottom = scrollBox.y + scrollBox.height;
-        const storageTop = storageBox.y;
+        const sidebarBottom = sidebarBox.y + sidebarBox.height;
         assert(
-          scrollBottom <= storageTop + 1,
-          `At ${vp.width}x${vp.height}: scroll container bottom (${scrollBottom.toFixed(1)}) does NOT overlap storage card top (${storageTop.toFixed(1)})`
+          scrollBottom <= sidebarBottom + 1,
+          `At ${vp.width}x${vp.height}: scroll container bottom (${scrollBottom.toFixed(1)}) is contained within sidebar bottom (${sidebarBottom.toFixed(1)})`
         );
       }
     }

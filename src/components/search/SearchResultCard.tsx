@@ -52,7 +52,7 @@ export const SearchResultCard: React.FC<SearchResultCardProps> = ({
       <div className="flex items-start justify-between gap-3 mb-2">
         <div className="flex items-center gap-2 flex-wrap">
           <Badge variant="amber" size="sm">
-            {lawMeta?.singkatan || article.lawId}
+            {lawMeta?.singkatan || lawMeta?.nomorRegulasi || lawMeta?.nomor || article.lawId}
           </Badge>
           {matchType === 'exact-article' && (
             <Badge variant="success" size="sm">

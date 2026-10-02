@@ -66,7 +66,7 @@ export const SearchView: React.FC<SearchViewProps> = ({
       ) : (
         <>
           {/* Search Bar & Filters */}
-          <div className="space-y-3 sticky top-16 z-20 bg-slate-50 dark:bg-slate-950 pt-2 pb-2 border-b border-slate-200/60 dark:border-slate-800/60">
+          <div className="space-y-3 sticky top-0 z-20 bg-slate-50 dark:bg-slate-950 pt-1 pb-3 border-b border-slate-200/60 dark:border-slate-800/60">
             <SearchBar
               value={query}
               onChange={setQuery}

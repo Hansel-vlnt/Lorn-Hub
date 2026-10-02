@@ -1,0 +1,648 @@
+{
+  "targetUrl": "http://localhost:5173/",
+  "timestamp": "2026-10-01T14:53:49.410Z",
+  "stage1": {
+    "consoleLogs": [
+      {
+        "type": "debug",
+        "text": "[vite] connecting..."
+      },
+      {
+        "type": "info",
+        "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+      },
+      {
+        "type": "debug",
+        "text": "[vite] connected."
+      },
+      {
+        "type": "debug",
+        "text": "[vite] connecting..."
+      },
+      {
+        "type": "debug",
+        "text": "[vite] connected."
+      },
+      {
+        "type": "info",
+        "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+      }
+    ],
+    "networkRequests": [
+      {
+        "url": "http://localhost:5173/",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/main.tsx",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/@vite/client",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/@react-refresh",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react.js?v=4bcb6158",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=4bcb6158",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/App.tsx",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/context/ThemeContext.tsx",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/index.css",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/context/UserDataContext.tsx",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/node_modules/vite/dist/client/env.mjs",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/context/LawContext.tsx",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/chunk-WOOG5QLI.js?v=4bcb6158",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/chunk-OFFQOIRY.js?v=4bcb6158",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/components/layout/index.ts",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/components/scraper/index.ts",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/components/law/LawReader.tsx",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/components/study/index.ts",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/components/search/SearchView.tsx",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/components/ui/Toast.tsx",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/services/storageService.ts",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/services/searchEngine.ts",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/components/pdf/PdfHub.tsx",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/services/offlineStorageService.ts",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/services/regulationScraperService.ts",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=4bcb6158",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/components/layout/Header.tsx",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/components/layout/MobileNav.tsx",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/components/layout/Sidebar.tsx",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/components/layout/OfflineBanner.tsx",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/components/layout/PwaInstallPrompt.tsx",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/components/scraper/RegulationScraperView.tsx",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/components/law/TableOfContents.tsx",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/components/law/ArticleCard.tsx",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/components/study/CitationModal.tsx",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/components/study/BookmarkDrawer.tsx",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/components/search/FilterChips.tsx",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/components/study/NotesDrawer.tsx",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/hooks/useSearch.ts",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/components/search/SearchBar.tsx",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/components/ui/Badge.tsx",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/services/pdfStorage.ts",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/components/ui/Modal.tsx",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/hooks/usePWAInstall.ts",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/components/search/SearchResultCard.tsx",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/chunk-VMRZVTGS.js?v=4bcb6158",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/components/ui/Button.tsx",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/hooks/useOfflineStatus.ts",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/minisearch.js?v=4bcb6158",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/services/citationGenerator.ts",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/idb.js?v=4bcb6158",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/pdfjs-dist.js?v=4bcb6158",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/lucide-react.js?v=4bcb6158",
+        "status": 200
+      },
+      {
+        "url": "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap",
+        "status": 200
+      },
+      {
+        "url": "https://fonts.gstatic.com/s/merriweather/v33/u-4e0qyriQwlOrhSvowK_l5UcA6zuSYEqOzpPe3HOZJ5eX1WtLaQwmYiSeqqJ-k.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/",
+        "status": 200
+      },
+      {
+        "url": "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/@vite/client",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/main.tsx",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=4bcb6158",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react.js?v=4bcb6158",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=4bcb6158",
+        "status": 200
+      },
+      {
+        "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://fonts.gstatic.com/s/merriweather/v33/u-4e0qyriQwlOrhSvowK_l5UcA6zuSYEqOzpPe3HOZJ5eX1WtLaQwmYiSeqqJ-k.woff2",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/chunk-OFFQOIRY.js?v=4bcb6158",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/chunk-WOOG5QLI.js?v=4bcb6158",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/chunk-VMRZVTGS.js?v=4bcb6158",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/@react-refresh",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/node_modules/vite/dist/client/env.mjs",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/App.tsx",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/index.css",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/context/ThemeContext.tsx",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/context/UserDataContext.tsx",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/context/LawContext.tsx",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/components/layout/index.ts",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/components/search/SearchView.tsx",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/components/law/LawReader.tsx",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/lucide-react.js?v=4bcb6158",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/components/scraper/index.ts",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/components/study/index.ts",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/components/pdf/PdfHub.tsx",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/pdfjs-dist.js?v=4bcb6158",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/minisearch.js?v=4bcb6158",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/components/ui/Toast.tsx",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/services/storageService.ts",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/services/searchEngine.ts",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/services/offlineStorageService.ts",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/services/regulationScraperService.ts",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/components/layout/Header.tsx",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/components/layout/MobileNav.tsx",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/components/layout/Sidebar.tsx",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/components/layout/OfflineBanner.tsx",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/components/layout/PwaInstallPrompt.tsx",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/hooks/useSearch.ts",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/components/search/SearchBar.tsx",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/components/search/FilterChips.tsx",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/components/search/SearchResultCard.tsx",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/components/law/ArticleCard.tsx",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/components/law/TableOfContents.tsx",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/components/ui/Badge.tsx",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/components/scraper/RegulationScraperView.tsx",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/components/study/CitationModal.tsx",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/components/study/NotesDrawer.tsx",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/components/study/BookmarkDrawer.tsx",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/services/pdfStorage.ts",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/components/ui/Modal.tsx",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/components/ui/Button.tsx",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/hooks/usePWAInstall.ts",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/node_modules/.vite/deps/idb.js?v=4bcb6158",
+        "status": 200
+      },
+      {
+        "url": "http://localhost:5173/src/hooks/useOfflineStatus.ts",
+        "status": 304
+      },
+      {
+        "url": "http://localhost:5173/src/services/citationGenerator.ts",
+        "status": 304
+      }
+    ],
+    "failedRequests": []
+  },
+  "stage2": {
+    "sidebarBefore": {
+      "x": 80,
+      "y": 64,
+      "width": 288,
+      "height": 836
+    },
+    "sidebarAfter800": {
+      "x": 80,
+      "y": 64,
+      "width": 288,
+      "height": 836
+    },
+    "sidebarAfter2000": {
+      "x": 80,
+      "y": 64,
+      "width": 288,
+      "height": 836
+    },
+    "isSidebarStationary": true
+  },
+  "stage3": {
+    "mobileSidebarHidden": true,
+    "mobileNavVisible": true,
+    "hasHorizontalOverflow": false,
+    "totalButtonsMeasured": 329,
+    "sub44pxCount": 1,
+    "sub44pxList": [
+      {
+        "text": "DAFTAR BAB & STRUKTUR (3 BAB)\n",
+        "width": 293,
+        "height": 41,
+        "passes44px": false
+      }
+    ]
+  },
+  "stage4": {
+    "searchResultsPencurianCount": 66,
+    "searchSymbolsHandledWithoutCrash": true,
+    "modalOpened": false
+  },
+  "stage5": {
+    "typography": {
+      "fontSizesTested": {
+        "SM": "14px",
+        "LG": "18px",
+        "XL": "20px"
+      },
+      "serifApplied": true,
+      "sansApplied": true
+    },
+    "contrastDarkMode": [
+      {
+        "desc": "Main Header Title",
+        "selector": "h1",
+        "color": "rgb(255, 255, 255)",
+        "bgColor": "rgb(15, 23, 42)",
+        "ratio": 17.85,
+        "passesWcagAA": true
+      },
+      {
+        "desc": "Header Subtitle",
+        "selector": "header p",
+        "color": "rgb(148, 163, 184)",
+        "bgColor": "rgba(15, 23, 42, 0.95)",
+        "ratio": 6.96,
+        "passesWcagAA": true
+      },
+      {
+        "desc": "Active Sidebar Navigation",
+        "selector": "aside button.font-semibold",
+        "color": "rgb(251, 191, 36)",
+        "bgColor": "rgba(245, 158, 11, 0.1)",
+        "ratio": 1.29,
+        "passesWcagAA": false
+      },
+      {
+        "desc": "Inactive Sidebar Navigation",
+        "selector": "aside button:not(.font-semibold)",
+        "color": "rgb(203, 213, 225)",
+        "bgColor": "rgb(15, 23, 42)",
+        "ratio": 12.02,
+        "passesWcagAA": true
+      },
+      {
+        "desc": "Article Body Text",
+        "selector": "main p",
+        "color": "rgb(148, 163, 184)",
+        "bgColor": "rgb(15, 23, 42)",
+        "ratio": 6.96,
+        "passesWcagAA": true
+      },
+      {
+        "desc": "Amber Accent Highlights",
+        "selector": "span.text-amber-700, span.text-amber-400",
+        "color": "rgb(251, 191, 36)",
+        "bgColor": "rgba(15, 23, 42, 0.95)",
+        "ratio": 10.69,
+        "passesWcagAA": true
+      }
+    ],
+    "contrastLightMode": [
+      {
+        "desc": "Main Header Title",
+        "selector": "h1",
+        "color": "rgb(15, 23, 42)",
+        "bgColor": "rgb(255, 255, 255)",
+        "ratio": 17.85,
+        "passesWcagAA": true
+      },
+      {
+        "desc": "Header Subtitle",
+        "selector": "header p",
+        "color": "rgb(71, 85, 105)",
+        "bgColor": "rgba(255, 255, 255, 0.95)",
+        "ratio": 7.58,
+        "passesWcagAA": true
+      },
+      {
+        "desc": "Active Sidebar Navigation",
+        "selector": "aside button.font-semibold",
+        "color": "rgb(180, 83, 9)",
+        "bgColor": "rgba(245, 158, 11, 0.1)",
+        "ratio": 2.34,
+        "passesWcagAA": false
+      },
+      {
+        "desc": "Inactive Sidebar Navigation",
+        "selector": "aside button:not(.font-semibold)",
+        "color": "rgb(71, 85, 105)",
+        "bgColor": "rgb(255, 255, 255)",
+        "ratio": 7.58,
+        "passesWcagAA": true
+      },
+      {
+        "desc": "Article Body Text",
+        "selector": "main p",
+        "color": "rgb(100, 116, 139)",
+        "bgColor": "rgb(255, 255, 255)",
+        "ratio": 4.76,
+        "passesWcagAA": true
+      },
+      {
+        "desc": "Amber Accent Highlights",
+        "selector": "span.text-amber-700, span.text-amber-400",
+        "color": "rgb(180, 83, 9)",
+        "bgColor": "rgba(255, 255, 255, 0.95)",
+        "ratio": 5.02,
+        "passesWcagAA": true
+      }
+    ],
+    "antislopVisualCheck": {
+      "blurBackdropCount": 1,
+      "purpleBlueGradients": 0,
+      "neonOrbs": 0
+    }
+  },
+  "stage6": {
+    "lighthouseScores": {
+      "accessibility": null,
+      "pwa": null,
+      "performance": null
+    },
+    "reportPath": "D:\\Project\\Lorn-Hub\\lighthouse-report.json"
+  }
+}
