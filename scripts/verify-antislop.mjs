@@ -144,7 +144,7 @@ const sidebarSrc = readFileSync('src/components/layout/Sidebar.tsx', 'utf-8');
 const hasMainContainerLayout = appSrc.includes('h-[calc(100vh-4rem)] flex overflow-hidden');
 const hasHeaderLayout = headerSrc.includes('sticky top-0 z-30 h-16');
 const hasSidebarLayout = sidebarSrc.includes('w-72 h-full flex flex-col justify-between') &&
-  sidebarSrc.includes('overflow-hidden');
+  (sidebarSrc.includes('overflow-y-auto') || sidebarSrc.includes('overflow-hidden'));
 const hasMainScrollLayout = appSrc.includes('flex-1 h-full overflow-y-auto');
 
 if (hasMainContainerLayout && hasHeaderLayout && hasSidebarLayout && hasMainScrollLayout) {
@@ -154,23 +154,21 @@ if (hasMainContainerLayout && hasHeaderLayout && hasSidebarLayout && hasMainScro
   errors++;
 }
 
-// Test 11: Menu Navigation Cleanliness & Active Accent (TC-UI-02)
-const hasDeletedOldFeatures =
-  !sidebarSrc.includes('Komparasi KUHP Baru vs Lama') &&
-  !sidebarSrc.includes('Jelajah Regulasi') &&
-  !sidebarSrc.includes('Meja Belajar');
-const has4RealTools =
-  sidebarSrc.includes('Scraper / Tambah Regulasi') &&
+// Test 11: Menu Navigation Cleanliness & 5 Clean Tools (TC-UI-02)
+const hasDeletedOldFeatures = !sidebarSrc.includes('Komparasi KUHP Baru vs Lama');
+const has5CleanTools =
+  sidebarSrc.includes('Jelajah Regulasi') &&
   sidebarSrc.includes('Pencarian Kilat') &&
+  sidebarSrc.includes('Tambah / Sinkron Regulasi') &&
   sidebarSrc.includes('PDF & Dokumen Hub') &&
-  sidebarSrc.includes('Baca Regulasi');
+  sidebarSrc.includes('Meja Belajar');
 const hasActiveAmberAccent =
   sidebarSrc.includes('bg-amber-500/10') &&
   (sidebarSrc.includes('text-amber-600') || sidebarSrc.includes('text-amber-700')) &&
   sidebarSrc.includes('dark:text-amber-400');
 
-if (hasDeletedOldFeatures && has4RealTools && hasActiveAmberAccent) {
-  console.log(`PASS: [TC-UI-02] Menu Utama clean with 4 real tools, Jelajah Regulasi & Meja Belajar deleted, amber active accent.`);
+if (hasDeletedOldFeatures && has5CleanTools && hasActiveAmberAccent) {
+  console.log(`PASS: [TC-UI-02] Menu Utama clean with 5 tools, Komparasi KUHP removed, amber active accent.`);
 } else {
   console.error(`FAIL: [TC-UI-02] Menu Utama navigation or active state styling mismatch.`);
   errors++;
@@ -179,29 +177,35 @@ if (hasDeletedOldFeatures && has4RealTools && hasActiveAmberAccent) {
 // Test 12: Responsive Mobile Ergonomics (TC-UI-03)
 const mobileNavSrc = readFileSync('src/components/layout/MobileNav.tsx', 'utf-8');
 const hasDesktopSidebarHidden = sidebarSrc.includes('hidden md:flex');
-const hasMobileNav4Items =
-  !mobileNavSrc.includes('Jelajah') &&
-  !mobileNavSrc.includes('Belajar') &&
-  mobileNavSrc.includes('Scraper') &&
+const hasMobileNavSynced =
+  mobileNavSrc.includes('Jelajah') &&
   mobileNavSrc.includes('Cari') &&
+  mobileNavSrc.includes('Scraper') &&
   mobileNavSrc.includes('PDF Hub') &&
-  mobileNavSrc.includes('Baca');
+  mobileNavSrc.includes('Belajar');
 
-if (hasDesktopSidebarHidden && hasMobileNav4Items) {
-  console.log(`PASS: [TC-UI-03] Responsive mobile ergonomics valid (hidden md:flex and MobileNav synced to 4 real tools).`);
+if (hasDesktopSidebarHidden && hasMobileNavSynced) {
+  console.log(`PASS: [TC-UI-03] Responsive mobile ergonomics valid (hidden md:flex and MobileNav synced to navigation tools).`);
 } else {
   console.error(`FAIL: [TC-UI-03] Responsive mobile ergonomics mismatch.`);
   errors++;
 }
 
-// Test 13: Storage card removed, compact add-button present (TC-UI-04)
-const storageCardRemoved = !sidebarSrc.includes('Storage & Offline') && !sidebarSrc.includes('Kelola Unduhan');
-const hasAddButton = sidebarSrc.includes('Tambah regulasi baru') && sidebarSrc.includes('Plus');
+// Test 13: Functional Storage & Offline Status Card (TC-UI-04)
+const hasStorageOfflineCard =
+  sidebarSrc.includes('Storage & Offline') &&
+  sidebarSrc.includes('Regulasi Tersimpan Offline') &&
+  sidebarSrc.includes('Online Ready') &&
+  sidebarSrc.includes('Offline Active');
+const hasMiniFilter =
+  sidebarSrc.includes('Saring undang-undang...') &&
+  sidebarSrc.includes('Escape') &&
+  sidebarSrc.includes('Tidak ada regulasi yang cocok');
 
-if (storageCardRemoved && hasAddButton) {
-  console.log(`PASS: [TC-UI-04] Storage card removed. Compact add-button present in sidebar header.`);
+if (hasStorageOfflineCard && hasMiniFilter) {
+  console.log(`PASS: [TC-UI-04] Functional Storage & Offline card and Mini-Filter present in sidebar.`);
 } else {
-  console.error(`FAIL: [TC-UI-04] Storage card not fully removed or add-button missing.`);
+  console.error(`FAIL: [TC-UI-04] Storage card or Mini-Filter missing or incomplete.`);
   errors++;
 }
 

@@ -1,17 +1,24 @@
 import React, { useState } from 'react';
 import { useLaw } from './context/LawContext';
-import { Header, MobileNav, Sidebar, OfflineBanner, PwaInstallPrompt, MainNavTab } from './components/layout';
-import { LawReader } from './components/law/LawReader';
+import {
+  Header,
+  MobileNav,
+  Sidebar,
+  OfflineBanner,
+  PwaInstallPrompt,
+  MainNavTab,
+} from './components/layout';
+import { LawReader, LawCatalog } from './components/law';
 import { SearchView } from './components/search/SearchView';
 import { RegulationScraperView } from './components/scraper';
-import { CitationModal, NotesDrawer, BookmarkDrawer } from './components/study';
+import { CitationModal, NotesDrawer, BookmarkDrawer, StudyDesk } from './components/study';
 import { PdfHub } from './components/pdf/PdfHub';
 import { Toast, ToastMessage } from './components/ui/Toast';
 import { Article } from './types';
 
 export const App: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<MainNavTab>('scraper');
-  const { setSelectedLawId, lawsCatalog } = useLaw();
+  const [activeTab, setActiveTab] = useState<MainNavTab>('catalog');
+  const { setSelectedLawId, lawsCatalog, selectedLawId } = useLaw();
 
   // Active Modals & Selected Article
   const [selectedArticleForCitation, setSelectedArticleForCitation] = useState<Article | null>(null);
@@ -46,7 +53,9 @@ export const App: React.FC = () => {
     setSelectedLawId(article.lawId);
     setActiveTab('reader');
     setTimeout(() => {
-      const el = document.getElementById(`pasal-${article.nomor.toLowerCase().replace(/[^a-z0-9]/g, '-')}`);
+      const el = document.getElementById(
+        `pasal-${article.nomor.toLowerCase().replace(/[^a-z0-9]/g, '-')}`
+      );
       if (el) {
         el.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
@@ -82,6 +91,17 @@ export const App: React.FC = () => {
           data-testid="main-content"
           className="flex-1 h-full overflow-y-auto p-6 pb-24 md:pb-6"
         >
+          {activeTab === 'catalog' && (
+            <LawCatalog
+              onSelectLaw={(lawId) => {
+                setSelectedLawId(lawId);
+                setActiveTab('reader');
+              }}
+              selectedLawId={selectedLawId}
+              onOpenScraper={() => setActiveTab('scraper')}
+            />
+          )}
+
           {activeTab === 'scraper' && (
             <RegulationScraperView
               initialData={scraperInitialData}
@@ -107,6 +127,13 @@ export const App: React.FC = () => {
             <PdfHub
               onSendToScraper={handleSendPdfToScraper}
               onShowToast={showToast}
+            />
+          )}
+
+          {activeTab === 'study' && (
+            <StudyDesk
+              onSelectArticle={handleOpenArticleFromSearch}
+              onOpenReader={() => setActiveTab('reader')}
             />
           )}
 

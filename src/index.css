@@ -48,3 +48,52 @@
 .pb-safe {
   padding-bottom: env(safe-area-inset-bottom, 1rem);
 }
+
+/* Official Document Print Mode */
+@media print {
+  @page {
+    margin: 20mm 15mm 20mm 15mm;
+    size: A4 portrait;
+  }
+
+  body {
+    background-color: #ffffff !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-family: 'Merriweather', Georgia, 'Times New Roman', serif !important;
+  }
+
+  header,
+  aside,
+  nav,
+  button,
+  .pwa-prompt,
+  .offline-banner,
+  .toast,
+  [data-testid="pwa-prompt"],
+  [data-testid="offline-banner"],
+  [data-testid="toast"] {
+    display: none !important;
+  }
+
+  html,
+  #root,
+  .min-h-screen,
+  div[class*="h-[calc(100vh-4rem)]"],
+  main,
+  [data-testid="main-content"] {
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #ffffff !important;
+  }
+
+  article,
+  .pasal-card,
+  [data-testid="article-card"] {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+}

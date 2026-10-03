@@ -3,14 +3,15 @@ import { useLaw } from '../../context/LawContext';
 import { ArticleCard } from './ArticleCard';
 import { TableOfContents } from './TableOfContents';
 import { Article } from '../../types';
-import { Search, Book, ShieldCheck, AlertCircle, DownloadCloud, FileText, BookOpen } from 'lucide-react';
+import { Search, Book, ShieldCheck, AlertCircle, DownloadCloud, FileText, BookOpen, Printer, Download } from 'lucide-react';
 import { Badge } from '../ui/Badge';
+import { exportLawAsTxt, exportLawAsJson } from '../../services/exportService';
 
 interface LawReaderProps {
   onOpenCitation: (article: Article) => void;
   onOpenNote: (article: Article) => void;
   onOpenBookmark: (article: Article) => void;
-  onShowToast?: (msg: string) => void;
+  onShowToast?: (msg: string, type?: 'success' | 'error' | 'info') => void;
   onOpenScraper?: () => void;
   onOpenPdf?: () => void;
 }
@@ -138,15 +139,30 @@ export const LawReader: React.FC<LawReaderProps> = ({
 
   return (
     <div className="space-y-6 max-w-5xl mx-auto pb-20">
-      {/* Top Regulation Switcher Bar */}
-      <div className="flex items-center justify-between gap-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-3 sm:px-4 rounded-2xl shadow-xs">
-        <div className="flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-300 min-w-0">
-          <BookOpen size={16} className="text-amber-600 dark:text-amber-400 flex-shrink-0" />
-          <span className="truncate">Naskah Aktif:</span>
-        </div>
+      {/* Kop Dokumen Cetak Resmi Negara (hanya tampil saat diprint) */}
+      <div className="hidden print:block text-center border-b-2 border-black pb-4 mb-6">
+        <h1 className="text-xl font-bold tracking-wider uppercase text-black">
+          REPUBLIK INDONESIA
+        </h1>
+        <h2 className="text-base font-bold uppercase mt-1 text-black">
+          {currentLawMetadata.nomorRegulasi || currentLawMetadata.nomor}
+        </h2>
+        <h3 className="text-sm font-semibold uppercase mt-1 text-black">
+          {currentLawMetadata.judulLengkap || currentLawMetadata.judul}
+        </h3>
+        <p className="text-xs text-black mt-1">
+          Salinan Naskah Resmi - Lorn-Hub Kompilasi Hukum Indonesia
+        </p>
+      </div>
 
+      {/* Top Regulation Switcher & Document Action Bar */}
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-3 sm:px-4 rounded-2xl shadow-xs">
         {/* Regulation Dropdown Switcher */}
-        <div className="flex items-center gap-2 min-w-0 flex-1 max-w-md justify-end">
+        <div className="flex items-center gap-2 min-w-0 flex-1">
+          <BookOpen size={16} className="text-amber-600 dark:text-amber-400 flex-shrink-0" />
+          <span className="text-xs font-semibold text-slate-700 dark:text-slate-300 whitespace-nowrap">
+            Naskah Aktif:
+          </span>
           <select
             id="select-law-quick"
             value={selectedLawId}
@@ -164,6 +180,51 @@ export const LawReader: React.FC<LawReaderProps> = ({
               </option>
             ))}
           </select>
+        </div>
+
+        {/* Action Buttons: Print & Export */}
+        <div className="flex items-center gap-2 flex-wrap justify-end">
+          <button
+            type="button"
+            data-testid="btn-print-law"
+            onClick={() => window.print()}
+            className="min-h-[44px] px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold border border-slate-200 dark:border-slate-700 transition-colors flex items-center gap-1.5"
+            title="Cetak Naskah Resmi (Ctrl + P)"
+            aria-label="Cetak Naskah"
+          >
+            <Printer size={15} className="text-amber-600 dark:text-amber-400" />
+            <span>Cetak Naskah</span>
+          </button>
+
+          <button
+            type="button"
+            data-testid="btn-export-txt"
+            onClick={() => {
+              exportLawAsTxt({ metadata: currentLawMetadata, pasalList: currentArticles });
+              if (onShowToast) onShowToast('Naskah berhasil diekspor (.txt)!', 'success');
+            }}
+            className="min-h-[44px] px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold border border-slate-200 dark:border-slate-700 transition-colors flex items-center gap-1.5"
+            title="Ekspor Naskah .TXT"
+            aria-label="Ekspor TXT"
+          >
+            <Download size={15} className="text-amber-600 dark:text-amber-400" />
+            <span>Ekspor .TXT</span>
+          </button>
+
+          <button
+            type="button"
+            data-testid="btn-export-json"
+            onClick={() => {
+              exportLawAsJson({ metadata: currentLawMetadata, pasalList: currentArticles });
+              if (onShowToast) onShowToast('Naskah berhasil diekspor (.json)!', 'success');
+            }}
+            className="min-h-[44px] px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-semibold border border-slate-200 dark:border-slate-700 transition-colors flex items-center gap-1.5"
+            title="Ekspor Naskah .JSON"
+            aria-label="Ekspor JSON"
+          >
+            <Download size={15} className="text-amber-600 dark:text-amber-400" />
+            <span>Ekspor .JSON</span>
+          </button>
         </div>
       </div>
 
