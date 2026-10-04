@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useLaw } from '../../context/LawContext';
 import { ArticleCard } from './ArticleCard';
-import { TableOfContents } from './TableOfContents';
+import { TableOfContents, normalizeBab } from './TableOfContents';
 import { Article } from '../../types';
 import { Search, Book, ShieldCheck, AlertCircle, DownloadCloud, FileText, BookOpen, Printer, Download } from 'lucide-react';
 import { Badge } from '../ui/Badge';
@@ -38,6 +38,16 @@ export const LawReader: React.FC<LawReaderProps> = ({
   const [selectedBab, setSelectedBab] = useState<string>('');
   const [inLawFilterQuery, setInLawFilterQuery] = useState<string>('');
 
+  const handleSelectBab = (bab: string) => {
+    setSelectedBab(bab);
+    requestAnimationFrame(() => {
+      const container = document.getElementById('articles-list-container');
+      if (container) {
+        container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  };
+
   // Whenever selectedLawId changes externally, reset in-law filter
   useEffect(() => {
     setSelectedBab('');
@@ -53,8 +63,9 @@ export const LawReader: React.FC<LawReaderProps> = ({
   }, [selectedLawId, lawsCatalog, setSelectedLawId, loadLaw]);
 
   const filteredArticles = useMemo(() => {
+    const normSelected = normalizeBab(selectedBab).toLowerCase();
     return currentArticles.filter((art) => {
-      if (selectedBab && art.bab !== selectedBab) return false;
+      if (normSelected && normalizeBab(art.bab).toLowerCase() !== normSelected) return false;
       if (inLawFilterQuery.trim()) {
         const q = inLawFilterQuery.toLowerCase().trim();
         const matchesNomor = art.nomor.toLowerCase().includes(q);
@@ -304,8 +315,9 @@ export const LawReader: React.FC<LawReaderProps> = ({
 
         {selectedBab && (
           <button
-            onClick={() => setSelectedBab('')}
-            className="min-h-[44px] text-xs px-3.5 py-2 rounded-xl bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/30 font-medium whitespace-nowrap"
+            type="button"
+            onClick={() => handleSelectBab('')}
+            className="min-h-[44px] text-xs px-3.5 py-2 rounded-xl bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/30 font-medium whitespace-nowrap cursor-pointer hover:bg-amber-500/20 transition-colors"
           >
             Reset Filter Bab ✕
           </button>
@@ -319,17 +331,17 @@ export const LawReader: React.FC<LawReaderProps> = ({
           <TableOfContents
             articles={currentArticles}
             selectedBab={selectedBab}
-            onSelectBab={setSelectedBab}
+            onSelectBab={handleSelectBab}
           />
         </div>
 
         {/* Articles List */}
-        <div className="lg:col-span-8 space-y-4">
+        <div id="articles-list-container" className="lg:col-span-8 space-y-4">
           <div className="lg:hidden">
             <TableOfContents
               articles={currentArticles}
               selectedBab={selectedBab}
-              onSelectBab={setSelectedBab}
+              onSelectBab={handleSelectBab}
             />
           </div>
 

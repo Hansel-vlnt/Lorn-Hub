@@ -222,7 +222,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
               <div className="font-bold text-xs uppercase tracking-wide text-amber-800 dark:text-amber-400">
                 Ayat ({ay.nomor})
               </div>
-              <div className={`${fontClasses.fontFamily} ${fontClasses.fontSize} text-slate-900 dark:text-slate-100`}>
+              <div className={`${fontClasses.fontFamily} ${fontClasses.fontSize} text-slate-900 dark:text-slate-100 whitespace-pre-wrap`}>
                 {ay.teks}
               </div>
               {ay.penjelasan && (

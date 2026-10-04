@@ -8,6 +8,11 @@ interface TableOfContentsProps {
   onSelectBab: (bab: string) => void;
 }
 
+export const normalizeBab = (bab?: string) => {
+  if (!bab) return '';
+  return bab.replace(/\u00A0/g, ' ').replace(/\s+/g, ' ').trim();
+};
+
 export const TableOfContents: React.FC<TableOfContentsProps> = ({
   articles,
   selectedBab,
@@ -15,15 +20,18 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  // Extract unique chapters / bab
+  // Extract unique chapters / bab with normalized whitespace
   const chapters: string[] = ['Semua Bab'];
   articles.forEach((a) => {
-    if (a.bab && !chapters.includes(a.bab)) {
-      chapters.push(a.bab);
+    const norm = normalizeBab(a.bab);
+    if (norm && !chapters.some((c) => normalizeBab(c).toLowerCase() === norm.toLowerCase())) {
+      chapters.push(norm);
     }
   });
 
   if (chapters.length <= 1) return null;
+
+  const normSelected = normalizeBab(selectedBab).toLowerCase();
 
   return (
     <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 space-y-2 shadow-xs">
@@ -47,17 +55,21 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({
 
       <div className={`space-y-1 max-h-72 lg:max-h-[calc(100vh-14rem)] overflow-y-auto pr-1 ${isExpanded ? 'block' : 'hidden lg:block'}`}>
         {chapters.map((ch) => {
-          const isSelected = (ch === 'Semua Bab' && !selectedBab) || selectedBab === ch;
-          const articleCount = ch === 'Semua Bab' ? articles.length : articles.filter((a) => a.bab === ch).length;
+          const normCh = normalizeBab(ch).toLowerCase();
+          const isSelected = (ch === 'Semua Bab' && !selectedBab) || (Boolean(normSelected) && normSelected === normCh);
+          const articleCount = ch === 'Semua Bab' 
+            ? articles.length 
+            : articles.filter((a) => normalizeBab(a.bab).toLowerCase() === normCh).length;
 
           return (
             <button
               key={ch}
+              type="button"
               onClick={() => {
                 onSelectBab(ch === 'Semua Bab' ? '' : ch);
                 setIsExpanded(false);
               }}
-              className={`w-full min-h-[44px] text-left px-3 py-2 rounded-xl text-xs font-medium transition-all flex items-start justify-between gap-2 border ${
+              className={`w-full min-h-[44px] text-left px-3 py-2 rounded-xl text-xs font-medium transition-all flex items-start justify-between gap-2 border cursor-pointer ${
                 isSelected
                   ? 'bg-amber-500/15 text-amber-900 dark:text-amber-300 font-bold border-amber-500/30'
                   : 'border-transparent text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/80 hover:text-slate-900 dark:hover:text-white'

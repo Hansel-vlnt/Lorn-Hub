@@ -308,13 +308,15 @@ export class RegulationScraperService {
       }
     }
 
+    const cleanedText = trimmed.replace(/\u00A0/g, ' ').replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+
     if (pasalList.length === 0) {
       // Auto-normalize legal headings (e.g. from single-line PDF dumps or unformatted text)
-      const normalized = trimmed
-        .replace(/([^\n])\s+(BAB\s+[IVXLCDM]+(?:\s+[^.\n]+)?)/gi, '$1\n\n$2\n')
-        .replace(/([^\n])\s+(BAGIAN\s+[A-Z\s]+)/gi, '$1\n\n$2\n')
-        .replace(/([^\n])\s+(PARAGRAF\s+\d+)/gi, '$1\n\n$2\n')
-        .replace(/([^\n])\s+(Pasal\s+\d+(?:\s*[a-zA-Z]+|\s+bis)?)/gi, '$1\n\n$2')
+      const normalized = cleanedText
+        .replace(/([^\n])\s+(BAB\s+(?:[IVXLCDM]+|KESATU|KEDUA|KETIGA|KEEMPAT|KELIMA|KEENAM|KETUJUH|KEDELAPAN|KESEMBILAN|KESEPULUH)\b)/gi, '$1\n\n$2')
+        .replace(/([^\n])\s+(BAGIAN\s+(?:[IVXLCDM\d]+|KESATU|KEDUA|KETIGA|KEEMPAT|KELIMA|KEENAM|KETUJUH|KEDELAPAN|KESEMBILAN|KESEPULUH|PERTAMA)\b)/gi, '$1\n\n$2')
+        .replace(/([^\n])\s+(PARAGRAF\s+\d+\b)/gi, '$1\n\n$2')
+        .replace(/([^\n])\s+(Pasal\s+\d+(?:\s*[a-zA-Z]+|\s+bis)?\b)/gi, '$1\n\n$2')
         .replace(/([^\n])\s+(\([0-9]+\)\s+[A-Z])/g, '$1\n$2');
 
       const lines = normalized.split(/\r?\n/);
@@ -338,7 +340,7 @@ export class RegulationScraperService {
             pasalList.push(currentArticle);
             currentArticle = null;
           }
-          currentBab = trimmedLine;
+          currentBab = trimmedLine.replace(/\s+/g, ' ');
           currentBagian = '';
           currentParagraf = '';
           awaitingBabTitle = true;
@@ -347,7 +349,7 @@ export class RegulationScraperService {
 
         if (awaitingBabTitle) {
           if (!lower.startsWith('bagian ') && !lower.startsWith('paragraf ') && !lower.startsWith('pasal ')) {
-            currentBab = `${currentBab} - ${trimmedLine}`;
+            currentBab = `${currentBab} - ${trimmedLine.replace(/\s+/g, ' ')}`;
             awaitingBabTitle = false;
             continue;
           }
@@ -360,7 +362,7 @@ export class RegulationScraperService {
             pasalList.push(currentArticle);
             currentArticle = null;
           }
-          currentBagian = trimmedLine;
+          currentBagian = trimmedLine.replace(/\s+/g, ' ');
           currentParagraf = '';
           awaitingBagianTitle = true;
           continue;
@@ -368,7 +370,7 @@ export class RegulationScraperService {
 
         if (awaitingBagianTitle) {
           if (!lower.startsWith('bab ') && !lower.startsWith('paragraf ') && !lower.startsWith('pasal ')) {
-            currentBagian = `${currentBagian} - ${trimmedLine}`;
+            currentBagian = `${currentBagian} - ${trimmedLine.replace(/\s+/g, ' ')}`;
             awaitingBagianTitle = false;
             continue;
           }
@@ -381,14 +383,14 @@ export class RegulationScraperService {
             pasalList.push(currentArticle);
             currentArticle = null;
           }
-          currentParagraf = trimmedLine;
+          currentParagraf = trimmedLine.replace(/\s+/g, ' ');
           awaitingParagrafTitle = true;
           continue;
         }
 
         if (awaitingParagrafTitle) {
           if (!lower.startsWith('bab ') && !lower.startsWith('bagian ') && !lower.startsWith('pasal ')) {
-            currentParagraf = `${currentParagraf} - ${trimmedLine}`;
+            currentParagraf = `${currentParagraf} - ${trimmedLine.replace(/\s+/g, ' ')}`;
             awaitingParagrafTitle = false;
             continue;
           }
@@ -401,6 +403,10 @@ export class RegulationScraperService {
           if (/^pasal\s+\d+\s*(?:ayat|jo|tentang|nomor|huruf|angka|undang-undang)/i.test(lower)) {
             if (currentArticle) {
               currentArticle.isi = currentArticle.isi ? `${currentArticle.isi}\n${trimmedLine}` : trimmedLine;
+              if (currentArticle.ayat && currentArticle.ayat.length > 0) {
+                const lastAyat = currentArticle.ayat[currentArticle.ayat.length - 1];
+                lastAyat.teks = `${lastAyat.teks}\n${trimmedLine}`;
+              }
             }
             continue;
           }
@@ -462,6 +468,11 @@ export class RegulationScraperService {
             currentArticle.penjelasan = trimmedLine;
           } else {
             currentArticle.isi = currentArticle.isi ? `${currentArticle.isi}\n${trimmedLine}` : trimmedLine;
+            // Append continuation to the active ayat if one exists
+            if (currentArticle.ayat && currentArticle.ayat.length > 0) {
+              const lastAyat = currentArticle.ayat[currentArticle.ayat.length - 1];
+              lastAyat.teks = `${lastAyat.teks}\n${trimmedLine}`;
+            }
           }
         }
       }
