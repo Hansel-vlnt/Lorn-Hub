@@ -34,7 +34,8 @@ export const SearchResultCard: React.FC<SearchResultCardProps> = ({
   // Helper for highlighting search term in text
   const renderHighlightedText = (text: string) => {
     if (!query.trim() || query.length < 2) return text;
-    const parts = text.split(new RegExp(`(${query.trim()})`, 'gi'));
+    const escapedQuery = query.trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const parts = text.split(new RegExp(`(${escapedQuery})`, 'gi'));
     return parts.map((part, i) =>
       part.toLowerCase() === query.trim().toLowerCase() ? (
         <mark key={i} className="bg-amber-500/20 dark:bg-amber-400/20 text-amber-900 dark:text-amber-200 px-1 rounded font-semibold">

@@ -33,6 +33,7 @@ export const LawProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [error, setError] = useState<string | null>(null);
 
   const loadLaw = useCallback(async (lawId: string) => {
+    setError(null);
     if (!lawId) {
       setSelectedLawId('');
       return;
@@ -67,6 +68,7 @@ export const LawProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     let isMounted = true;
     async function loadCatalog() {
       try {
+        setError(null);
         setIsLoading(true);
         const datasets = await offlineStorage.getAllDatasets();
 

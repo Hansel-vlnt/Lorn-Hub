@@ -254,9 +254,19 @@ export const PdfHub: React.FC<PdfHubProps> = ({ onSendToScraper, onShowToast }) 
       for (let i = 1; i <= pdfDoc.numPages; i++) {
         const page = await pdfDoc.getPage(i);
         const content = await page.getTextContent();
-        const text = content.items.map((item: any) => item.str).join(' ');
-        if (text.trim()) {
-          pageTexts.push(text.trim());
+        let lastY: number | null = null;
+        let pageStr = '';
+        for (const item of content.items as any[]) {
+          if (lastY !== null && item.transform && Math.abs(item.transform[5] - lastY) > 3) {
+            pageStr += '\n';
+          } else if (pageStr.length > 0 && !pageStr.endsWith('\n') && !pageStr.endsWith(' ')) {
+            pageStr += ' ';
+          }
+          pageStr += item.str;
+          if (item.transform) lastY = item.transform[5];
+        }
+        if (pageStr.trim()) {
+          pageTexts.push(pageStr.trim());
         }
       }
       const full = pageTexts.join('\n\n');

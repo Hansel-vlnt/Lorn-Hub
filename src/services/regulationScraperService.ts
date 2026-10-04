@@ -309,7 +309,15 @@ export class RegulationScraperService {
     }
 
     if (pasalList.length === 0) {
-      const lines = trimmed.split(/\r?\n/);
+      // Auto-normalize legal headings (e.g. from single-line PDF dumps or unformatted text)
+      const normalized = trimmed
+        .replace(/([^\n])\s+(BAB\s+[IVXLCDM]+(?:\s+[^.\n]+)?)/gi, '$1\n\n$2\n')
+        .replace(/([^\n])\s+(BAGIAN\s+[A-Z\s]+)/gi, '$1\n\n$2\n')
+        .replace(/([^\n])\s+(PARAGRAF\s+\d+)/gi, '$1\n\n$2\n')
+        .replace(/([^\n])\s+(Pasal\s+\d+(?:\s*[a-zA-Z]+|\s+bis)?)/gi, '$1\n\n$2')
+        .replace(/([^\n])\s+(\([0-9]+\)\s+[A-Z])/g, '$1\n$2');
+
+      const lines = normalized.split(/\r?\n/);
       let currentBab = '';
       let currentBagian = '';
       let currentParagraf = '';
@@ -389,10 +397,18 @@ export class RegulationScraperService {
 
         // 4. Pasal detection (handles standard e.g. "Pasal 1", plus "Pasal 1A", "Pasal 14 bis", "Pasal 27 B")
         if (lower.startsWith('pasal ')) {
+          // Exclude cross-references e.g. "Pasal 5 ayat (1)", "Pasal 28 Undang-Undang Dasar"
+          if (/^pasal\s+\d+\s*(?:ayat|jo|tentang|nomor|huruf|angka|undang-undang)/i.test(lower)) {
+            if (currentArticle) {
+              currentArticle.isi = currentArticle.isi ? `${currentArticle.isi}\n${trimmedLine}` : trimmedLine;
+            }
+            continue;
+          }
+
           if (currentArticle) {
             pasalList.push(currentArticle);
           }
-          const match = lower.match(/^pasal\s+([0-9]+(?:\s*[a-z]+|\s+bis)?)/i);
+          const match = lower.match(/^pasal\s+([0-9]+(?:\s*(?:[a-zA-Z]\b|bis\b))?)/i);
           const rawMatch = match ? match[1] : `${pasalList.length + 1}`;
           const nomor = rawMatch.trim().replace(/\s+([a-zA-Z])$/, '$1').toUpperCase();
           const nomorSlug = nomor.toLowerCase().replace(/[^a-z0-9]/g, '-');
