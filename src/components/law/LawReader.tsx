@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useLaw } from '../../context/LawContext';
 import { ArticleCard } from './ArticleCard';
-import { TableOfContents, normalizeBab } from './TableOfContents';
+import { TableOfContents, extractBabKey } from './TableOfContents';
 import { Article } from '../../types';
 import { Search, Book, ShieldCheck, AlertCircle, DownloadCloud, FileText, BookOpen, Printer, Download } from 'lucide-react';
 import { Badge } from '../ui/Badge';
@@ -63,9 +63,9 @@ export const LawReader: React.FC<LawReaderProps> = ({
   }, [selectedLawId, lawsCatalog, setSelectedLawId, loadLaw]);
 
   const filteredArticles = useMemo(() => {
-    const normSelected = normalizeBab(selectedBab).toLowerCase();
+    const selectedKey = extractBabKey(selectedBab);
     return currentArticles.filter((art) => {
-      if (normSelected && normalizeBab(art.bab).toLowerCase() !== normSelected) return false;
+      if (selectedKey && extractBabKey(art.bab) !== selectedKey) return false;
       if (inLawFilterQuery.trim()) {
         const q = inLawFilterQuery.toLowerCase().trim();
         const matchesNomor = art.nomor.toLowerCase().includes(q);
@@ -355,9 +355,9 @@ export const LawReader: React.FC<LawReaderProps> = ({
               </p>
             </div>
           ) : (
-            filteredArticles.map((article) => (
+            filteredArticles.map((article, index) => (
               <ArticleCard
-                key={article.id}
+                key={`${article.id || article.lawId}-${article.nomor}-${index}`}
                 article={article}
                 onOpenCitation={onOpenCitation}
                 onOpenNote={onOpenNote}

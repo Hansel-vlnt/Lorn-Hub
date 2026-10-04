@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Article, HighlightColor } from '../../types';
 import { useUserData } from '../../context/UserDataContext';
 import { useLaw } from '../../context/LawContext';
@@ -14,6 +14,8 @@ import {
   Tag,
 } from 'lucide-react';
 
+import { ensureCompleteAyat } from '../../services/regulationScraperService';
+
 interface ArticleCardProps {
   article: Article;
   onOpenCitation: (article: Article) => void;
@@ -23,12 +25,13 @@ interface ArticleCardProps {
 }
 
 export const ArticleCard: React.FC<ArticleCardProps> = ({
-  article,
+  article: rawArticle,
   onOpenCitation,
   onOpenNote,
   onOpenBookmark,
   onShowToast,
 }) => {
+  const article = useMemo(() => ensureCompleteAyat(rawArticle), [rawArticle]);
   const { isBookmarked, getNote, getHighlight, setHighlight, removeHighlight } = useUserData();
   const { lawsCatalog } = useLaw();
   const { fontFamily, fontSize } = useTheme();

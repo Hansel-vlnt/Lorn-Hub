@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useEffect, useCallback } fr
 import { LawMetadata, Article, DynamicLawDataset } from '../types/law';
 import { searchEngine } from '../services/searchEngine';
 import { offlineStorage } from '../services/offlineStorageService';
-import { regulationScraper } from '../services/regulationScraperService';
+import { regulationScraper, ensureCompleteAyat } from '../services/regulationScraperService';
 
 interface LawContextType {
   lawsCatalog: LawMetadata[];
@@ -46,13 +46,22 @@ export const LawProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         .getDataset(lawId)
         .then((dataset) => {
           if (dataset) {
-            setDatasetsCache((c) => ({ ...c, [lawId]: dataset.pasalList }));
+            const healedPasal = dataset.pasalList.map(ensureCompleteAyat);
+            setDatasetsCache((c) => ({ ...c, [lawId]: healedPasal }));
             setAllArticles((existing) => {
               const filtered = existing.filter((a) => a.lawId !== lawId);
-              const combined = [...filtered, ...dataset.pasalList];
+              const combined = [...filtered, ...healedPasal];
               searchEngine.indexArticles(combined);
               return combined;
             });
+            const wasHealed = dataset.pasalList.some((oldP, i) => {
+              const newP = healedPasal[i];
+              return (newP.ayat?.length || 0) !== (oldP.ayat?.length || 0) ||
+                newP.ayat?.some((na, ai) => na.teks !== oldP.ayat?.[ai]?.teks);
+            });
+            if (wasHealed) {
+              offlineStorage.saveDataset({ ...dataset, pasalList: healedPasal }).catch(console.error);
+            }
           }
         })
         .catch((err) => {
@@ -78,8 +87,18 @@ export const LawProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           const articles: Article[] = [];
 
           for (const ds of datasets) {
-            cache[ds.metadata.id] = ds.pasalList;
-            articles.push(...ds.pasalList);
+            const healedPasal = ds.pasalList.map(ensureCompleteAyat);
+            cache[ds.metadata.id] = healedPasal;
+            articles.push(...healedPasal);
+
+            const wasHealed = ds.pasalList.some((oldP, i) => {
+              const newP = healedPasal[i];
+              return (newP.ayat?.length || 0) !== (oldP.ayat?.length || 0) ||
+                newP.ayat?.some((na, ai) => na.teks !== oldP.ayat?.[ai]?.teks);
+            });
+            if (wasHealed) {
+              offlineStorage.saveDataset({ ...ds, pasalList: healedPasal }).catch(console.error);
+            }
           }
 
           setLawsCatalog(metadataList);

@@ -495,6 +495,8 @@ export class RegulationScraperService {
       }
     }
 
+    const finalPasalList = pasalList.map(ensureCompleteAyat);
+
     const metadata: LawMetadata = {
       id: lawId,
       judul: metadataParams.judul || 'Regulasi Tanpa Judul',
@@ -503,15 +505,57 @@ export class RegulationScraperService {
       kategori: metadataParams.kategori || 'khusus',
       sumberUrl: metadataParams.sumberUrl || 'Naskah Langsung (Ingestion)',
       statusDownload: 'cached-offline',
-      totalPasal: pasalList.length,
+      totalPasal: finalPasalList.length,
       ...metadataParams,
     };
 
     return {
       metadata,
-      pasalList,
+      pasalList: finalPasalList,
     };
   }
+}
+
+export function ensureCompleteAyat(article: Article): Article {
+  if (!article.isi) return article;
+
+  // If article.isi contains inline ayat markers without newlines, separate them
+  const textWithNormalizedAyat = article.isi.replace(/([^\n])\s+(\([0-9]+\)\s+)/g, '$1\n$2');
+  const lines = textWithNormalizedAyat.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+  const hasAyatMarkers = lines.some((l) => /^\([0-9]+\)/.test(l));
+
+  if (!hasAyatMarkers) {
+    return article;
+  }
+
+  const completeAyat: { nomor: number; teks: string; penjelasan?: string }[] = [];
+  for (const line of lines) {
+    const match = line.match(/^\(([0-9]+)\)\s*(.*)/);
+    if (match) {
+      completeAyat.push({
+        nomor: parseInt(match[1], 10),
+        teks: line,
+      });
+    } else if (completeAyat.length > 0) {
+      const last = completeAyat[completeAyat.length - 1];
+      last.teks = `${last.teks}\n${line}`;
+    }
+  }
+
+  if (completeAyat.length > 0) {
+    if (article.ayat && article.ayat.length > 0) {
+      completeAyat.forEach((ca) => {
+        const orig = article.ayat!.find((oa) => oa.nomor === ca.nomor);
+        if (orig?.penjelasan) ca.penjelasan = orig.penjelasan;
+      });
+    }
+    return {
+      ...article,
+      ayat: completeAyat,
+    };
+  }
+
+  return article;
 }
 
 export const regulationScraper = new RegulationScraperService();
