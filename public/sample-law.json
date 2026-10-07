@@ -1,0 +1,22 @@
+{
+  "judul": "Undang-Undang Hak Asasi Manusia",
+  "nomor": "UU No. 39 Tahun 1999",
+  "tahun": 1999,
+  "kategori": "khusus",
+  "pasalList": [
+    {
+      "id": "uu-39-1999-pasal-1",
+      "nomor": "1",
+      "bab": "BAB I - KETENTUAN UMUM",
+      "isi": "Hak Asasi Manusia adalah seperangkat hak yang melekat pada hakikat dan keberadaan manusia sebagai makhluk Tuhan Yang Maha Esa dan merupakan anugerah-Nya yang wajib dihormati, dijunjung tinggi dan dilindungi oleh negara, hukum, Pemerintah, dan setiap orang demi kehormatan serta perlindungan harkat dan martabat manusia.",
+      "kategori": "khusus"
+    },
+    {
+      "id": "uu-39-1999-pasal-2",
+      "nomor": "2",
+      "bab": "BAB I - KETENTUAN UMUM",
+      "isi": "Negara Republik Indonesia mengakui dan menjunjung tinggi hak asasi manusia dan kebebasan dasar manusia sebagai hak yang secara kodrati melekat pada dan tidak terpisahkan dari manusia, yang harus dilindungi, dihormati, dan ditegakkan demi peningkatan martabat kemanusiaan, kesejahteraan, kebahagiaan, dan keadilan.",
+      "kategori": "khusus"
+    }
+  ]
+}
